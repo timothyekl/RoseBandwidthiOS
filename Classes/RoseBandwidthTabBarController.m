@@ -33,6 +33,13 @@
 }
 
 #pragma mark -
+#pragma mark Update notification methods
+
+- (void)kerberosAccountInfoChanged {
+    [self.historyViewController forceHistoryReload];
+}
+
+#pragma mark -
 #pragma mark Memory management
 
 - (void)didReceiveMemoryWarning {

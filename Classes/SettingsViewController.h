@@ -12,6 +12,11 @@
 @interface SettingsViewController : UIViewController <UITextFieldDelegate> {
     UITextField * usernameField;
     UITextField * passwordField;
+    
+    @private
+    
+    NSString * _username;
+    NSString * _password;
 }
 
 @property (nonatomic, retain) IBOutlet UITextField * usernameField;

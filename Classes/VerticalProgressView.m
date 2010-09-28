@@ -18,7 +18,7 @@
 - (void)setDefaultProperties {
     self.minValue = 0.0;
     self.maxValue = 1.0;
-    self.currentValue = 0.5;
+    self.currentValue = 0.0;
     
     self.backgroundColor = [UIColor clearColor];
     self.borderColor = [UIColor darkGrayColor];

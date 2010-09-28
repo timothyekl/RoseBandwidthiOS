@@ -53,17 +53,7 @@
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     
-    NSFetchRequest * request = [[[NSFetchRequest alloc] init] autorelease];
-    [request setEntity:[NSEntityDescription entityForName:@"BandwidthUsageRecord" inManagedObjectContext:[self managedObjectContext]]];
-    [request setPredicate:[NSPredicate predicateWithFormat:@"kerberosName == %@", [[KerberosAccountManager defaultManager] getUsername]]];
-    NSSortDescriptor * sortDescriptor = [[[NSSortDescriptor alloc] initWithKey:@"timestamp" ascending:NO] autorelease];
-    [request setSortDescriptors:[NSArray arrayWithObject:sortDescriptor]];
-    NSError * error;
-    NSArray * result = [[self managedObjectContext] executeFetchRequest:request error:&error];
-    if(nil == result) {
-        NSLog(@"error fetching: %@", error);
-    }
-    self.usageHistory = [[result mutableCopy] autorelease];
+    [self forceHistoryReload];
 }
 
 /*
@@ -183,6 +173,26 @@
 - (void)addRecordForBandwidthUsage:(BandwidthUsageRecord *)usage {
     [self.usageHistory insertObject:usage atIndex:0];
     [self.tableView insertRowsAtIndexPaths:[NSArray arrayWithObject:[NSIndexPath indexPathForRow:0 inSection:0]] withRowAnimation:UITableViewRowAnimationLeft];
+}
+
+- (void)forceHistoryReload {
+    self.usageHistory = nil;
+    
+    NSFetchRequest * request = [[[NSFetchRequest alloc] init] autorelease];
+    [request setEntity:[NSEntityDescription entityForName:@"BandwidthUsageRecord" inManagedObjectContext:[self managedObjectContext]]];
+    [request setPredicate:[NSPredicate predicateWithFormat:@"kerberosName == %@", [[KerberosAccountManager defaultManager] getUsername]]];
+    NSSortDescriptor * sortDescriptor = [[[NSSortDescriptor alloc] initWithKey:@"timestamp" ascending:NO] autorelease];
+    [request setSortDescriptors:[NSArray arrayWithObject:sortDescriptor]];
+    
+    NSError * error;
+    NSArray * result = [[self managedObjectContext] executeFetchRequest:request error:&error];
+    if(nil == result) {
+        NSLog(@"error fetching: %@", error);
+    }
+    
+    self.usageHistory = [[result mutableCopy] autorelease];
+    
+    [self.tableView reloadData];
 }
 
 #pragma mark -

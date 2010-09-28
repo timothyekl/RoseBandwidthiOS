@@ -8,6 +8,7 @@
 
 #import "SettingsViewController.h"
 #import "KerberosAccountManager.h"
+#import "RoseBandwidthTabBarController.h"
 
 
 @implementation SettingsViewController
@@ -42,15 +43,23 @@
 }
 
 #pragma mark -
-#pragma mark Rotation
+#pragma mark View methods
 
-/*
-// Override to allow orientations other than the default portrait orientation.
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
-    // Return YES for supported orientations
-    return (interfaceOrientation == UIInterfaceOrientationPortrait);
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    
+    _username = [[[[KerberosAccountManager defaultManager] getUsername] copy] retain];
+    _password = [[[[KerberosAccountManager defaultManager] getPassword] copy] retain];
 }
-*/
+
+- (void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
+    
+    if(![_username isEqualToString:[[KerberosAccountManager defaultManager] getUsername]] ||
+       ![_password isEqualToString:[[KerberosAccountManager defaultManager] getPassword]]) {
+        [((RoseBandwidthTabBarController *)self.tabBarController) kerberosAccountInfoChanged];
+    }
+}
 
 #pragma mark -
 #pragma mark UITextFieldDelegate methods

@@ -19,5 +19,6 @@
 @property (nonatomic, readonly) NSManagedObjectContext * managedObjectContext;
 
 - (void)addRecordForBandwidthUsage:(BandwidthUsageRecord *)usage;
+- (void)forceHistoryReload;
 
 @end

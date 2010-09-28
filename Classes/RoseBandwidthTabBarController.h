@@ -24,4 +24,6 @@
 @property (nonatomic, retain) IBOutlet BandwidthHistoryTableViewController * historyViewController;
 @property (nonatomic, retain) IBOutlet SettingsViewController * settingsViewController;
 
+- (void)kerberosAccountInfoChanged;
+
 @end

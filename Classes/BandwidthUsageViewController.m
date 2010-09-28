@@ -74,6 +74,22 @@
     
     // Grab new bandwidth on app load
     [self requestBandwidthUpdate];
+    
+    // Load cached bandwidth usage record if available
+    NSFetchRequest * request = [[[NSFetchRequest alloc] init] autorelease];
+    [request setEntity:[NSEntityDescription entityForName:@"BandwidthUsageRecord" inManagedObjectContext:[self managedObjectContext]]];
+    [request setFetchLimit:1];
+    [request setSortDescriptors:[NSArray arrayWithObject:[[[NSSortDescriptor alloc] initWithKey:@"timestamp" ascending:NO] autorelease]]];
+    NSError * error;
+    NSArray * results = [[self managedObjectContext] executeFetchRequest:request error:&error];
+    if(nil == results) {
+        NSLog(@"error fetching past bandwidth: %@", error);
+    } else {
+        if([results count] > 0) {
+            self.currentUsage = [results objectAtIndex:0];
+            [self updateVisibleBandwidthWithUsageRecord:self.currentUsage];
+        }
+    }
 }
 
 /*
