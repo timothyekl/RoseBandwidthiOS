@@ -1,0 +1,83 @@
+//
+//  KerberosAccountManager.m
+//  RoseBandwidth
+//
+//  Created by Tim Ekl on 9/25/10.
+//  Copyright (c) 2010 __MyCompanyName__. All rights reserved.
+//
+
+#import "KerberosAccountManager.h"
+
+static KerberosAccountManager * _defaultManager = nil;
+
+@implementation KerberosAccountManager
+
+@synthesize itemWrapper;
+
+#pragma mark -
+#pragma mark Singleton management methods
+
++ (KerberosAccountManager *)defaultManager {
+    @synchronized(self) {
+        if(nil == _defaultManager) {
+            _defaultManager = [[KerberosAccountManager alloc] init];
+        }
+    }
+    return _defaultManager;
+}
+
++ (id)allocWithZone:(NSZone *)zone {
+    @synchronized(self) {
+        if(nil == _defaultManager) {
+            _defaultManager = [super allocWithZone:zone];
+            return _defaultManager;
+        }
+    }
+    return nil;
+}
+
+- (id)init {
+    if(self = [super init]) {
+        self.itemWrapper = [[[KeychainItemWrapper alloc] initWithIdentifier:@"Kerberos Info" accessGroup:@"KPAZKHDUAP.com.brousalis.RoseBandwidth"] autorelease];
+    }
+    return self;
+}
+
+- (id)copyWithZone:(NSZone *)zone {
+    return self;
+}
+
+- (id)retain {
+    return self;
+}
+
+- (unsigned)retainCount {
+    return UINT_MAX;  // denotes an object that cannot be released
+}
+
+- (void)release {
+    //do nothing
+}
+
+- (id)autorelease {
+    return self;
+}
+
+#pragma mark -
+#pragma mark Kerberos info methods
+
+- (NSString *)getUsername {
+    return [self.itemWrapper objectForKey:(id)kSecAttrAccount];
+}
+- (void)setUsername:(NSString *)username {
+    [self.itemWrapper setObject:username forKey:(id)kSecAttrAccount];
+}
+
+- (NSString *)getPassword {
+    return [self.itemWrapper objectForKey:(id)kSecValueData];
+}
+- (void)setPassword:(NSString *)password {
+    [self.itemWrapper setObject:password forKey:(id)kSecValueData];
+}
+
+@end

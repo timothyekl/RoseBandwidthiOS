@@ -1,0 +1,463 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		2201E1B812522885009D0021 /* BandwidthHistoryNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2201E1B712522885009D0021 /* BandwidthHistoryNavigationController.m */; };
+		221CC9701251098F002F5069 /* OCProgress.m in Sources */ = {isa = PBXBuildFile; fileRef = 221CC96F1251098F002F5069 /* OCProgress.m */; };
+		221CC97B1251265F002F5069 /* VerticalProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = 221CC97A1251265F002F5069 /* VerticalProgressView.m */; };
+		224E874C124FE8B400CEBF0F /* BandwidthScraper.m in Sources */ = {isa = PBXBuildFile; fileRef = 224E874B124FE8B400CEBF0F /* BandwidthScraper.m */; };
+		224E8764124FFA8000CEBF0F /* XPathQuery.m in Sources */ = {isa = PBXBuildFile; fileRef = 224E8763124FFA8000CEBF0F /* XPathQuery.m */; };
+		224E877012503E3D00CEBF0F /* libxml2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 224E876F12503E3D00CEBF0F /* libxml2.dylib */; };
+		2282B87812515E88002201B9 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2282B87712515E88002201B9 /* CoreData.framework */; };
+		22E27693124EA4D7003E9D3E /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 22E27692124EA4D7003E9D3E /* UIKit.framework */; };
+		22E27695124EA4D7003E9D3E /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 22E27694124EA4D7003E9D3E /* Foundation.framework */; };
+		22E27697124EA4D7003E9D3E /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 22E27696124EA4D7003E9D3E /* CoreGraphics.framework */; };
+		22E2769C124EA4D7003E9D3E /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 22E2769A124EA4D7003E9D3E /* InfoPlist.strings */; };
+		22E2769E124EA4D7003E9D3E /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 22E2769D124EA4D7003E9D3E /* main.m */; };
+		22E276A1124EA4D7003E9D3E /* RoseBandwidthAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 22E276A0124EA4D7003E9D3E /* RoseBandwidthAppDelegate.m */; };
+		22E276A4124EA4D7003E9D3E /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 22E276A2124EA4D7003E9D3E /* MainWindow.xib */; };
+		22E276BE124EA5AB003E9D3E /* BandwidthUsageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 22E276BD124EA5AB003E9D3E /* BandwidthUsageViewController.m */; };
+		22E276C1124EA5D3003E9D3E /* BandwidthUsageView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 22E276BF124EA5D3003E9D3E /* BandwidthUsageView.xib */; };
+		22E276C4124EA5FD003E9D3E /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 22E276C3124EA5FD003E9D3E /* SettingsViewController.m */; };
+		22E276C7124EA611003E9D3E /* SettingsView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 22E276C5124EA611003E9D3E /* SettingsView.xib */; };
+		22E2771B124EED8E003E9D3E /* KeychainItemWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = 22E2771A124EED8E003E9D3E /* KeychainItemWrapper.m */; };
+		22E27720124EEE2D003E9D3E /* KerberosAccountManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 22E2771F124EEE2D003E9D3E /* KerberosAccountManager.m */; };
+		22E27724124EF55E003E9D3E /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 22E27723124EF55E003E9D3E /* Security.framework */; };
+		22E9207F1251622900C7821F /* RoseBandwidth.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 22E9207D1251622900C7821F /* RoseBandwidth.xcdatamodeld */; };
+		22E9209112516CF100C7821F /* BandwidthUsageRecord.m in Sources */ = {isa = PBXBuildFile; fileRef = 22E9209012516CF100C7821F /* BandwidthUsageRecord.m */; };
+		22E9209D12516FC200C7821F /* BandwidthHistoryTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 22E9209C12516FC200C7821F /* BandwidthHistoryTableViewController.m */; };
+		22E9209F12516FD800C7821F /* BandwidthHistoryTableView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 22E9209E12516FD800C7821F /* BandwidthHistoryTableView.xib */; };
+		22E920BE1252160300C7821F /* RoseBandwidthTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 22E920BD1252160300C7821F /* RoseBandwidthTabBarController.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		2201E1B612522885009D0021 /* BandwidthHistoryNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BandwidthHistoryNavigationController.h; sourceTree = "<group>"; };
+		2201E1B712522885009D0021 /* BandwidthHistoryNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BandwidthHistoryNavigationController.m; sourceTree = "<group>"; };
+		221CC96E1251098F002F5069 /* OCProgress.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OCProgress.h; sourceTree = "<group>"; };
+		221CC96F1251098F002F5069 /* OCProgress.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OCProgress.m; sourceTree = "<group>"; };
+		221CC9791251265F002F5069 /* VerticalProgressView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VerticalProgressView.h; sourceTree = "<group>"; };
+		221CC97A1251265F002F5069 /* VerticalProgressView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VerticalProgressView.m; sourceTree = "<group>"; };
+		224E874A124FE8B400CEBF0F /* BandwidthScraper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BandwidthScraper.h; sourceTree = "<group>"; };
+		224E874B124FE8B400CEBF0F /* BandwidthScraper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BandwidthScraper.m; sourceTree = "<group>"; };
+		224E874D124FE91300CEBF0F /* BandwidthScraperDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BandwidthScraperDelegate.h; sourceTree = "<group>"; };
+		224E8762124FFA8000CEBF0F /* XPathQuery.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XPathQuery.h; sourceTree = "<group>"; };
+		224E8763124FFA8000CEBF0F /* XPathQuery.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XPathQuery.m; sourceTree = "<group>"; };
+		224E876F12503E3D00CEBF0F /* libxml2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; path = libxml2.dylib; sourceTree = "<group>"; };
+		2282B87712515E88002201B9 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = CoreData.framework; sourceTree = "<group>"; };
+		22E2768F124EA4D7003E9D3E /* RoseBandwidth.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RoseBandwidth.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		22E27692124EA4D7003E9D3E /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		22E27694124EA4D7003E9D3E /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		22E27696124EA4D7003E9D3E /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		22E27698124EA4D7003E9D3E /* RoseBandwidth-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "RoseBandwidth-Info.plist"; sourceTree = "<group>"; };
+		22E27699124EA4D7003E9D3E /* RoseBandwidth_Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RoseBandwidth_Prefix.pch; sourceTree = "<group>"; };
+		22E2769B124EA4D7003E9D3E /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		22E2769D124EA4D7003E9D3E /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		22E2769F124EA4D7003E9D3E /* RoseBandwidthAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RoseBandwidthAppDelegate.h; sourceTree = "<group>"; };
+		22E276A0124EA4D7003E9D3E /* RoseBandwidthAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RoseBandwidthAppDelegate.m; sourceTree = "<group>"; };
+		22E276A3124EA4D7003E9D3E /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainWindow.xib; sourceTree = "<group>"; };
+		22E276BC124EA5AB003E9D3E /* BandwidthUsageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BandwidthUsageViewController.h; sourceTree = "<group>"; };
+		22E276BD124EA5AB003E9D3E /* BandwidthUsageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BandwidthUsageViewController.m; sourceTree = "<group>"; };
+		22E276C0124EA5D3003E9D3E /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/BandwidthUsageView.xib; sourceTree = "<group>"; };
+		22E276C2124EA5FD003E9D3E /* SettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsViewController.h; sourceTree = "<group>"; };
+		22E276C3124EA5FD003E9D3E /* SettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsViewController.m; sourceTree = "<group>"; };
+		22E276C6124EA611003E9D3E /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/SettingsView.xib; sourceTree = "<group>"; };
+		22E27719124EED8E003E9D3E /* KeychainItemWrapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KeychainItemWrapper.h; sourceTree = "<group>"; };
+		22E2771A124EED8E003E9D3E /* KeychainItemWrapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KeychainItemWrapper.m; sourceTree = "<group>"; };
+		22E2771E124EEE2D003E9D3E /* KerberosAccountManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KerberosAccountManager.h; sourceTree = "<group>"; };
+		22E2771F124EEE2D003E9D3E /* KerberosAccountManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KerberosAccountManager.m; sourceTree = "<group>"; };
+		22E27723124EF55E003E9D3E /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Security.framework; sourceTree = "<group>"; };
+		22E9207E1251622900C7821F /* RoseBandwidth.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = RoseBandwidth.xcdatamodel; sourceTree = "<group>"; };
+		22E920811251637F00C7821F /* KerberosActivityDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KerberosActivityDelegate.h; sourceTree = "<group>"; };
+		22E9208F12516CF100C7821F /* BandwidthUsageRecord.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BandwidthUsageRecord.h; sourceTree = "<group>"; };
+		22E9209012516CF100C7821F /* BandwidthUsageRecord.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BandwidthUsageRecord.m; sourceTree = "<group>"; };
+		22E9209B12516FC200C7821F /* BandwidthHistoryTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BandwidthHistoryTableViewController.h; sourceTree = "<group>"; };
+		22E9209C12516FC200C7821F /* BandwidthHistoryTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BandwidthHistoryTableViewController.m; sourceTree = "<group>"; };
+		22E9209E12516FD800C7821F /* BandwidthHistoryTableView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = BandwidthHistoryTableView.xib; path = Resources/BandwidthHistoryTableView.xib; sourceTree = "<group>"; };
+		22E920BC1252160300C7821F /* RoseBandwidthTabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RoseBandwidthTabBarController.h; sourceTree = "<group>"; };
+		22E920BD1252160300C7821F /* RoseBandwidthTabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RoseBandwidthTabBarController.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		22E2768C124EA4D7003E9D3E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				224E877012503E3D00CEBF0F /* libxml2.dylib in Frameworks */,
+				2282B87812515E88002201B9 /* CoreData.framework in Frameworks */,
+				22E27724124EF55E003E9D3E /* Security.framework in Frameworks */,
+				22E27693124EA4D7003E9D3E /* UIKit.framework in Frameworks */,
+				22E27695124EA4D7003E9D3E /* Foundation.framework in Frameworks */,
+				22E27697124EA4D7003E9D3E /* CoreGraphics.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		224E8749124FE87D00CEBF0F /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				224E8762124FFA8000CEBF0F /* XPathQuery.h */,
+				224E8763124FFA8000CEBF0F /* XPathQuery.m */,
+				224E874A124FE8B400CEBF0F /* BandwidthScraper.h */,
+				224E874B124FE8B400CEBF0F /* BandwidthScraper.m */,
+				224E874D124FE91300CEBF0F /* BandwidthScraperDelegate.h */,
+			);
+			name = Network;
+			sourceTree = "<group>";
+		};
+		225A47F01250580B0004B2B2 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				221CC96E1251098F002F5069 /* OCProgress.h */,
+				221CC96F1251098F002F5069 /* OCProgress.m */,
+				221CC9791251265F002F5069 /* VerticalProgressView.h */,
+				221CC97A1251265F002F5069 /* VerticalProgressView.m */,
+			);
+			name = Views;
+			sourceTree = "<group>";
+		};
+		22E27680124EA4D7003E9D3E = {
+			isa = PBXGroup;
+			children = (
+				2282B87712515E88002201B9 /* CoreData.framework */,
+				224E876F12503E3D00CEBF0F /* libxml2.dylib */,
+				22E27723124EF55E003E9D3E /* Security.framework */,
+				22E92078125161BB00C7821F /* Models */,
+				22E27687124EA4D7003E9D3E /* Classes */,
+				22E27688124EA4D7003E9D3E /* Other Sources */,
+				22E27689124EA4D7003E9D3E /* Resources */,
+				22E2768A124EA4D7003E9D3E /* Frameworks */,
+				22E27690124EA4D7003E9D3E /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		22E27687124EA4D7003E9D3E /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				22E9208E125169FB00C7821F /* Core Data Objects */,
+				225A47F01250580B0004B2B2 /* Views */,
+				224E8749124FE87D00CEBF0F /* Network */,
+				22E2771D124EEDDD003E9D3E /* Security */,
+				22E2771C124EEDCB003E9D3E /* View controllers */,
+				22E2769F124EA4D7003E9D3E /* RoseBandwidthAppDelegate.h */,
+				22E276A0124EA4D7003E9D3E /* RoseBandwidthAppDelegate.m */,
+			);
+			path = Classes;
+			sourceTree = "<group>";
+		};
+		22E27688124EA4D7003E9D3E /* Other Sources */ = {
+			isa = PBXGroup;
+			children = (
+				22E27699124EA4D7003E9D3E /* RoseBandwidth_Prefix.pch */,
+				22E2769D124EA4D7003E9D3E /* main.m */,
+			);
+			name = "Other Sources";
+			sourceTree = "<group>";
+		};
+		22E27689124EA4D7003E9D3E /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				22E9209E12516FD800C7821F /* BandwidthHistoryTableView.xib */,
+				22E276C5124EA611003E9D3E /* SettingsView.xib */,
+				22E276BF124EA5D3003E9D3E /* BandwidthUsageView.xib */,
+				22E27698124EA4D7003E9D3E /* RoseBandwidth-Info.plist */,
+				22E2769A124EA4D7003E9D3E /* InfoPlist.strings */,
+				22E276A2124EA4D7003E9D3E /* MainWindow.xib */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
+		22E2768A124EA4D7003E9D3E /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				22E27692124EA4D7003E9D3E /* UIKit.framework */,
+				22E27694124EA4D7003E9D3E /* Foundation.framework */,
+				22E27696124EA4D7003E9D3E /* CoreGraphics.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		22E27690124EA4D7003E9D3E /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				22E2768F124EA4D7003E9D3E /* RoseBandwidth.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		22E2771C124EEDCB003E9D3E /* View controllers */ = {
+			isa = PBXGroup;
+			children = (
+				22E276BC124EA5AB003E9D3E /* BandwidthUsageViewController.h */,
+				22E276BD124EA5AB003E9D3E /* BandwidthUsageViewController.m */,
+				22E9209B12516FC200C7821F /* BandwidthHistoryTableViewController.h */,
+				22E9209C12516FC200C7821F /* BandwidthHistoryTableViewController.m */,
+				22E276C2124EA5FD003E9D3E /* SettingsViewController.h */,
+				22E276C3124EA5FD003E9D3E /* SettingsViewController.m */,
+				22E920BC1252160300C7821F /* RoseBandwidthTabBarController.h */,
+				22E920BD1252160300C7821F /* RoseBandwidthTabBarController.m */,
+				2201E1B612522885009D0021 /* BandwidthHistoryNavigationController.h */,
+				2201E1B712522885009D0021 /* BandwidthHistoryNavigationController.m */,
+			);
+			name = "View controllers";
+			sourceTree = "<group>";
+		};
+		22E2771D124EEDDD003E9D3E /* Security */ = {
+			isa = PBXGroup;
+			children = (
+				22E2771E124EEE2D003E9D3E /* KerberosAccountManager.h */,
+				22E2771F124EEE2D003E9D3E /* KerberosAccountManager.m */,
+				22E27719124EED8E003E9D3E /* KeychainItemWrapper.h */,
+				22E2771A124EED8E003E9D3E /* KeychainItemWrapper.m */,
+				22E920811251637F00C7821F /* KerberosActivityDelegate.h */,
+			);
+			name = Security;
+			sourceTree = "<group>";
+		};
+		22E92078125161BB00C7821F /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				22E9207D1251622900C7821F /* RoseBandwidth.xcdatamodeld */,
+			);
+			name = Models;
+			sourceTree = "<group>";
+		};
+		22E9208E125169FB00C7821F /* Core Data Objects */ = {
+			isa = PBXGroup;
+			children = (
+				22E9208F12516CF100C7821F /* BandwidthUsageRecord.h */,
+				22E9209012516CF100C7821F /* BandwidthUsageRecord.m */,
+			);
+			name = "Core Data Objects";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		22E2768E124EA4D7003E9D3E /* RoseBandwidth */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 22E276B3124EA4D7003E9D3E /* Build configuration list for PBXNativeTarget "RoseBandwidth" */;
+			buildPhases = (
+				22E2768B124EA4D7003E9D3E /* Sources */,
+				22E2768C124EA4D7003E9D3E /* Frameworks */,
+				22E2768D124EA4D7003E9D3E /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = RoseBandwidth;
+			productName = RoseBandwidth;
+			productReference = 22E2768F124EA4D7003E9D3E /* RoseBandwidth.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		22E27682124EA4D7003E9D3E /* Project object */ = {
+			isa = PBXProject;
+			buildConfigurationList = 22E27685124EA4D7003E9D3E /* Build configuration list for PBXProject "RoseBandwidth" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 22E27680124EA4D7003E9D3E;
+			productRefGroup = 22E27690124EA4D7003E9D3E /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				22E2768E124EA4D7003E9D3E /* RoseBandwidth */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		22E2768D124EA4D7003E9D3E /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				22E2769C124EA4D7003E9D3E /* InfoPlist.strings in Resources */,
+				22E276A4124EA4D7003E9D3E /* MainWindow.xib in Resources */,
+				22E276C1124EA5D3003E9D3E /* BandwidthUsageView.xib in Resources */,
+				22E276C7124EA611003E9D3E /* SettingsView.xib in Resources */,
+				22E9209F12516FD800C7821F /* BandwidthHistoryTableView.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		22E2768B124EA4D7003E9D3E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				22E2769E124EA4D7003E9D3E /* main.m in Sources */,
+				22E276A1124EA4D7003E9D3E /* RoseBandwidthAppDelegate.m in Sources */,
+				22E276BE124EA5AB003E9D3E /* BandwidthUsageViewController.m in Sources */,
+				22E276C4124EA5FD003E9D3E /* SettingsViewController.m in Sources */,
+				22E2771B124EED8E003E9D3E /* KeychainItemWrapper.m in Sources */,
+				22E27720124EEE2D003E9D3E /* KerberosAccountManager.m in Sources */,
+				224E874C124FE8B400CEBF0F /* BandwidthScraper.m in Sources */,
+				224E8764124FFA8000CEBF0F /* XPathQuery.m in Sources */,
+				221CC9701251098F002F5069 /* OCProgress.m in Sources */,
+				221CC97B1251265F002F5069 /* VerticalProgressView.m in Sources */,
+				22E9207F1251622900C7821F /* RoseBandwidth.xcdatamodeld in Sources */,
+				22E9209112516CF100C7821F /* BandwidthUsageRecord.m in Sources */,
+				22E9209D12516FC200C7821F /* BandwidthHistoryTableViewController.m in Sources */,
+				22E920BE1252160300C7821F /* RoseBandwidthTabBarController.m in Sources */,
+				2201E1B812522885009D0021 /* BandwidthHistoryNavigationController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		22E2769A124EA4D7003E9D3E /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				22E2769B124EA4D7003E9D3E /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		22E276A2124EA4D7003E9D3E /* MainWindow.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				22E276A3124EA4D7003E9D3E /* en */,
+			);
+			name = MainWindow.xib;
+			sourceTree = "<group>";
+		};
+		22E276BF124EA5D3003E9D3E /* BandwidthUsageView.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				22E276C0124EA5D3003E9D3E /* en */,
+			);
+			name = BandwidthUsageView.xib;
+			sourceTree = "<group>";
+		};
+		22E276C5124EA611003E9D3E /* SettingsView.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				22E276C6124EA611003E9D3E /* en */,
+			);
+			name = SettingsView.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		22E276B1124EA4D7003E9D3E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = DEBUG;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = "$(SDKROOT)/usr/include/libxml2";
+				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
+				PREBINDING = NO;
+				SDKROOT = iphoneos4.1;
+			};
+			name = Debug;
+		};
+		22E276B2124EA4D7003E9D3E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = "$(SDKROOT)/usr/include/libxml2";
+				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
+				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				PREBINDING = NO;
+				SDKROOT = iphoneos4.1;
+			};
+			name = Release;
+		};
+		22E276B4124EA4D7003E9D3E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COPY_PHASE_STRIP = NO;
+				FRAMEWORK_SEARCH_PATHS = "";
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = RoseBandwidth_Prefix.pch;
+				HEADER_SEARCH_PATHS = "$(SDKROOT)/usr/include/libxml2";
+				INFOPLIST_FILE = "RoseBandwidth-Info.plist";
+				LIBRARY_SEARCH_PATHS = "";
+				PRODUCT_NAME = RoseBandwidth;
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		22E276B5124EA4D7003E9D3E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COPY_PHASE_STRIP = YES;
+				FRAMEWORK_SEARCH_PATHS = "";
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = RoseBandwidth_Prefix.pch;
+				HEADER_SEARCH_PATHS = "$(SDKROOT)/usr/include/libxml2";
+				INFOPLIST_FILE = "RoseBandwidth-Info.plist";
+				LIBRARY_SEARCH_PATHS = "";
+				PRODUCT_NAME = RoseBandwidth;
+				VALIDATE_PRODUCT = YES;
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		22E27685124EA4D7003E9D3E /* Build configuration list for PBXProject "RoseBandwidth" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				22E276B1124EA4D7003E9D3E /* Debug */,
+				22E276B2124EA4D7003E9D3E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		22E276B3124EA4D7003E9D3E /* Build configuration list for PBXNativeTarget "RoseBandwidth" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				22E276B4124EA4D7003E9D3E /* Debug */,
+				22E276B5124EA4D7003E9D3E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		22E9207D1251622900C7821F /* RoseBandwidth.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				22E9207E1251622900C7821F /* RoseBandwidth.xcdatamodel */,
+			);
+			currentVersion = 22E9207E1251622900C7821F /* RoseBandwidth.xcdatamodel */;
+			name = RoseBandwidth.xcdatamodeld;
+			path = Resources/RoseBandwidth.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
+	};
+	rootObject = 22E27682124EA4D7003E9D3E /* Project object */;
+}
