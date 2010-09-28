@@ -20,6 +20,7 @@
 
 @interface BandwidthUsageViewController()
 - (void)updateVisibleBandwidthWithType:(kBandwidthUsage)type;
+- (void)showUpdating;
 @end
 
 @implementation BandwidthUsageViewController
@@ -33,6 +34,7 @@
 @synthesize rightUsageLabel = _rightUsageLabel;
 
 @synthesize refreshButton = _refreshButton;
+@synthesize refreshSpinner = _refreshSpinner;
 
 @synthesize currentUsage = _currentUsage;
 
@@ -42,7 +44,6 @@
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
     if ((self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil])) {
         // Custom initialization
-        [self addObserver:self forKeyPath:@"updating" options:NSKeyValueObservingOptionNew context:NULL];
     }
     return self;
 }
@@ -63,17 +64,29 @@
     }
 }
 
+- (void)showUpdating {
+    NSLog(@"showing updating: %@", (self.updating ? @"YES" : @"NO"));
+    if(self.updating) {
+        [self.refreshButton setTitle:@"" forState:UIControlStateNormal];
+        [self.refreshSpinner startAnimating];
+        self.refreshButton.enabled = NO;
+    } else {
+        [self.refreshButton setTitle:@"Refresh" forState:UIControlStateNormal];
+        [self.refreshSpinner stopAnimating];
+        self.refreshButton.enabled = YES;
+    }
+}
+
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    [self addObserver:self forKeyPath:@"updating" options:NSKeyValueObservingOptionNew context:NULL];
     
     // Resize control
     CGRect frame = self.measureControl.frame;
     frame.size.height = 30.0;
     self.measureControl.frame = frame;
-    
-    // Grab new bandwidth on app load
-    [self requestBandwidthUpdate];
     
     // Load cached bandwidth usage record if available
     NSFetchRequest * request = [[[NSFetchRequest alloc] init] autorelease];
@@ -90,6 +103,9 @@
             [self updateVisibleBandwidthWithUsageRecord:self.currentUsage];
         }
     }
+    
+    // Grab new bandwidth on app load
+    [self requestBandwidthUpdate];
 }
 
 /*
@@ -107,6 +123,17 @@
     self.currentUsage = usage;
     [self updateVisibleBandwidthWithType:[self.measureControl selectedSegmentIndex]];
     self.updating = NO;
+}
+
+- (UIColor *)barColorForUsageValue:(NSNumber *)val {
+    float valf = [val floatValue];
+    if(valf > 3500.0) {
+        return [UIColor redColor];
+    } else if(valf > 3000.0) {
+        return [UIColor yellowColor];
+    } else {
+        return [UIColor greenColor];
+    }
 }
 
 - (void)updateVisibleBandwidthWithType:(kBandwidthUsage)type {
@@ -142,6 +169,9 @@
     self.leftUsageView.maxValue = usageDisplayMax;
     self.rightUsageView.maxValue = usageDisplayMax;
     
+    self.leftUsageView.barColor = [self barColorForUsageValue:received];
+    self.rightUsageView.barColor = [self barColorForUsageValue:sent];
+    
     [self.leftUsageView setNeedsDisplay];
     [self.rightUsageView setNeedsDisplay];
 }
@@ -155,6 +185,7 @@
 
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context {
     NSLog(@"value changed for key path: %@", keyPath);
+    [self showUpdating];
 }
 
 #pragma mark -
