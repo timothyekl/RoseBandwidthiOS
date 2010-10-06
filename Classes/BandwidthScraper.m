@@ -49,12 +49,26 @@
 #pragma mark Actions
 
 - (void)beginScraping {
-    NSMutableURLRequest * request = [[[NSMutableURLRequest alloc] initWithURL:[NSURL URLWithString:@"https://netreg.rose-hulman.edu/tools/networkUsage.pl"]] autorelease];
-    NSURLConnection * conn = [[[NSURLConnection alloc] initWithRequest:request delegate:self] autorelease];
-    [conn start];
+    NSLog(@"scraper received beginScraping");
+    
+    NSMutableURLRequest * request = [[[NSMutableURLRequest alloc] initWithURL:[NSURL URLWithString:@"https://netreg.rose-hulman.edu/tools/networkUsage.pl"] 
+                                                                  cachePolicy:NSURLRequestReloadIgnoringCacheData 
+                                                              timeoutInterval:3.0] autorelease];
+    _conn = [[[NSURLConnection alloc] initWithRequest:request delegate:self] autorelease];
+    [_conn start];
     
     if([self.delegate respondsToSelector:@selector(scraper:didDispatchPageRequest:)]) {
         [self.delegate scraper:self didDispatchPageRequest:request];
+    }
+}
+
+- (void)cancelScraping {
+    NSLog(@"scraper received cancelScraping");
+    
+    [_conn cancel];
+    if([self.delegate respondsToSelector:@selector(scraper:encounteredError:)]) {
+        NSError * err = [[[NSError alloc] initWithDomain:@"canceled" code:-1 userInfo:nil] autorelease];
+        [self.delegate scraper:self encounteredError:err];
     }
 }
 
@@ -62,15 +76,21 @@
 #pragma mark NSURLConnection delegate methods
 
 - (void)connection:(NSURLConnection *)connection didReceiveAuthenticationChallenge:(NSURLAuthenticationChallenge *)challenge {
+    NSLog(@"connection did receive authentication challenge");
+    
     NSURLCredential * cred = [[[NSURLCredential alloc] initWithUser:self.username password:self.password persistence:NSURLCredentialPersistenceForSession] autorelease];
     [[challenge sender] useCredential:cred forAuthenticationChallenge:challenge];
 }
 
 - (void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data {
+    NSLog(@"connection did receive data");
+    
     [_data appendData:data];
 }
 
 - (void)connectionDidFinishLoading:(NSURLConnection *)connection {
+    NSLog(@"connection did finish loading");
+    
     if([self.delegate respondsToSelector:@selector(scraper:didFinishLoadingConnection:)]) {
         [self.delegate scraper:self didFinishLoadingConnection:connection];
     }
@@ -98,6 +118,8 @@
 }
 
 - (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error {
+    NSLog(@"connection did fail with error");
+    
     if([self.delegate respondsToSelector:@selector(scraper:encounteredError:)]) {
         [self.delegate scraper:self encounteredError:error];
     }

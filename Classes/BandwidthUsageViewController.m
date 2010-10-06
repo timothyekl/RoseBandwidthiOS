@@ -154,8 +154,8 @@
         return;
     }
     
-    self.leftUsageLabel.text = [NSString stringWithFormat:@"Received:\n%@ MB", received];
-    self.rightUsageLabel.text = [NSString stringWithFormat:@"Sent:\n%@ MB", sent];
+    self.leftUsageLabel.text = [NSString stringWithFormat:@"Received:\n%.2f MB", [received floatValue]];
+    self.rightUsageLabel.text = [NSString stringWithFormat:@"Sent:\n%.2f MB", [sent floatValue]];
     
     float pr = [received floatValue];
     float ps = [sent floatValue];

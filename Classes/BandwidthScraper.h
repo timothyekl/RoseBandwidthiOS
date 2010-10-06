@@ -28,6 +28,8 @@ typedef enum {
     NSMutableData * _data;
     BandwidthUsage * _usage;
     BandwidthScraperState _state;
+    
+    NSURLConnection * _conn;
 }
 
 @property (nonatomic, assign) id<BandwidthScraperDelegate> delegate;
@@ -37,6 +39,7 @@ typedef enum {
 
 - (id)initWithDelegate:(id<BandwidthScraperDelegate>)delegate username:(NSString *)username password:(NSString *)password;
 - (void)beginScraping;
+- (void)cancelScraping;
 
 - (NSManagedObjectContext *)managedObjectContext;
 

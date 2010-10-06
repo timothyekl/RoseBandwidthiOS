@@ -62,9 +62,19 @@
 }
 
 #pragma mark -
+#pragma mark UIResponder methods
+
+- (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event {
+    [self.usernameField resignFirstResponder];
+    [self.passwordField resignFirstResponder];
+}
+
+#pragma mark -
 #pragma mark UITextFieldDelegate methods
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField {
+    
+    
     if(textField == self.usernameField) {
         [self.usernameField resignFirstResponder];
         [self.passwordField becomeFirstResponder];
