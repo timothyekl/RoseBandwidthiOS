@@ -46,6 +46,7 @@
 - (void)drawRect:(CGRect)rect {
     // Grab context to draw on
 	CGContextRef context = UIGraphicsGetCurrentContext();
+    CGContextRef originalContext = context;
     
     // Figure out general dimensions
     CGFloat borderWidth = 3.0;
@@ -54,15 +55,6 @@
     CGPoint topFocus = CGPointMake(self.frame.size.width / 2.0, MIN(self.frame.size.height / 2.0, outerArcRadius + borderWidth / 2.0));
     CGPoint bottomFocus = CGPointMake(self.frame.size.width / 2.0, MAX(self.frame.size.height / 2.0, self.frame.size.height - (outerArcRadius + borderWidth / 2.0)));
     CGFloat fillableHeight = self.frame.size.height - borderWidth * 2.0;
-    
-    // Draw bar container
-    CGContextSetLineWidth(context, 3.0);
-    CGContextSetStrokeColorWithColor(context, [self.borderColor CGColor]);
-    
-    CGContextAddArc(context, topFocus.x, topFocus.y, outerArcRadius, 0.0, PI, 1);
-    CGContextAddArc(context, bottomFocus.x, bottomFocus.y, outerArcRadius, PI, 0.0, 1);
-    CGContextClosePath(context);
-    CGContextStrokePath(context);
     
     // Draw background
     CGContextSetFillColorWithColor(context, [self.barBackgroundColor CGColor]);
@@ -75,47 +67,40 @@
     // Figure out fill dimensions
     CGFloat fillAmount = self.currentValue / (self.maxValue - self.minValue);
     CGFloat fillHeight = fillAmount * fillableHeight;
+    NSLog(@"Filling to height %f", fillHeight);
     
-    // Draw fill
-    CGContextSetFillColorWithColor(context, [self.barColor CGColor]);
-    if(fillHeight < innerArcRadius) {
-        // Fill doesn't leave bottom curve
+    // Draw bar container
+    CGContextSetLineWidth(context, 3.0);
+    CGContextSetStrokeColorWithColor(context, [self.borderColor CGColor]);
+    
+    CGContextAddArc(context, topFocus.x, topFocus.y, outerArcRadius, 0.0, PI, 1);
+    CGContextAddArc(context, bottomFocus.x, bottomFocus.y, outerArcRadius, PI, 0.0, 1);
+    CGContextClosePath(context);
+    CGContextStrokePath(context);
+    
+    // Draw gradient
+    CGColorSpaceRef colorSpace = CGColorSpaceCreateDeviceRGB();
+    size_t nLocations = 2;
+    CGFloat locations[2] = {0.0, 1.0};
+    CGFloat components[8] = {0.0/255.0, 146.0/255.0, 74.0/255.0, 1.0, 132.0/255.0, 198.0/255.0, 77.0/255.0, 1.0};
+    CGGradientRef gradient = CGGradientCreateWithColorComponents(colorSpace, components, locations, nLocations);
+    
+    CGRect bounds = CGRectMake(0.0, fillHeight, self.frame.size.width, self.frame.size.height);
+    CGPoint midLeft = CGPointMake(0.0, CGRectGetMidY(bounds));
+    CGPoint midRight = CGPointMake(self.frame.size.width, CGRectGetMidY(bounds));
+    
+    CGContextAddArc(context, topFocus.x, topFocus.y, innerArcRadius, 0.0, PI, 1);
+    CGContextAddArc(context, bottomFocus.x, bottomFocus.y, innerArcRadius, PI, 0.0, 1);
+    CGContextClosePath(context);
+    CGContextClip(context);
+    CGContextClipToRect(context, CGRectMake(0.0, self.frame.size.height - fillHeight, self.frame.size.width, self.frame.size.height));
+    CGContextDrawLinearGradient(context, gradient, midLeft, midRight, 0);
+    context = originalContext;
         
-        // Draw bottom curve
-        float theta = acosf((innerArcRadius - fillHeight) / innerArcRadius);
-        CGContextAddArc(context, bottomFocus.x, bottomFocus.y, innerArcRadius, PI / 2 - theta, PI / 2 + theta, 0);
-        CGContextClosePath(context);
-        CGContextFillPath(context);
-    } else if(fillHeight >= innerArcRadius && fillHeight <= (fillableHeight - innerArcRadius)) {
-        // Fill hits center segment but not top curve
-        
-        // Draw bottom curve
-        CGContextAddArc(context, bottomFocus.x, bottomFocus.y, innerArcRadius, PI, 0.0, 1);
-        CGContextClosePath(context);
-        CGContextFillPath(context);
-        
-        // Draw center segment
-        CGContextAddRect(context, CGRectMake(borderWidth, self.frame.size.height - borderWidth - fillHeight, self.frame.size.width - borderWidth * 2.0, fillHeight - innerArcRadius));
-        CGContextFillPath(context);
-    } else {
-        // Fill hits top curve
-        
-        // Draw bottom curve
-        CGContextAddArc(context, bottomFocus.x, bottomFocus.y, innerArcRadius, PI, 0.0, 1);
-        CGContextClosePath(context);
-        CGContextFillPath(context);
-        
-        // Draw center segment
-        CGContextAddRect(context, CGRectMake(borderWidth, innerArcRadius, self.frame.size.width - borderWidth * 2.0, self.frame.size.height - 2 * innerArcRadius));
-        CGContextFillPath(context);
-        
-        // Draw top curve
-        float theta = -1 * acosf((fillHeight - fillableHeight + innerArcRadius) / innerArcRadius);
-        CGContextAddArc(context, topFocus.x, topFocus.y, innerArcRadius, 3 * PI / 2 + theta, PI, 1);
-        CGContextAddArc(context, topFocus.x, topFocus.y, innerArcRadius, 0.0, 3 * PI / 2 - theta, 1);
-        CGContextClosePath(context);
-        CGContextFillPath(context);
-    }
+    CGGradientRelease(gradient);
+    CGColorSpaceRelease(colorSpace);
+    
+    
 }
 
 - (void)dealloc {

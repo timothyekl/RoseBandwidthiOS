@@ -18,6 +18,8 @@
 
 #import "RoseBandwidthAppDelegate.h"
 
+#define FETCH_TIMEOUT 10.0
+
 @interface BandwidthScraper()
 
 - (NSNumber *)numberFromMBUsageString:(NSString *)str;
@@ -53,7 +55,7 @@
     
     NSMutableURLRequest * request = [[[NSMutableURLRequest alloc] initWithURL:[NSURL URLWithString:@"https://netreg.rose-hulman.edu/tools/networkUsage.pl"] 
                                                                   cachePolicy:NSURLRequestReloadIgnoringCacheData 
-                                                              timeoutInterval:3.0] autorelease];
+                                                              timeoutInterval:FETCH_TIMEOUT] autorelease];
     _conn = [[[NSURLConnection alloc] initWithRequest:request delegate:self] autorelease];
     [_conn start];
     
@@ -118,7 +120,7 @@
 }
 
 - (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error {
-    NSLog(@"connection did fail with error");
+    NSLog(@"connection did fail with error: %@",[error description]);
     
     if([self.delegate respondsToSelector:@selector(scraper:encounteredError:)]) {
         [self.delegate scraper:self encounteredError:error];
