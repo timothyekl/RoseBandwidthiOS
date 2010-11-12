@@ -83,6 +83,8 @@
     
     [self addObserver:self forKeyPath:@"updating" options:NSKeyValueObservingOptionNew context:NULL];
     
+    [self.view setBackgroundColor:[UIColor groupTableViewBackgroundColor]];
+    
     // Resize control
     CGRect frame = self.measureControl.frame;
     frame.size.height = 30.0;

@@ -99,8 +99,6 @@
         
     CGGradientRelease(gradient);
     CGColorSpaceRelease(colorSpace);
-    
-    
 }
 
 - (void)dealloc {

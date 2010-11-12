@@ -38,6 +38,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    [self.view setBackgroundColor:[UIColor groupTableViewBackgroundColor]];
+    
     self.usernameField.text = [[KerberosAccountManager defaultManager] getUsername];
     self.passwordField.text = [[KerberosAccountManager defaultManager] getPassword];
 }
@@ -73,8 +75,6 @@
 #pragma mark UITextFieldDelegate methods
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField {
-    
-    
     if(textField == self.usernameField) {
         [self.usernameField resignFirstResponder];
         [self.passwordField becomeFirstResponder];
