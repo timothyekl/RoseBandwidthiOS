@@ -12,16 +12,18 @@
 
 @interface KerberosAccountManager : NSObject {
     KeychainItemWrapper * itemWrapper;
+    
+    NSDictionary * _itemWrappers;
 }
 
 @property (nonatomic, retain) KeychainItemWrapper * itemWrapper;
 
+@property(nonatomic, retain) NSDictionary * itemWrappers;
+
+@property(nonatomic, assign) NSString * username;
+@property(nonatomic, assign) NSString * password;
+@property(nonatomic, assign) NSString * sourceURL;
+
 + (KerberosAccountManager *)defaultManager;
-
-- (NSString *)getUsername;
-- (void)setUsername:(NSString *)username;
-
-- (NSString *)getPassword;
-- (void)setPassword:(NSString *)password;
 
 @end

@@ -10,9 +10,14 @@
 
 static KerberosAccountManager * _defaultManager = nil;
 
+static const NSString * kSecureDataItemIDUsername = @"kSecureDataItemIDUsername";
+static const NSString * kSecureDataItemIDPassword = @"kSecureDataItemIDPassword";
+static const NSString * kSecureDataItemIDSourceURL = @"kSecureDataItemIDSourceURL";
+
 @implementation KerberosAccountManager
 
 @synthesize itemWrapper;
+@synthesize itemWrappers = _itemWrappers;
 
 #pragma mark -
 #pragma mark Singleton management methods
@@ -37,7 +42,7 @@ static KerberosAccountManager * _defaultManager = nil;
 }
 
 - (id)init {
-    if(self = [super init]) {
+    if((self = [super init])) {
         self.itemWrapper = [[[KeychainItemWrapper alloc] initWithIdentifier:@"Kerberos Info" accessGroup:@"KPAZKHDUAP.com.brousalis.RoseBandwidth"] autorelease];
     }
     return self;
@@ -66,18 +71,25 @@ static KerberosAccountManager * _defaultManager = nil;
 #pragma mark -
 #pragma mark Kerberos info methods
 
-- (NSString *)getUsername {
+- (NSString *)username {
     return [self.itemWrapper objectForKey:(id)kSecAttrAccount];
 }
 - (void)setUsername:(NSString *)username {
     [self.itemWrapper setObject:username forKey:(id)kSecAttrAccount];
 }
 
-- (NSString *)getPassword {
+- (NSString *)password {
     return [self.itemWrapper objectForKey:(id)kSecValueData];
 }
 - (void)setPassword:(NSString *)password {
     [self.itemWrapper setObject:password forKey:(id)kSecValueData];
+}
+
+- (NSString *)sourceURL {
+    
+}
+- (void)setSourceURL:(NSString *)sourceURL {
+    
 }
 
 @end

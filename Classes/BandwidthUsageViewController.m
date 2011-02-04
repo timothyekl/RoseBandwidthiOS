@@ -58,8 +58,8 @@
     if(!self.updating) {
         KerberosAccountManager * manager = [KerberosAccountManager defaultManager];
         [[[[BandwidthScraper alloc] initWithDelegate:((RoseBandwidthTabBarController *)self.tabBarController)
-                                            username:[manager getUsername]
-                                            password:[manager getPassword]] autorelease] beginScraping];
+                                            username:[manager username]
+                                            password:[manager password]] autorelease] beginScraping];
         self.updating = YES;
     }
 }

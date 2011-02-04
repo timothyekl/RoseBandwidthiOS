@@ -8,6 +8,8 @@
 
 #import "RoseBandwidthAppDelegate.h"
 
+#import "KerberosAccountManager.h"
+
 @implementation RoseBandwidthAppDelegate
 
 
@@ -21,6 +23,11 @@
     // Add the tab bar controller's current view as a subview of the window
     [window addSubview:tabBarController.view];
     [window makeKeyAndVisible];
+    
+    if([[[KerberosAccountManager defaultManager] username] isEqualToString:@""]) {
+        
+    }
+    
     return YES;
 }
 
@@ -38,7 +45,8 @@
              abort() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development. If it is not possible to recover from the error, display an alert panel that instructs the user to quit the application by pressing the Home button.
              */
             NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
-            abort();
+            
+            // Don't need to explicitly handle the error - loss of some history data is not exactly the end of the world
         } 
     }
 }
