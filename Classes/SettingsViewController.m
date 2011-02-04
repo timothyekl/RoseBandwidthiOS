@@ -40,8 +40,8 @@
     
     [self.view setBackgroundColor:[UIColor groupTableViewBackgroundColor]];
     
-    self.usernameField.text = [[KerberosAccountManager defaultManager] getUsername];
-    self.passwordField.text = [[KerberosAccountManager defaultManager] getPassword];
+    self.usernameField.text = [[KerberosAccountManager defaultManager] username];
+    self.passwordField.text = [[KerberosAccountManager defaultManager] password];
 }
 
 #pragma mark -
@@ -50,15 +50,15 @@
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     
-    _username = [[[[KerberosAccountManager defaultManager] getUsername] copy] retain];
-    _password = [[[[KerberosAccountManager defaultManager] getPassword] copy] retain];
+    _username = [[[[KerberosAccountManager defaultManager] username] copy] retain];
+    _password = [[[[KerberosAccountManager defaultManager] password] copy] retain];
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
     [super viewWillDisappear:animated];
     
-    if(![_username isEqualToString:[[KerberosAccountManager defaultManager] getUsername]] ||
-       ![_password isEqualToString:[[KerberosAccountManager defaultManager] getPassword]]) {
+    if(![_username isEqualToString:[[KerberosAccountManager defaultManager] username]] ||
+       ![_password isEqualToString:[[KerberosAccountManager defaultManager] password]]) {
         [((RoseBandwidthTabBarController *)self.tabBarController) kerberosAccountInfoChanged];
     }
 }

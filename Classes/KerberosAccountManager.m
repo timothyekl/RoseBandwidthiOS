@@ -86,10 +86,11 @@ static const NSString * kSecureDataItemIDSourceURL = @"kSecureDataItemIDSourceUR
 }
 
 - (NSString *)sourceURL {
-    
+    //TODO allow for changes here
+    return @"https://netreg.rose-hulman.edu/tools/networkUsage.pl";
 }
 - (void)setSourceURL:(NSString *)sourceURL {
-    
+    //TODO handle this
 }
 
 @end

@@ -52,14 +52,12 @@
 		224E874D124FE91300CEBF0F /* BandwidthScraperDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BandwidthScraperDelegate.h; sourceTree = "<group>"; };
 		224E8762124FFA8000CEBF0F /* XPathQuery.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XPathQuery.h; sourceTree = "<group>"; };
 		224E8763124FFA8000CEBF0F /* XPathQuery.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XPathQuery.m; sourceTree = "<group>"; };
-		224E876F12503E3D00CEBF0F /* libxml2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; path = libxml2.dylib; sourceTree = "<group>"; };
 		22621885126361FC0091547B /* Bars.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Bars.png; path = Resources/Bars.png; sourceTree = "<group>"; };
 		22621886126361FC0091547B /* Bars@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Bars@2x.png"; path = "Resources/Bars@2x.png"; sourceTree = "<group>"; };
 		2262188D12637DC00091547B /* Gear.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Gear.png; path = Resources/Gear.png; sourceTree = "<group>"; };
 		2262188E12637DC00091547B /* Gear@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Gear@2x.png"; path = "Resources/Gear@2x.png"; sourceTree = "<group>"; };
 		226218931264BE320091547B /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Icon.png; path = Resources/Icon.png; sourceTree = "<group>"; };
 		226218941264BE320091547B /* Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon@2x.png"; path = "Resources/Icon@2x.png"; sourceTree = "<group>"; };
-		2282B87712515E88002201B9 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = CoreData.framework; sourceTree = "<group>"; };
 		22A1302112FC806A001EA3DA /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		22E27692124EA4D7003E9D3E /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		22E27698124EA4D7003E9D3E /* RoseBandwidth-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "RoseBandwidth-Info.plist"; sourceTree = "<group>"; };
@@ -156,8 +154,6 @@
 			isa = PBXGroup;
 			children = (
 				22A1302112FC806A001EA3DA /* Security.framework */,
-				2282B87712515E88002201B9 /* CoreData.framework */,
-				224E876F12503E3D00CEBF0F /* libxml2.dylib */,
 				22E92078125161BB00C7821F /* Models */,
 				22E27687124EA4D7003E9D3E /* Classes */,
 				22E27688124EA4D7003E9D3E /* Other Sources */,
