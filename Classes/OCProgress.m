@@ -14,7 +14,7 @@
 @synthesize  minValue, maxValue, currentValue;
 @synthesize lineColor, progressRemainingColor, progressColor;
 - (id)initWithFrame:(CGRect)frame {
-    if (self = [super initWithFrame:frame]) {
+    if((self = [super initWithFrame:frame])) {
 		minValue = 0;
 		maxValue = 1;
 		currentValue = 0;

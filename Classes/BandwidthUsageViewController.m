@@ -18,12 +18,16 @@
 
 #define PI (3.14159265)
 
+#define AD_OFFSET 40.0
+
 @interface BandwidthUsageViewController()
 - (void)updateVisibleBandwidthWithType:(kBandwidthUsage)type;
 - (void)showUpdating;
 @end
 
 @implementation BandwidthUsageViewController
+
+@synthesize titleLabel = _titleLabel;
 
 @synthesize measureControl = _measureControl;
 
@@ -38,21 +42,9 @@
 
 @synthesize currentUsage = _currentUsage;
 
+@synthesize adBannerView = _adBannerView;
+
 @synthesize updating = _updating;
-
-// The designated initializer.  Override if you create the controller programmatically and want to perform customization that is not appropriate for viewDidLoad.
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
-    if ((self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil])) {
-        // Custom initialization
-    }
-    return self;
-}
-
-/*
-// Implement loadView to create a view hierarchy programmatically, without using a nib.
-- (void)loadView {
-}
-*/
 
 - (IBAction)requestBandwidthUpdate {
     if(!self.updating) {
@@ -65,7 +57,7 @@
 }
 
 - (void)showUpdating {
-    NSLog(@"showing updating: %@", (self.updating ? @"YES" : @"NO"));
+    //NSLog(@"showing updating: %@", (self.updating ? @"YES" : @"NO"));
     if(self.updating) {
         [self.refreshButton setTitle:@"" forState:UIControlStateNormal];
         [self.refreshSpinner startAnimating];
@@ -85,10 +77,17 @@
     
     [self.view setBackgroundColor:[UIColor groupTableViewBackgroundColor]];
     
+    // Handle ad banner stuff
+    self.adBannerView.delegate = self;
+    
     // Resize control
     CGRect frame = self.measureControl.frame;
     frame.size.height = 30.0;
     self.measureControl.frame = frame;
+    
+    // Shift content for ad banner load duration
+    [self shiftContentWithMultiplier:-1.0 animated:NO];
+    _failedAdLoad = YES;
     
     // Load cached bandwidth usage record if available
     NSFetchRequest * request = [[[NSFetchRequest alloc] init] autorelease];
@@ -186,8 +185,10 @@
 #pragma mark KVO response method
 
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context {
-    NSLog(@"value changed for key path: %@", keyPath);
-    [self showUpdating];
+    //NSLog(@"value changed for key path: %@", keyPath);
+    if([keyPath isEqualToString:@"updating"]) {
+        [self showUpdating];
+    }
 }
 
 #pragma mark -
@@ -226,6 +227,48 @@
     [_currentUsage release];
     
     [super dealloc];
+}
+
+#pragma mark -
+#pragma mark ADBannerViewDelegate methods
+
+- (void)shiftContentWithMultiplier:(float)mult animated:(BOOL)animated {
+    if(animated) {
+        [UIView beginAnimations:nil context:NULL];
+        [UIView setAnimationDuration:0.3];
+    }
+    self.titleLabel.frame = CGRectOffset(self.titleLabel.frame, 0, mult * AD_OFFSET);
+    self.measureControl.frame = CGRectOffset(self.measureControl.frame, 0, mult * AD_OFFSET);
+    
+    for(VerticalProgressView * progressView in [NSArray arrayWithObjects:self.leftUsageView, self.rightUsageView, nil]) {
+        CGRect frame = progressView.frame;
+        frame.size.height = frame.size.height - (mult * AD_OFFSET);
+        frame.origin.y = frame.origin.y + (mult * AD_OFFSET);
+        progressView.frame = frame;
+    }
+    if(animated) {
+        [UIView commitAnimations];
+    }
+}
+
+- (void)bannerViewDidLoadAd:(ADBannerView *)banner {
+    NSLog(@"loaded iAd");
+    if(_failedAdLoad) {
+        // Past ad failed - move things downward
+        [self shiftContentWithMultiplier:1.0 animated:YES];
+    }
+    
+    _failedAdLoad = NO;
+}
+
+- (void)bannerView:(ADBannerView *)banner didFailToReceiveAdWithError:(NSError *)error {
+    NSLog(@"failed to receive iAd");
+    if(_failedAdLoad == NO) {
+        // Past ad did not fail - move things upward
+        [self shiftContentWithMultiplier:-1.0 animated:YES];
+    }
+    
+    _failedAdLoad = YES;
 }
 
 

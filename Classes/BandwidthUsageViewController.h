@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <iAd/iAd.h>
 
 #import "BandwidthScraperDelegate.h"
 
@@ -18,7 +19,9 @@ typedef enum {
     kBandwidthUsageActual = 1
 } kBandwidthUsage;
 
-@interface BandwidthUsageViewController : UIViewController {
+@interface BandwidthUsageViewController : UIViewController <ADBannerViewDelegate> {
+    UILabel * _titleLabel;
+    
     UISegmentedControl * _measureControl;
     
     VerticalProgressView * _leftUsageView;
@@ -32,10 +35,17 @@ typedef enum {
     
     BandwidthUsageRecord * _currentUsage;
     
+    ADBannerView * _adBannerView;
+    
     BOOL _updating;
+
+@private
+    BOOL _failedAdLoad;
 }
 
 @property (nonatomic, readonly) NSManagedObjectContext * managedObjectContext;
+
+@property (nonatomic, retain) IBOutlet UILabel * titleLabel;
 
 @property (nonatomic, retain) IBOutlet UISegmentedControl * measureControl;
 
@@ -50,10 +60,13 @@ typedef enum {
 
 @property (nonatomic, retain) BandwidthUsageRecord * currentUsage;
 
+@property (nonatomic, retain) IBOutlet ADBannerView * adBannerView;
+
 @property (nonatomic, assign) BOOL updating;
 
 - (IBAction)requestBandwidthUpdate;
 - (IBAction)measureControlValueChanged:(id)sender;
 - (void)updateVisibleBandwidthWithUsageRecord:(BandwidthUsageRecord *)usage;
+- (void)shiftContentWithMultiplier:(float)mult animated:(BOOL)animated;
 
 @end
