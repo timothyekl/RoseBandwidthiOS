@@ -47,6 +47,7 @@
 		22FD334913208C720087111F /* PropertyEditorView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 22FD334613208C720087111F /* PropertyEditorView.xib */; };
 		22FD334A13208C720087111F /* PropertyPickerView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 22FD334713208C720087111F /* PropertyPickerView.xib */; };
 		22FD334B13208C720087111F /* SettingsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 22FD334813208C720087111F /* SettingsViewController.xib */; };
+		22FD334E13208FE20087111F /* PrimarySettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 22FD334D13208FE10087111F /* PrimarySettingsViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -115,6 +116,8 @@
 		22FD334613208C720087111F /* PropertyEditorView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = PropertyEditorView.xib; path = "../Mobile-Trail-Mapping/iPhone/SettingsViewController/PropertyEditorView.xib"; sourceTree = "<group>"; };
 		22FD334713208C720087111F /* PropertyPickerView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = PropertyPickerView.xib; path = "../Mobile-Trail-Mapping/iPhone/SettingsViewController/PropertyPickerView.xib"; sourceTree = "<group>"; };
 		22FD334813208C720087111F /* SettingsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SettingsViewController.xib; path = "../Mobile-Trail-Mapping/iPhone/SettingsViewController/SettingsViewController.xib"; sourceTree = "<group>"; };
+		22FD334C13208FE10087111F /* PrimarySettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PrimarySettingsViewController.h; sourceTree = "<group>"; };
+		22FD334D13208FE10087111F /* PrimarySettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PrimarySettingsViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -266,6 +269,8 @@
 				22E920BD1252160300C7821F /* RoseBandwidthTabBarController.m */,
 				2201E1B612522885009D0021 /* BandwidthHistoryNavigationController.h */,
 				2201E1B712522885009D0021 /* BandwidthHistoryNavigationController.m */,
+				22FD334C13208FE10087111F /* PrimarySettingsViewController.h */,
+				22FD334D13208FE10087111F /* PrimarySettingsViewController.m */,
 			);
 			name = "View controllers";
 			sourceTree = "<group>";
@@ -456,6 +461,7 @@
 				22FD334213208C5D0087111F /* PropertyPickerViewController.m in Sources */,
 				22FD334313208C5D0087111F /* Setting.m in Sources */,
 				22FD334413208C5D0087111F /* SettingsViewController.m in Sources */,
+				22FD334E13208FE20087111F /* PrimarySettingsViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
