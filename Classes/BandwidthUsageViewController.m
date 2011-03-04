@@ -124,7 +124,8 @@
     } else if(valf > 3000.0) {
         return [UIColor yellowColor];
     } else {
-        return [UIColor greenColor];
+        //return [UIColor greenColor];
+        return [UIColor colorWithRed:0.0/255.0 green:146.0/255.0 blue:74.0/255.0 alpha:1.0];
     }
 }
 
@@ -158,7 +159,7 @@
     float maxUsage = MAX(pr, ps);
     float usageDisplayMax = MAX((float)((int)(ceilf(maxUsage / 1000.0)) * 1000), 3000.0);
     
-    NSLog(@"Maximum usage view value: %f", usageDisplayMax);
+    //NSLog(@"Maximum usage view value: %f", usageDisplayMax);
     
     self.leftUsageView.maxValue = usageDisplayMax;
     self.rightUsageView.maxValue = usageDisplayMax;
@@ -250,7 +251,7 @@
 }
 
 - (void)bannerViewDidLoadAd:(ADBannerView *)banner {
-    NSLog(@"loaded iAd");
+    //NSLog(@"loaded iAd");
     if(_failedAdLoad) {
         // Past ad failed - move things downward
         [self shiftContentWithMultiplier:1.0 animated:YES];
@@ -260,7 +261,7 @@
 }
 
 - (void)bannerView:(ADBannerView *)banner didFailToReceiveAdWithError:(NSError *)error {
-    NSLog(@"failed to receive iAd");
+    //NSLog(@"failed to receive iAd");
     if(_failedAdLoad == NO) {
         // Past ad did not fail - move things upward
         [self shiftContentWithMultiplier:-1.0 animated:YES];

@@ -8,6 +8,27 @@
 
 #import "VerticalProgressView.h"
 
+CGFloat quadraticTint(CGFloat x) {
+    x = 255.0 * x;
+    
+    CGFloat a =  0.0166014;
+    CGFloat b = -1.7174400;
+    CGFloat c = 132.000000;
+    
+    return (a * x * x + b * x + c) / 255.0;
+}
+
+CGFloat cubicTint(CGFloat x) {
+    x = 255.0 * x;
+    
+    CGFloat a = -0.0000902;
+    CGFloat b =  0.0364420;
+    CGFloat c = -2.9460975;
+    CGFloat d = 132.000000;
+    
+    return (a * x * x * x + b * x * x + c * x + d) / 255.0;
+}
+
 @implementation VerticalProgressView
 
 @synthesize minValue = _minValue, maxValue = _maxValue, currentValue = _currentValue;
@@ -23,7 +44,7 @@
     self.backgroundColor = [UIColor clearColor];
     self.borderColor = [UIColor darkGrayColor];
     self.barBackgroundColor = [UIColor colorWithWhite:0.2 alpha:0.3];
-    self.barColor = [UIColor greenColor];
+    self.barColor = [UIColor colorWithRed:0.0/255.0 green:146.0/255.0 blue:74.0/255.0 alpha:1.0];
 }
 
 - (id)initWithFrame:(CGRect)frame {
@@ -82,7 +103,18 @@
     CGColorSpaceRef colorSpace = CGColorSpaceCreateDeviceRGB();
     size_t nLocations = 2;
     CGFloat locations[2] = {0.0, 1.0};
-    CGFloat components[8] = {0.0/255.0, 146.0/255.0, 74.0/255.0, 1.0, 132.0/255.0, 198.0/255.0, 77.0/255.0, 1.0};
+    CGFloat components[8];
+    
+    CGColorRef barCGColor = [[self barColor] CGColor];
+    NSAssert(CGColorGetNumberOfComponents(barCGColor) == 4, @"Expected four color components for vertical progress bar");
+    const CGFloat * barCGComponents = CGColorGetComponents(barCGColor);
+    for(int i = 0; i < 4; i++) {
+        components[i] = barCGComponents[i];
+        components[i + 4] = cubicTint(barCGComponents[i]);
+    }
+    
+    //NSLog(@"(%f %f %f %f %f %f %f %f)", 255 * components[0], 255 * components[1], 255 * components[2], 255 * components[3], 255 * components[4], 255 * components[5], 255 * components[6], 255 * components[7]);
+    
     CGGradientRef gradient = CGGradientCreateWithColorComponents(colorSpace, components, locations, nLocations);
     
     CGRect bounds = CGRectMake(0.0, fillHeight, self.frame.size.width, self.frame.size.height);
