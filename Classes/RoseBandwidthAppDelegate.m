@@ -24,8 +24,8 @@
     [window addSubview:tabBarController.view];
     [window makeKeyAndVisible];
     
-    if([[[KerberosAccountManager defaultManager] username] isEqualToString:@""]) {
-        
+    if([[[KerberosAccountManager defaultManager] sourceURL] isEqualToString:@""]) {
+        [[KerberosAccountManager defaultManager] setSourceURL:@"https://netreg.rose-hulman.edu/tools/networkUsage.pl"];
     }
     
     return YES;
@@ -127,7 +127,12 @@
          Check the error message to determine what the actual problem was.
          */
         NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
-        abort();
+        
+        [[[[UIAlertView alloc] initWithTitle:@"Error" 
+                                     message:@"There was a problem loading history data. Please close the app by pressing the Home button."
+                                    delegate:self 
+                           cancelButtonTitle:@"OK" 
+                           otherButtonTitles:nil] autorelease] show];
     }    
     
     return persistentStoreCoordinator;
