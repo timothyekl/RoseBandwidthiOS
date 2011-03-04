@@ -46,7 +46,6 @@
 				<object class="NSPSMatrix" key="NSFrameMatrix"/>
 				<string key="NSFrameSize">{320, 480}</string>
 				<reference key="NSSuperview"/>
-				<reference key="NSWindow"/>
 				<reference key="NSNextKeyView"/>
 				<object class="NSColor" key="IBUIBackgroundColor">
 					<int key="NSColorSpace">1</int>
@@ -67,15 +66,14 @@
 				</object>
 				<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 				<bool key="IBUIHorizontal">NO</bool>
-				<object class="IBUINavigationController" key="IBUISelectedViewController" id="143179103">
-					<object class="IBUITabBarItem" key="IBUITabBarItem" id="270728527">
+				<object class="IBUINavigationController" key="IBUISelectedViewController" id="427910230">
+					<object class="IBUITabBarItem" key="IBUITabBarItem" id="445702362">
 						<string key="IBUITitle">Usage</string>
 						<object class="NSCustomResource" key="IBUIImage">
 							<string key="NSClassName">NSImage</string>
 							<string key="NSResourceName">Bars.png</string>
 						</object>
 						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
-						<reference key="IBUITabBar" ref="795333663"/>
 					</object>
 					<reference key="IBUIParentViewController" ref="1034742383"/>
 					<object class="IBUISimulatedStatusBarMetrics" key="IBUISimulatedStatusBarMetrics"/>
@@ -85,7 +83,7 @@
 					</object>
 					<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 					<bool key="IBUIHorizontal">NO</bool>
-					<object class="IBUINavigationBar" key="IBUINavigationBar" id="434147815">
+					<object class="IBUINavigationBar" key="IBUINavigationBar" id="780901557">
 						<nil key="NSNextResponder"/>
 						<int key="NSvFlags">256</int>
 						<string key="NSFrameSize">{0, 0}</string>
@@ -96,18 +94,17 @@
 					</object>
 					<array key="IBUIViewControllers">
 						<object class="IBUIViewController" id="801677624">
-							<object class="IBUINavigationItem" key="IBUINavigationItem" id="798262721">
-								<reference key="IBUINavigationBar"/>
+							<object class="IBUINavigationItem" key="IBUINavigationItem" id="844426244">
 								<string key="IBUITitle">Bandwidth Usage</string>
-								<object class="IBUIBarButtonItem" key="IBUIRightBarButtonItem" id="788775109">
+								<object class="IBUIBarButtonItem" key="IBUIRightBarButtonItem" id="312440955">
 									<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 									<int key="IBUIStyle">1</int>
-									<reference key="IBUINavigationItem" ref="798262721"/>
+									<reference key="IBUINavigationItem" ref="844426244"/>
 									<int key="IBUISystemItemIdentifier">13</int>
 								</object>
 								<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 							</object>
-							<reference key="IBUIParentViewController" ref="143179103"/>
+							<reference key="IBUIParentViewController" ref="427910230"/>
 							<string key="IBUINibName">BandwidthUsageView</string>
 							<object class="IBUISimulatedStatusBarMetrics" key="IBUISimulatedStatusBarMetrics"/>
 							<object class="IBUISimulatedOrientationMetrics" key="IBUISimulatedOrientationMetrics">
@@ -120,11 +117,10 @@
 					</array>
 				</object>
 				<array class="NSMutableArray" key="IBUIViewControllers">
-					<reference ref="143179103"/>
+					<reference ref="427910230"/>
 					<object class="IBUINavigationController" id="410899968">
 						<object class="IBUITabBarItem" key="IBUITabBarItem" id="68568337">
 							<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
-							<reference key="IBUITabBar" ref="795333663"/>
 							<int key="IBUISystemItemIdentifier">6</int>
 						</object>
 						<reference key="IBUIParentViewController" ref="1034742383"/>
@@ -170,7 +166,6 @@
 								<string key="NSResourceName">Gear.png</string>
 							</object>
 							<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
-							<reference key="IBUITabBar" ref="795333663"/>
 						</object>
 						<reference key="IBUIParentViewController" ref="1034742383"/>
 						<string key="IBUINibName">SettingsView</string>
@@ -188,7 +183,6 @@
 					<int key="NSvFlags">266</int>
 					<string key="NSFrame">{{0, 431}, {320, 49}}</string>
 					<reference key="NSSuperview"/>
-					<reference key="NSWindow"/>
 					<reference key="NSNextKeyView"/>
 					<object class="NSColor" key="IBUIBackgroundColor">
 						<int key="NSColorSpace">3</int>
@@ -196,12 +190,6 @@
 					</object>
 					<bool key="IBUIClearsContextBeforeDrawing">NO</bool>
 					<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
-					<array class="NSMutableArray" key="IBUIItems">
-						<reference ref="270728527"/>
-						<reference ref="68568337"/>
-						<reference ref="402920821"/>
-					</array>
-					<reference key="IBUISelectedItem" ref="270728527"/>
 				</object>
 			</object>
 		</array>
@@ -258,7 +246,7 @@
 				<object class="IBConnectionRecord">
 					<object class="IBCocoaTouchEventConnection" key="connection">
 						<string key="label">requestBandwidthUpdate</string>
-						<reference key="source" ref="788775109"/>
+						<reference key="source" ref="312440955"/>
 						<reference key="destination" ref="801677624"/>
 					</object>
 					<int key="connectionID">153</int>
@@ -296,7 +284,7 @@
 							<reference ref="795333663"/>
 							<reference ref="20243310"/>
 							<reference ref="410899968"/>
-							<reference ref="143179103"/>
+							<reference ref="427910230"/>
 						</array>
 						<reference key="parent" ref="0"/>
 					</object>
@@ -359,45 +347,45 @@
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">146</int>
-						<reference key="object" ref="143179103"/>
+						<reference key="object" ref="427910230"/>
 						<array class="NSMutableArray" key="children">
-							<reference ref="434147815"/>
-							<reference ref="270728527"/>
+							<reference ref="780901557"/>
+							<reference ref="445702362"/>
 							<reference ref="801677624"/>
 						</array>
 						<reference key="parent" ref="1034742383"/>
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">147</int>
-						<reference key="object" ref="434147815"/>
-						<reference key="parent" ref="143179103"/>
+						<reference key="object" ref="780901557"/>
+						<reference key="parent" ref="427910230"/>
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">150</int>
-						<reference key="object" ref="270728527"/>
-						<reference key="parent" ref="143179103"/>
+						<reference key="object" ref="445702362"/>
+						<reference key="parent" ref="427910230"/>
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">125</int>
 						<reference key="object" ref="801677624"/>
 						<array class="NSMutableArray" key="children">
-							<reference ref="798262721"/>
+							<reference ref="844426244"/>
 						</array>
-						<reference key="parent" ref="143179103"/>
+						<reference key="parent" ref="427910230"/>
 						<string key="objectName">Bandwidth Usage View Controller - Item</string>
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">151</int>
-						<reference key="object" ref="798262721"/>
+						<reference key="object" ref="844426244"/>
 						<array class="NSMutableArray" key="children">
-							<reference ref="788775109"/>
+							<reference ref="312440955"/>
 						</array>
 						<reference key="parent" ref="801677624"/>
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">152</int>
-						<reference key="object" ref="788775109"/>
-						<reference key="parent" ref="798262721"/>
+						<reference key="object" ref="312440955"/>
+						<reference key="parent" ref="844426244"/>
 					</object>
 				</array>
 			</object>
@@ -433,179 +421,7 @@
 			<nil key="sourceID"/>
 			<int key="maxID">153</int>
 		</object>
-		<object class="IBClassDescriber" key="IBDocument.Classes">
-			<array class="NSMutableArray" key="referencedPartialClassDescriptions">
-				<object class="IBPartialClassDescription">
-					<string key="className">BandwidthHistoryTableViewController</string>
-					<string key="superclassName">UITableViewController</string>
-					<object class="IBClassDescriptionSource" key="sourceIdentifier">
-						<string key="majorKey">IBProjectSource</string>
-						<string key="minorKey">./Classes/BandwidthHistoryTableViewController.h</string>
-					</object>
-				</object>
-				<object class="IBPartialClassDescription">
-					<string key="className">BandwidthUsageViewController</string>
-					<string key="superclassName">UIViewController</string>
-					<dictionary class="NSMutableDictionary" key="actions">
-						<string key="measureControlValueChanged:">id</string>
-						<string key="requestBandwidthUpdate">id</string>
-					</dictionary>
-					<dictionary class="NSMutableDictionary" key="actionInfosByName">
-						<object class="IBActionInfo" key="measureControlValueChanged:">
-							<string key="name">measureControlValueChanged:</string>
-							<string key="candidateClassName">id</string>
-						</object>
-						<object class="IBActionInfo" key="requestBandwidthUpdate">
-							<string key="name">requestBandwidthUpdate</string>
-							<string key="candidateClassName">id</string>
-						</object>
-					</dictionary>
-					<dictionary class="NSMutableDictionary" key="outlets">
-						<string key="adBannerView">ADBannerView</string>
-						<string key="leftUsageLabel">UILabel</string>
-						<string key="leftUsageView">VerticalProgressView</string>
-						<string key="measureControl">UISegmentedControl</string>
-						<string key="refreshButton">UIButton</string>
-						<string key="refreshSpinner">UIActivityIndicatorView</string>
-						<string key="rightUsageLabel">UILabel</string>
-						<string key="rightUsageView">VerticalProgressView</string>
-						<string key="titleLabel">UILabel</string>
-					</dictionary>
-					<dictionary class="NSMutableDictionary" key="toOneOutletInfosByName">
-						<object class="IBToOneOutletInfo" key="adBannerView">
-							<string key="name">adBannerView</string>
-							<string key="candidateClassName">ADBannerView</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="leftUsageLabel">
-							<string key="name">leftUsageLabel</string>
-							<string key="candidateClassName">UILabel</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="leftUsageView">
-							<string key="name">leftUsageView</string>
-							<string key="candidateClassName">VerticalProgressView</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="measureControl">
-							<string key="name">measureControl</string>
-							<string key="candidateClassName">UISegmentedControl</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="refreshButton">
-							<string key="name">refreshButton</string>
-							<string key="candidateClassName">UIButton</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="refreshSpinner">
-							<string key="name">refreshSpinner</string>
-							<string key="candidateClassName">UIActivityIndicatorView</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="rightUsageLabel">
-							<string key="name">rightUsageLabel</string>
-							<string key="candidateClassName">UILabel</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="rightUsageView">
-							<string key="name">rightUsageView</string>
-							<string key="candidateClassName">VerticalProgressView</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="titleLabel">
-							<string key="name">titleLabel</string>
-							<string key="candidateClassName">UILabel</string>
-						</object>
-					</dictionary>
-					<object class="IBClassDescriptionSource" key="sourceIdentifier">
-						<string key="majorKey">IBProjectSource</string>
-						<string key="minorKey">./Classes/BandwidthUsageViewController.h</string>
-					</object>
-				</object>
-				<object class="IBPartialClassDescription">
-					<string key="className">RoseBandwidthAppDelegate</string>
-					<string key="superclassName">NSObject</string>
-					<dictionary class="NSMutableDictionary" key="outlets">
-						<string key="tabBarController">UITabBarController</string>
-						<string key="window">UIWindow</string>
-					</dictionary>
-					<dictionary class="NSMutableDictionary" key="toOneOutletInfosByName">
-						<object class="IBToOneOutletInfo" key="tabBarController">
-							<string key="name">tabBarController</string>
-							<string key="candidateClassName">UITabBarController</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="window">
-							<string key="name">window</string>
-							<string key="candidateClassName">UIWindow</string>
-						</object>
-					</dictionary>
-					<object class="IBClassDescriptionSource" key="sourceIdentifier">
-						<string key="majorKey">IBProjectSource</string>
-						<string key="minorKey">./Classes/RoseBandwidthAppDelegate.h</string>
-					</object>
-				</object>
-				<object class="IBPartialClassDescription">
-					<string key="className">RoseBandwidthTabBarController</string>
-					<string key="superclassName">UITabBarController</string>
-					<dictionary class="NSMutableDictionary" key="outlets">
-						<string key="historyViewController">BandwidthHistoryTableViewController</string>
-						<string key="settingsViewController">SettingsViewController</string>
-						<string key="usageViewController">BandwidthUsageViewController</string>
-					</dictionary>
-					<dictionary class="NSMutableDictionary" key="toOneOutletInfosByName">
-						<object class="IBToOneOutletInfo" key="historyViewController">
-							<string key="name">historyViewController</string>
-							<string key="candidateClassName">BandwidthHistoryTableViewController</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="settingsViewController">
-							<string key="name">settingsViewController</string>
-							<string key="candidateClassName">SettingsViewController</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="usageViewController">
-							<string key="name">usageViewController</string>
-							<string key="candidateClassName">BandwidthUsageViewController</string>
-						</object>
-					</dictionary>
-					<object class="IBClassDescriptionSource" key="sourceIdentifier">
-						<string key="majorKey">IBProjectSource</string>
-						<string key="minorKey">./Classes/RoseBandwidthTabBarController.h</string>
-					</object>
-				</object>
-				<object class="IBPartialClassDescription">
-					<string key="className">SettingsViewController</string>
-					<string key="superclassName">UIViewController</string>
-					<object class="NSMutableDictionary" key="actions">
-						<string key="NS.key.0">kerberosInfoDidChange:</string>
-						<string key="NS.object.0">id</string>
-					</object>
-					<object class="NSMutableDictionary" key="actionInfosByName">
-						<string key="NS.key.0">kerberosInfoDidChange:</string>
-						<object class="IBActionInfo" key="NS.object.0">
-							<string key="name">kerberosInfoDidChange:</string>
-							<string key="candidateClassName">id</string>
-						</object>
-					</object>
-					<dictionary class="NSMutableDictionary" key="outlets">
-						<string key="passwordField">UITextField</string>
-						<string key="usernameField">UITextField</string>
-					</dictionary>
-					<dictionary class="NSMutableDictionary" key="toOneOutletInfosByName">
-						<object class="IBToOneOutletInfo" key="passwordField">
-							<string key="name">passwordField</string>
-							<string key="candidateClassName">UITextField</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="usernameField">
-							<string key="name">usernameField</string>
-							<string key="candidateClassName">UITextField</string>
-						</object>
-					</dictionary>
-					<object class="IBClassDescriptionSource" key="sourceIdentifier">
-						<string key="majorKey">IBProjectSource</string>
-						<string key="minorKey">./Classes/SettingsViewController.h</string>
-					</object>
-				</object>
-				<object class="IBPartialClassDescription">
-					<string key="className">VerticalProgressView</string>
-					<string key="superclassName">UIView</string>
-					<object class="IBClassDescriptionSource" key="sourceIdentifier">
-						<string key="majorKey">IBProjectSource</string>
-						<string key="minorKey">./Classes/VerticalProgressView.h</string>
-					</object>
-				</object>
-			</array>
-		</object>
+		<object class="IBClassDescriber" key="IBDocument.Classes"/>
 		<int key="IBDocument.localizationMode">0</int>
 		<string key="IBDocument.TargetRuntimeIdentifier">IBCocoaTouchFramework</string>
 		<bool key="IBDocument.PluginDeclaredDependenciesTrackSystemTargetVersion">YES</bool>

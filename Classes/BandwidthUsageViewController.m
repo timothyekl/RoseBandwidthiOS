@@ -37,9 +37,6 @@
 @synthesize leftUsageLabel = _leftUsageLabel;
 @synthesize rightUsageLabel = _rightUsageLabel;
 
-@synthesize refreshButton = _refreshButton;
-@synthesize refreshSpinner = _refreshSpinner;
-
 @synthesize currentUsage = _currentUsage;
 
 @synthesize adBannerView = _adBannerView;
@@ -59,13 +56,9 @@
 - (void)showUpdating {
     //NSLog(@"showing updating: %@", (self.updating ? @"YES" : @"NO"));
     if(self.updating) {
-        [self.refreshButton setTitle:@"" forState:UIControlStateNormal];
-        [self.refreshSpinner startAnimating];
-        self.refreshButton.enabled = NO;
+        self.navigationItem.rightBarButtonItem.enabled = NO;
     } else {
-        [self.refreshButton setTitle:@"Refresh" forState:UIControlStateNormal];
-        [self.refreshSpinner stopAnimating];
-        self.refreshButton.enabled = YES;
+        self.navigationItem.rightBarButtonItem.enabled = YES;
     }
 }
 
@@ -226,7 +219,6 @@
     [_rightUsageView release];
     [_leftUsageLabel release];
     [_rightUsageLabel release];
-    [_refreshButton release];
     [_currentUsage release];
     
     [super dealloc];

@@ -30,9 +30,6 @@ typedef enum {
     UILabel * _leftUsageLabel;
     UILabel * _rightUsageLabel;
     
-    UIButton * _refreshButton;
-    UIActivityIndicatorView * _refreshSpinner;
-    
     BandwidthUsageRecord * _currentUsage;
     
     ADBannerView * _adBannerView;
@@ -54,9 +51,6 @@ typedef enum {
 
 @property (nonatomic, retain) IBOutlet UILabel * leftUsageLabel;
 @property (nonatomic, retain) IBOutlet UILabel * rightUsageLabel;
-
-@property (nonatomic, retain) IBOutlet UIButton * refreshButton;
-@property (nonatomic, retain) IBOutlet UIActivityIndicatorView * refreshSpinner;
 
 @property (nonatomic, retain) BandwidthUsageRecord * currentUsage;
 
