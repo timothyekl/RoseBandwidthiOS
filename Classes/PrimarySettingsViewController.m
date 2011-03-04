@@ -79,14 +79,23 @@
 
 - (void)usernameChanged:(NSString *)username {
     [[KerberosAccountManager defaultManager] setUsername:username];
+    
+    NSUInteger indexes[2] = {0,0};
+    [self.tableView reloadRowsAtIndexPaths:[NSArray arrayWithObjects:[NSIndexPath indexPathWithIndexes:indexes length:2], nil] withRowAnimation:UITableViewRowAnimationFade];
 }
 
 - (void)passwordChanged:(NSString *)password {
     [[KerberosAccountManager defaultManager] setPassword:password];
+    
+    NSUInteger indexes[2] = {0,1};
+    [self.tableView reloadRowsAtIndexPaths:[NSArray arrayWithObjects:[NSIndexPath indexPathWithIndexes:indexes length:2], nil] withRowAnimation:UITableViewRowAnimationFade];
 }
 
 - (void)sourceChanged:(NSString *)source {
     [[KerberosAccountManager defaultManager] setSourceURL:source];
+    
+    NSUInteger indexes[2] = {1,0};
+    [self.tableView reloadRowsAtIndexPaths:[NSArray arrayWithObjects:[NSIndexPath indexPathWithIndexes:indexes length:2], nil] withRowAnimation:UITableViewRowAnimationFade];
 }
 
 @end
