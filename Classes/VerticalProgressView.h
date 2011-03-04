@@ -10,9 +10,10 @@
 
 
 @interface VerticalProgressView : UIView {
-    CGFloat minValue;
-    CGFloat maxValue;
-    CGFloat currentValue;
+    CGFloat _minValue;
+    CGFloat _maxValue;
+    CGFloat _currentValue;
+    CGFloat _labelIncrement;
     UIColor * borderColor;
     UIColor * barBackgroundColor;
     UIColor * barColor;
@@ -21,6 +22,8 @@
 @property (nonatomic, assign) CGFloat minValue;
 @property (nonatomic, assign) CGFloat maxValue;
 @property (nonatomic, assign) CGFloat currentValue;
+
+@property (nonatomic, assign) CGFloat labelIncrement;
 
 @property (nonatomic, retain) UIColor * borderColor;
 @property (nonatomic, retain) UIColor * barBackgroundColor;

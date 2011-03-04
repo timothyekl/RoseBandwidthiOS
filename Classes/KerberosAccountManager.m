@@ -10,10 +10,6 @@
 
 static KerberosAccountManager * _defaultManager = nil;
 
-static const NSString * kSecureDataItemIDUsername = @"kSecureDataItemIDUsername";
-static const NSString * kSecureDataItemIDPassword = @"kSecureDataItemIDPassword";
-static const NSString * kSecureDataItemIDSourceURL = @"kSecureDataItemIDSourceURL";
-
 @implementation KerberosAccountManager
 
 @synthesize itemWrapper;

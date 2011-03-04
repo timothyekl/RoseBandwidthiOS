@@ -36,7 +36,7 @@
 #pragma mark Initializer
 
 - (id)initWithDelegate:(id<BandwidthScraperDelegate>)delegate username:(NSString *)username password:(NSString *)password {
-    if(self = [super init]) {
+    if((self = [super init])) {
         self.delegate = delegate;
         self.username = username;
         self.password = password;
@@ -53,7 +53,7 @@
 - (void)beginScraping {
     NSLog(@"scraper received beginScraping");
     
-    NSMutableURLRequest * request = [[[NSMutableURLRequest alloc] initWithURL:[NSURL URLWithString:@"https://netreg.rose-hulman.edu/tools/networkUsage.pl"] 
+    NSMutableURLRequest * request = [[[NSMutableURLRequest alloc] initWithURL:[NSURL URLWithString:[[KerberosAccountManager defaultManager] sourceURL]] 
                                                                   cachePolicy:NSURLRequestReloadIgnoringCacheData 
                                                               timeoutInterval:FETCH_TIMEOUT] autorelease];
     _conn = [[[NSURLConnection alloc] initWithRequest:request delegate:self] autorelease];

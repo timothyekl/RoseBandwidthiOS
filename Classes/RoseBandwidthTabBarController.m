@@ -28,7 +28,11 @@
 }
 
 - (void)scraper:(BandwidthScraper *)scraper encounteredError:(NSError *)error {
-    [[[[UIAlertView alloc] initWithTitle:@"Error" message:@"Couldn't load bandwidth usage" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil] autorelease] show];
+    [[[[UIAlertView alloc] initWithTitle:@"Error" 
+                                 message:@"Couldn't load bandwidth usage. Make sure that you are connected to the Rose-Hulman network via WiFi." 
+                                delegate:nil 
+                       cancelButtonTitle:@"OK" 
+                       otherButtonTitles:nil] autorelease] show];
     [self.usageViewController updateVisibleBandwidthWithUsageRecord:self.usageViewController.currentUsage];
 }
 

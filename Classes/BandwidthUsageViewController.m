@@ -167,8 +167,13 @@
     float maxUsage = MAX(pr, ps);
     float usageDisplayMax = MAX((float)((int)(ceilf(maxUsage / 1000.0)) * 1000), 3000.0);
     
+    NSLog(@"Maximum usage view value: %f", usageDisplayMax);
+    
     self.leftUsageView.maxValue = usageDisplayMax;
     self.rightUsageView.maxValue = usageDisplayMax;
+    
+    self.leftUsageView.labelIncrement = 1000.0;
+    self.rightUsageView.labelIncrement = 1000.0;
     
     self.leftUsageView.barColor = [self barColorForUsageValue:received];
     self.rightUsageView.barColor = [self barColorForUsageValue:sent];
@@ -249,6 +254,9 @@
     if(animated) {
         [UIView commitAnimations];
     }
+    
+    [self.leftUsageView setNeedsDisplay];
+    [self.rightUsageView setNeedsDisplay];
 }
 
 - (void)bannerViewDidLoadAd:(ADBannerView *)banner {

@@ -8,17 +8,17 @@
 
 #import "VerticalProgressView.h"
 
-#define PI (3.1415926535)
-
 @implementation VerticalProgressView
 
-@synthesize minValue, maxValue, currentValue;
+@synthesize minValue = _minValue, maxValue = _maxValue, currentValue = _currentValue;
+@synthesize labelIncrement = _labelIncrement;
 @synthesize borderColor, barBackgroundColor, barColor;
 
 - (void)setDefaultProperties {
     self.minValue = 0.0;
     self.maxValue = 1.0;
     self.currentValue = 0.0;
+    self.labelIncrement = 0.0;
     
     self.backgroundColor = [UIColor clearColor];
     self.borderColor = [UIColor darkGrayColor];
@@ -46,7 +46,7 @@
 - (void)drawRect:(CGRect)rect {
     // Grab context to draw on
 	CGContextRef context = UIGraphicsGetCurrentContext();
-    CGContextRef originalContext = context;
+    //CGContextRef originalContext = context;
     
     // Figure out general dimensions
     CGFloat borderWidth = 3.0;
@@ -59,22 +59,22 @@
     // Draw background
     CGContextSetFillColorWithColor(context, [self.barBackgroundColor CGColor]);
     
-    CGContextAddArc(context, topFocus.x, topFocus.y, innerArcRadius, 0.0, PI, 1);
-    CGContextAddArc(context, bottomFocus.x, bottomFocus.y, innerArcRadius, PI, 0.0, 1);
+    CGContextAddArc(context, topFocus.x, topFocus.y, innerArcRadius, 0.0, M_PI, 1);
+    CGContextAddArc(context, bottomFocus.x, bottomFocus.y, innerArcRadius, M_PI, 0.0, 1);
     CGContextClosePath(context);
     CGContextFillPath(context);
     
     // Figure out fill dimensions
     CGFloat fillAmount = self.currentValue / (self.maxValue - self.minValue);
     CGFloat fillHeight = fillAmount * fillableHeight;
-    NSLog(@"Filling to height %f", fillHeight);
+    //NSLog(@"Filling to height %f", fillHeight);
     
     // Draw bar container
     CGContextSetLineWidth(context, 3.0);
     CGContextSetStrokeColorWithColor(context, [self.borderColor CGColor]);
     
-    CGContextAddArc(context, topFocus.x, topFocus.y, outerArcRadius, 0.0, PI, 1);
-    CGContextAddArc(context, bottomFocus.x, bottomFocus.y, outerArcRadius, PI, 0.0, 1);
+    CGContextAddArc(context, topFocus.x, topFocus.y, outerArcRadius, 0.0, M_PI, 1);
+    CGContextAddArc(context, bottomFocus.x, bottomFocus.y, outerArcRadius, M_PI, 0.0, 1);
     CGContextClosePath(context);
     CGContextStrokePath(context);
     
@@ -89,13 +89,30 @@
     CGPoint midLeft = CGPointMake(0.0, CGRectGetMidY(bounds));
     CGPoint midRight = CGPointMake(self.frame.size.width, CGRectGetMidY(bounds));
     
-    CGContextAddArc(context, topFocus.x, topFocus.y, innerArcRadius, 0.0, PI, 1);
-    CGContextAddArc(context, bottomFocus.x, bottomFocus.y, innerArcRadius, PI, 0.0, 1);
+    // Draw increments
+    if(self.labelIncrement != 0.0) {
+        for(int i = 1; i < (int)floorf(self.maxValue / self.labelIncrement); i++) {
+            CGFloat markHeight = i * self.labelIncrement * fillableHeight / (self.maxValue - self.minValue);
+            //NSLog(@"Marking at height %f", markHeight);
+            
+            CGContextSetLineWidth(context, 1.0);
+            CGContextMoveToPoint(context, 0.0, self.frame.size.height - markHeight);
+            CGContextAddLineToPoint(context, self.frame.size.width, self.frame.size.height - markHeight);
+            CGContextStrokePath(context);
+            
+            //CGContextSelectFont(context, "Arial", 12.0, kCGEncodingMacRoman);
+            //CGContextShowTextAtPoint(context, 4.0, self.frame.size.height - markHeight + 4.0, [[NSString stringWithFormat:@"%d GB", i] cStringUsingEncoding:NSASCIIStringEncoding], 4);
+        }
+    }
+    
+    CGContextAddArc(context, topFocus.x, topFocus.y, innerArcRadius, 0.0, M_PI, 1);
+    CGContextAddArc(context, bottomFocus.x, bottomFocus.y, innerArcRadius, M_PI, 0.0, 1);
     CGContextClosePath(context);
     CGContextClip(context);
     CGContextClipToRect(context, CGRectMake(0.0, self.frame.size.height - fillHeight, self.frame.size.width, self.frame.size.height));
     CGContextDrawLinearGradient(context, gradient, midLeft, midRight, 0);
-    context = originalContext;
+    
+    //context = originalContext;
         
     CGGradientRelease(gradient);
     CGColorSpaceRelease(colorSpace);
