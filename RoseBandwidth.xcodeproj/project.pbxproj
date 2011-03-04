@@ -19,7 +19,6 @@
 		223B3107129329900092525B /* KeychainItemWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = 22E2771A124EED8E003E9D3E /* KeychainItemWrapper.m */; };
 		223B3108129329900092525B /* BandwidthUsageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 22E276BD124EA5AB003E9D3E /* BandwidthUsageViewController.m */; };
 		223B3109129329900092525B /* BandwidthHistoryTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 22E9209C12516FC200C7821F /* BandwidthHistoryTableViewController.m */; };
-		223B310A129329900092525B /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 22E276C3124EA5FD003E9D3E /* SettingsViewController.m */; };
 		223B310B129329900092525B /* RoseBandwidthTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 22E920BD1252160300C7821F /* RoseBandwidthTabBarController.m */; };
 		223B310C129329900092525B /* BandwidthHistoryNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2201E1B712522885009D0021 /* BandwidthHistoryNavigationController.m */; };
 		223B310D129329900092525B /* RoseBandwidthAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 22E276A0124EA4D7003E9D3E /* RoseBandwidthAppDelegate.m */; };
@@ -79,8 +78,6 @@
 		22E276BC124EA5AB003E9D3E /* BandwidthUsageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BandwidthUsageViewController.h; sourceTree = "<group>"; };
 		22E276BD124EA5AB003E9D3E /* BandwidthUsageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BandwidthUsageViewController.m; sourceTree = "<group>"; };
 		22E276C0124EA5D3003E9D3E /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/BandwidthUsageView.xib; sourceTree = "<group>"; };
-		22E276C2124EA5FD003E9D3E /* SettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsViewController.h; sourceTree = "<group>"; };
-		22E276C3124EA5FD003E9D3E /* SettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsViewController.m; sourceTree = "<group>"; };
 		22E276C6124EA611003E9D3E /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/SettingsView.xib; sourceTree = "<group>"; };
 		22E27719124EED8E003E9D3E /* KeychainItemWrapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KeychainItemWrapper.h; sourceTree = "<group>"; };
 		22E2771A124EED8E003E9D3E /* KeychainItemWrapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KeychainItemWrapper.m; sourceTree = "<group>"; };
@@ -245,8 +242,6 @@
 				22E276BD124EA5AB003E9D3E /* BandwidthUsageViewController.m */,
 				22E9209B12516FC200C7821F /* BandwidthHistoryTableViewController.h */,
 				22E9209C12516FC200C7821F /* BandwidthHistoryTableViewController.m */,
-				22E276C2124EA5FD003E9D3E /* SettingsViewController.h */,
-				22E276C3124EA5FD003E9D3E /* SettingsViewController.m */,
 				22E920BC1252160300C7821F /* RoseBandwidthTabBarController.h */,
 				22E920BD1252160300C7821F /* RoseBandwidthTabBarController.m */,
 				2201E1B612522885009D0021 /* BandwidthHistoryNavigationController.h */,
@@ -400,7 +395,6 @@
 				223B3107129329900092525B /* KeychainItemWrapper.m in Sources */,
 				223B3108129329900092525B /* BandwidthUsageViewController.m in Sources */,
 				223B3109129329900092525B /* BandwidthHistoryTableViewController.m in Sources */,
-				223B310A129329900092525B /* SettingsViewController.m in Sources */,
 				223B310B129329900092525B /* RoseBandwidthTabBarController.m in Sources */,
 				223B310C129329900092525B /* BandwidthHistoryNavigationController.m in Sources */,
 				223B310D129329900092525B /* RoseBandwidthAppDelegate.m in Sources */,
