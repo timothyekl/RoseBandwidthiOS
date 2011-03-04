@@ -83,10 +83,12 @@ static KerberosAccountManager * _defaultManager = nil;
 
 - (NSString *)sourceURL {
     //TODO allow for changes here
-    return @"https://netreg.rose-hulman.edu/tools/networkUsage.pl";
+    //return @"https://netreg.rose-hulman.edu/tools/networkUsage.pl";
+    return [self.itemWrapper objectForKey:(id)kSecAttrService];
 }
 - (void)setSourceURL:(NSString *)sourceURL {
     //TODO handle this
+    [self.itemWrapper setObject:sourceURL forKey:(id)kSecAttrService];
 }
 
 @end

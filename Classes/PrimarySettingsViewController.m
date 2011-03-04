@@ -52,9 +52,6 @@
 }
 
 - (NSString *)source {
-    /*NSString * sourceURLString = [[KerberosAccountManager defaultManager] sourceURL];
-    NSURL * sourceURL = [[[NSURL alloc] initWithString:sourceURLString] autorelease];
-    return [sourceURL host];*/
     return [[KerberosAccountManager defaultManager] sourceURL];
 }
 
