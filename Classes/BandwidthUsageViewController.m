@@ -75,8 +75,6 @@
     
     [self addObserver:self forKeyPath:@"updating" options:NSKeyValueObservingOptionNew context:NULL];
     
-    [self.view setBackgroundColor:[UIColor groupTableViewBackgroundColor]];
-    
     // Handle ad banner stuff
     self.adBannerView.delegate = self;
     
