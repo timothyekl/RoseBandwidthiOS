@@ -18,8 +18,6 @@
 
 #define PI (3.14159265)
 
-#define AD_OFFSET 40.0
-
 @interface BandwidthUsageViewController()
 - (void)updateVisibleBandwidthWithType:(kBandwidthUsage)type;
 - (void)showUpdating;
@@ -215,6 +213,9 @@
 - (void)dealloc {
     [self removeObserver:self forKeyPath:@"updating"];
     
+    self.adBannerView.delegate = nil;
+    [_adBannerView release];
+    
     [_measureControl release];
     [_leftUsageView release];
     [_rightUsageView release];
@@ -229,17 +230,20 @@
 #pragma mark ADBannerViewDelegate methods
 
 - (void)shiftContentWithMultiplier:(float)mult animated:(BOOL)animated {
+    CGFloat adOffset = [ADBannerView sizeFromBannerContentSizeIdentifier:self.adBannerView.currentContentSizeIdentifier].height;
+    
     if(animated) {
         [UIView beginAnimations:nil context:NULL];
         [UIView setAnimationDuration:0.3];
     }
-    self.titleLabel.frame = CGRectOffset(self.titleLabel.frame, 0, mult * AD_OFFSET);
-    self.measureControl.frame = CGRectOffset(self.measureControl.frame, 0, mult * AD_OFFSET);
+    self.titleLabel.frame = CGRectOffset(self.titleLabel.frame, 0, mult * adOffset);
+    self.measureControl.frame = CGRectOffset(self.measureControl.frame, 0, mult * adOffset);
+    self.adBannerView.frame = CGRectOffset(self.adBannerView.frame, 0, mult * adOffset);
     
     for(VerticalProgressView * progressView in [NSArray arrayWithObjects:self.leftUsageView, self.rightUsageView, nil]) {
         CGRect frame = progressView.frame;
-        frame.size.height = frame.size.height - (mult * AD_OFFSET);
-        frame.origin.y = frame.origin.y + (mult * AD_OFFSET);
+        frame.size.height = frame.size.height - (mult * adOffset);
+        frame.origin.y = frame.origin.y + (mult * adOffset);
         progressView.frame = frame;
     }
     if(animated) {
@@ -251,7 +255,7 @@
 }
 
 - (void)bannerViewDidLoadAd:(ADBannerView *)banner {
-    //NSLog(@"loaded iAd");
+    NSLog(@"loaded iAd");
     if(_failedAdLoad) {
         // Past ad failed - move things downward
         [self shiftContentWithMultiplier:1.0 animated:YES];
@@ -261,7 +265,7 @@
 }
 
 - (void)bannerView:(ADBannerView *)banner didFailToReceiveAdWithError:(NSError *)error {
-    //NSLog(@"failed to receive iAd");
+    NSLog(@"failed to receive iAd");
     if(_failedAdLoad == NO) {
         // Past ad did not fail - move things upward
         [self shiftContentWithMultiplier:-1.0 animated:YES];
