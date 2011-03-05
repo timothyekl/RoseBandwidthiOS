@@ -8,16 +8,6 @@
 
 #import "VerticalProgressView.h"
 
-CGFloat quadraticTint(CGFloat x) {
-    x = 255.0 * x;
-    
-    CGFloat a =  0.0166014;
-    CGFloat b = -1.7174400;
-    CGFloat c = 132.000000;
-    
-    return (a * x * x + b * x + c) / 255.0;
-}
-
 CGFloat cubicTint(CGFloat x) {
     x = 255.0 * x;
     
@@ -26,7 +16,7 @@ CGFloat cubicTint(CGFloat x) {
     CGFloat c = -2.9460975;
     CGFloat d = 132.000000;
     
-    return (a * x * x * x + b * x * x + c * x + d) / 255.0;
+    return MAX(1.0, (a * x * x * x + b * x * x + c * x + d) / 255.0);
 }
 
 @implementation VerticalProgressView
