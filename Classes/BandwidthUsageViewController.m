@@ -64,6 +64,8 @@
     [super viewDidLoad];
     
     [self addObserver:self forKeyPath:@"updating" options:NSKeyValueObservingOptionNew context:NULL];
+    [[StoredSettingsManager sharedManager] addObserver:self forKeyPath:@"warningLevel" options:NSKeyValueObservingOptionOld|NSKeyValueObservingOptionNew context:NULL];
+    [[StoredSettingsManager sharedManager] addObserver:self forKeyPath:@"alertLevel" options:NSKeyValueObservingOptionOld|NSKeyValueObservingOptionNew context:NULL];
     
     // Handle ad banner stuff
     self.adBannerView.delegate = self;
@@ -183,9 +185,28 @@
 #pragma mark KVO response method
 
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context {
-    //NSLog(@"value changed for key path: %@", keyPath);
-    if([keyPath isEqualToString:@"updating"]) {
+    //NSLog(@"value changed for object:%@ keypath:%@", object, keyPath);
+    
+    if(object == self && [keyPath isEqualToString:@"updating"]) {
         [self showUpdating];
+    } else if(object == [StoredSettingsManager sharedManager] && [keyPath isEqualToString:@"warningLevel"]) {
+        [self.leftUsageView removeLabelAt:[[change valueForKey:NSKeyValueChangeOldKey] floatValue]];
+        [self.leftUsageView addLabelAt:[[change valueForKey:NSKeyValueChangeNewKey] floatValue]];
+        self.leftUsageView.barColor = [self barColorForUsageValue:[NSNumber numberWithFloat:self.leftUsageView.currentValue]];
+        
+        [self.rightUsageView removeLabelAt:[[change valueForKey:NSKeyValueChangeOldKey] floatValue]];
+        [self.rightUsageView addLabelAt:[[change valueForKey:NSKeyValueChangeNewKey] floatValue]];
+        self.rightUsageView.barColor = [self barColorForUsageValue:[NSNumber numberWithFloat:self.rightUsageView.currentValue]];
+    } else if(object == [StoredSettingsManager sharedManager] && [keyPath isEqualToString:@"alertLevel"]) {
+        [self.leftUsageView removeLabelAt:[[change valueForKey:NSKeyValueChangeOldKey] floatValue]];
+        [self.leftUsageView addLabelAt:[[change valueForKey:NSKeyValueChangeNewKey] floatValue]];
+        self.leftUsageView.barColor = [self barColorForUsageValue:[NSNumber numberWithFloat:self.leftUsageView.currentValue]];
+        
+        [self.rightUsageView removeLabelAt:[[change valueForKey:NSKeyValueChangeOldKey] floatValue]];
+        [self.rightUsageView addLabelAt:[[change valueForKey:NSKeyValueChangeNewKey] floatValue]];
+        self.rightUsageView.barColor = [self barColorForUsageValue:[NSNumber numberWithFloat:self.rightUsageView.currentValue]];
+    } else {
+        NSLog(@"Observed unknown value change for key %@", keyPath);
     }
 }
 
@@ -215,6 +236,8 @@
 
 - (void)dealloc {
     [self removeObserver:self forKeyPath:@"updating"];
+    [[StoredSettingsManager sharedManager] removeObserver:self forKeyPath:@"warningLevel"];
+    [[StoredSettingsManager sharedManager] removeObserver:self forKeyPath:@"alertLevel"];
     
     self.adBannerView.delegate = nil;
     [_adBannerView release];
@@ -258,7 +281,7 @@
 }
 
 - (void)bannerViewDidLoadAd:(ADBannerView *)banner {
-    NSLog(@"loaded iAd");
+    //NSLog(@"loaded iAd");
     if(_failedAdLoad) {
         // Past ad failed - move things downward
         [self shiftContentWithMultiplier:1.0 animated:YES];
@@ -268,7 +291,7 @@
 }
 
 - (void)bannerView:(ADBannerView *)banner didFailToReceiveAdWithError:(NSError *)error {
-    NSLog(@"failed to receive iAd");
+    //NSLog(@"failed to receive iAd");
     if(_failedAdLoad == NO) {
         // Past ad did not fail - move things upward
         [self shiftContentWithMultiplier:-1.0 animated:YES];
