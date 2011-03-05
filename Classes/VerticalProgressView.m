@@ -16,7 +16,7 @@ CGFloat cubicTint(CGFloat x) {
     CGFloat c = -2.9460975;
     CGFloat d = 132.000000;
     
-    return MAX(1.0, (a * x * x * x + b * x * x + c * x + d) / 255.0);
+    return MIN(1.0, (a * x * x * x + b * x * x + c * x + d) / 255.0);
 }
 
 @implementation VerticalProgressView
