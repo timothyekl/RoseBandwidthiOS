@@ -15,8 +15,7 @@
 #import "RoseBandwidthAppDelegate.h"
 #import "RoseBandwidthTabBarController.h"
 #import "BandwidthUsageRecord.h"
-
-#define PI (3.14159265)
+#import "StoredSettingsManager.h"
 
 @interface BandwidthUsageViewController()
 - (void)updateVisibleBandwidthWithType:(kBandwidthUsage)type;
@@ -109,6 +108,14 @@
 #pragma mark -
 #pragma mark Action response methods
 
+- (float)warningLevel {
+    return [[StoredSettingsManager sharedManager] warningLevel];
+}
+
+- (float)alertLevel {
+    return [[StoredSettingsManager sharedManager] alertLevel];
+}
+
 - (void)updateVisibleBandwidthWithUsageRecord:(BandwidthUsageRecord *)usage {
     self.currentUsage = usage;
     [self updateVisibleBandwidthWithType:[self.measureControl selectedSegmentIndex]];
@@ -117,9 +124,9 @@
 
 - (UIColor *)barColorForUsageValue:(NSNumber *)val {
     float valf = [val floatValue];
-    if(valf > 3500.0) {
+    if(valf > [self alertLevel]) {
         return [UIColor redColor];
-    } else if(valf > 3000.0) {
+    } else if(valf > [self warningLevel]) {
         return [UIColor yellowColor];
     } else {
         //return [UIColor greenColor];
@@ -148,22 +155,18 @@
     self.leftUsageLabel.text = [NSString stringWithFormat:@"Received:\n%.2f MB", [received floatValue]];
     self.rightUsageLabel.text = [NSString stringWithFormat:@"Sent:\n%.2f MB", [sent floatValue]];
     
-    float pr = [received floatValue];
-    float ps = [sent floatValue];
+    self.leftUsageView.currentValue = [received floatValue];
+    self.rightUsageView.currentValue = [sent floatValue];
     
-    self.leftUsageView.currentValue = pr;
-    self.rightUsageView.currentValue = ps;
-    
-    float maxUsage = MAX(pr, ps);
-    float usageDisplayMax = MAX((float)((int)(ceilf(maxUsage / 1000.0)) * 1000), 3000.0);
-    
-    //NSLog(@"Maximum usage view value: %f", usageDisplayMax);
+    float usageDisplayMax = 5000.0;
     
     self.leftUsageView.maxValue = usageDisplayMax;
     self.rightUsageView.maxValue = usageDisplayMax;
     
-    self.leftUsageView.labelIncrement = 1000.0;
-    self.rightUsageView.labelIncrement = 1000.0;
+    [self.leftUsageView addLabelAt:[self warningLevel]];
+    [self.rightUsageView addLabelAt:[self warningLevel]];
+    [self.leftUsageView addLabelAt:[self alertLevel]];
+    [self.rightUsageView addLabelAt:[self alertLevel]];
     
     self.leftUsageView.barColor = [self barColorForUsageValue:received];
     self.rightUsageView.barColor = [self barColorForUsageValue:sent];

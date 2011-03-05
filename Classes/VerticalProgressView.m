@@ -22,14 +22,15 @@ CGFloat cubicTint(CGFloat x) {
 @implementation VerticalProgressView
 
 @synthesize minValue = _minValue, maxValue = _maxValue, currentValue = _currentValue;
-@synthesize labelIncrement = _labelIncrement;
+@synthesize labelValues = _labelValues;
 @synthesize borderColor, barBackgroundColor, barColor;
 
 - (void)setDefaultProperties {
     self.minValue = 0.0;
     self.maxValue = 1.0;
     self.currentValue = 0.0;
-    self.labelIncrement = 0.0;
+    
+    _labelValues = [[NSMutableSet alloc] initWithCapacity:10];
     
     self.backgroundColor = [UIColor clearColor];
     self.borderColor = [UIColor darkGrayColor];
@@ -112,6 +113,7 @@ CGFloat cubicTint(CGFloat x) {
     CGPoint midRight = CGPointMake(self.frame.size.width, CGRectGetMidY(bounds));
     
     // Draw increments
+    /*
     if(self.labelIncrement != 0.0) {
         for(int i = 1; i < (int)floorf(self.maxValue / self.labelIncrement); i++) {
             CGFloat markHeight = i * self.labelIncrement * fillableHeight / (self.maxValue - self.minValue);
@@ -125,6 +127,18 @@ CGFloat cubicTint(CGFloat x) {
             //CGContextSelectFont(context, "Arial", 12.0, kCGEncodingMacRoman);
             //CGContextShowTextAtPoint(context, 4.0, self.frame.size.height - markHeight + 4.0, [[NSString stringWithFormat:@"%d GB", i] cStringUsingEncoding:NSASCIIStringEncoding], 4);
         }
+    }*/
+    
+    for(NSNumber * labelValue in self.labelValues) {
+        CGFloat labelFloat = [labelValue floatValue];
+        
+        CGFloat markHeight = labelFloat * fillableHeight / (self.maxValue - self.minValue);
+        //NSLog(@"Marking at height %f", markHeight);
+        
+        CGContextSetLineWidth(context, 1.0);
+        CGContextMoveToPoint(context, 0.0, self.frame.size.height - markHeight);
+        CGContextAddLineToPoint(context, self.frame.size.width, self.frame.size.height - markHeight);
+        CGContextStrokePath(context);
     }
     
     CGContextAddArc(context, topFocus.x, topFocus.y, innerArcRadius, 0.0, M_PI, 1);
@@ -141,6 +155,8 @@ CGFloat cubicTint(CGFloat x) {
 }
 
 - (void)dealloc {
+    [_labelValues release];
+    
     [borderColor release];
     [barBackgroundColor release];
     [barColor release];
@@ -148,5 +164,19 @@ CGFloat cubicTint(CGFloat x) {
     [super dealloc];
 }
 
+#pragma mark - Bar label methods
+
+- (void)addLabelAt:(CGFloat)value {
+    [_labelValues addObject:[NSNumber numberWithFloat:value]];
+    [self setNeedsDisplay];
+}
+- (void)removeLabelAt:(CGFloat)value {
+    [_labelValues removeObject:[NSNumber numberWithFloat:value]];
+    [self setNeedsDisplay];
+}
+- (void)removeAllLabels {
+    [_labelValues removeAllObjects];
+    [self setNeedsDisplay];
+}
 
 @end

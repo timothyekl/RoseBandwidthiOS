@@ -11,6 +11,8 @@
 		220E8F2112920D5F001C8B4E /* RoseBandwidthTests.h in Resources */ = {isa = PBXBuildFile; fileRef = 220E8F2012920D5F001C8B4E /* RoseBandwidthTests.h */; };
 		220E8F2312920D5F001C8B4E /* RoseBandwidthTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 220E8F2212920D5F001C8B4E /* RoseBandwidthTests.m */; };
 		222E786912FCD1850054276E /* iAd.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 222E786812FCD1850054276E /* iAd.framework */; };
+		2231C4F51321C66100981AEA /* Settings.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2231C4F41321C66100981AEA /* Settings.plist */; };
+		2231C4FF1321C7B400981AEA /* StoredSettingsManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 2231C4FE1321C7B400981AEA /* StoredSettingsManager.m */; };
 		223B3100129329760092525B /* BandwidthUsageRecord.m in Sources */ = {isa = PBXBuildFile; fileRef = 22E9209012516CF100C7821F /* BandwidthUsageRecord.m */; };
 		223B31031293297E0092525B /* VerticalProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = 221CC97A1251265F002F5069 /* VerticalProgressView.m */; };
 		223B3104129329900092525B /* XPathQuery.m in Sources */ = {isa = PBXBuildFile; fileRef = 224E8763124FFA8000CEBF0F /* XPathQuery.m */; };
@@ -62,6 +64,9 @@
 		221CC9791251265F002F5069 /* VerticalProgressView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VerticalProgressView.h; sourceTree = "<group>"; };
 		221CC97A1251265F002F5069 /* VerticalProgressView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VerticalProgressView.m; sourceTree = "<group>"; };
 		222E786812FCD1850054276E /* iAd.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = iAd.framework; path = System/Library/Frameworks/iAd.framework; sourceTree = SDKROOT; };
+		2231C4F41321C66100981AEA /* Settings.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Settings.plist; sourceTree = "<group>"; };
+		2231C4FD1321C7B400981AEA /* StoredSettingsManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StoredSettingsManager.h; sourceTree = "<group>"; };
+		2231C4FE1321C7B400981AEA /* StoredSettingsManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StoredSettingsManager.m; sourceTree = "<group>"; };
 		224E874A124FE8B400CEBF0F /* BandwidthScraper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BandwidthScraper.h; sourceTree = "<group>"; };
 		224E874B124FE8B400CEBF0F /* BandwidthScraper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BandwidthScraper.m; sourceTree = "<group>"; };
 		224E874D124FE91300CEBF0F /* BandwidthScraperDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BandwidthScraperDelegate.h; sourceTree = "<group>"; };
@@ -236,6 +241,7 @@
 				22E27698124EA4D7003E9D3E /* RoseBandwidth-Info.plist */,
 				22E2769A124EA4D7003E9D3E /* InfoPlist.strings */,
 				220E8F1C12920D5F001C8B4E /* RoseBandwidthTests-Info.plist */,
+				2231C4F41321C66100981AEA /* Settings.plist */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -317,6 +323,8 @@
 				22FD333D13208C5D0087111F /* Setting.m */,
 				22FD333E13208C5D0087111F /* SettingsViewController.h */,
 				22FD333F13208C5D0087111F /* SettingsViewController.m */,
+				2231C4FD1321C7B400981AEA /* StoredSettingsManager.h */,
+				2231C4FE1321C7B400981AEA /* StoredSettingsManager.m */,
 			);
 			name = Settings;
 			sourceTree = "<group>";
@@ -409,6 +417,7 @@
 				22FD334913208C720087111F /* PropertyEditorView.xib in Resources */,
 				22FD334A13208C720087111F /* PropertyPickerView.xib in Resources */,
 				22FD334B13208C720087111F /* SettingsViewController.xib in Resources */,
+				2231C4F51321C66100981AEA /* Settings.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -462,6 +471,7 @@
 				22FD334313208C5D0087111F /* Setting.m in Sources */,
 				22FD334413208C5D0087111F /* SettingsViewController.m in Sources */,
 				22FD334E13208FE20087111F /* PrimarySettingsViewController.m in Sources */,
+				2231C4FF1321C7B400981AEA /* StoredSettingsManager.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

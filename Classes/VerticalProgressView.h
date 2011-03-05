@@ -13,7 +13,7 @@
     CGFloat _minValue;
     CGFloat _maxValue;
     CGFloat _currentValue;
-    CGFloat _labelIncrement;
+    NSMutableSet * _labelValues;
     UIColor * borderColor;
     UIColor * barBackgroundColor;
     UIColor * barColor;
@@ -23,10 +23,14 @@
 @property (nonatomic, assign) CGFloat maxValue;
 @property (nonatomic, assign) CGFloat currentValue;
 
-@property (nonatomic, assign) CGFloat labelIncrement;
+@property (nonatomic, readonly) NSSet * labelValues;
 
 @property (nonatomic, retain) UIColor * borderColor;
 @property (nonatomic, retain) UIColor * barBackgroundColor;
 @property (nonatomic, retain) UIColor * barColor;
+
+- (void)addLabelAt:(CGFloat)value;
+- (void)removeLabelAt:(CGFloat)value;
+- (void)removeAllLabels;
 
 @end
