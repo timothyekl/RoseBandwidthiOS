@@ -20,6 +20,7 @@
 @implementation BandwidthHistoryTableViewController
 
 @synthesize usageHistory = _usageHistory;
+@synthesize fetchedResultsController = _fetchedResultsController;
 
 #pragma mark -
 #pragma mark Initialization
@@ -37,23 +38,28 @@
 #pragma mark -
 #pragma mark View lifecycle
 
-/*
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    self.navigationItem.title = [NSString stringWithFormat:@"History: %@", [[KerberosAccountManager defaultManager] username]];
 
-    // Uncomment the following line to preserve selection between presentations.
-    self.clearsSelectionOnViewWillAppear = NO;
- 
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    NSError *error = nil;
+    if (![[self fetchedResultsController] performFetch:&error]) {
+        /*
+         Replace this implementation with code to handle the error appropriately.
+         
+         abort() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development. If it is not possible to recover from the error, display an alert panel that instructs the user to quit the application by pressing the Home button.
+         */
+        NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
+        abort();
+    }
 }
-*/
 
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     
-    [self forceHistoryReload];
+    //[self forceHistoryReload];
 }
 
 /*
@@ -83,13 +89,19 @@
 #pragma mark -
 #pragma mark Table view data source
 
+- (void)configureCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath {
+    BandwidthUsageRecord * record = [self.fetchedResultsController objectAtIndexPath:indexPath];
+    cell.textLabel.text = [NSString stringWithFormat:@"%.2f MB / %.2f MB", [[record policyReceived] floatValue], [[record policySent] floatValue]];
+    cell.detailTextLabel.text = [NSString stringWithFormat:@"%@", [record timestamp]];
+}
+
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    // Return the number of sections.
-    return 1;
+    return [[self.fetchedResultsController sections] count];
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return [self.usageHistory count];
+    id <NSFetchedResultsSectionInfo> sectionInfo = [[self.fetchedResultsController sections] objectAtIndex:section];
+    return [sectionInfo numberOfObjects];
 }
 
 // Customize the appearance of table view cells.
@@ -103,15 +115,33 @@
     }
     
     // Configure the cell...
-    BandwidthUsageRecord * record = [self.usageHistory objectAtIndex:[indexPath row]];
-    cell.textLabel.text = [NSString stringWithFormat:@"%.2f MB / %.2f MB", [[record policyReceived] floatValue], [[record policySent] floatValue]];
-    cell.detailTextLabel.text = [NSString stringWithFormat:@"%@", [record timestamp]];
+    [self configureCell:cell atIndexPath:indexPath];
     
     return cell;
 }
 
 - (NSIndexPath *)tableView:(UITableView *)tableView willSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     return nil;
+}
+
+- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
+    id <NSFetchedResultsSectionInfo> sectionInfo = [[self.fetchedResultsController sections] objectAtIndex:section];
+    
+    static NSArray *monthSymbols = nil;
+    if (!monthSymbols) {
+        NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+        [formatter setCalendar:[NSCalendar currentCalendar]];
+        monthSymbols = [[formatter monthSymbols] retain];
+        [formatter release];
+    }
+    
+    NSInteger numericSection = [[sectionInfo name] integerValue];
+    
+    NSInteger year = numericSection / 1000000;
+    NSInteger month = (numericSection - (year * 1000000)) / 1000;
+    NSInteger day = numericSection - (year * 1000000) - (month * 1000);
+    
+    return [NSString stringWithFormat:@"%@ %02d %d", [monthSymbols objectAtIndex:month-1], day, year];
 }
 
 /*
@@ -171,13 +201,32 @@
 #pragma mark -
 #pragma mark Response methods
 
-- (void)addRecordForBandwidthUsage:(BandwidthUsageRecord *)usage {
-    [self.usageHistory insertObject:usage atIndex:0];
-    [self.tableView insertRowsAtIndexPaths:[NSArray arrayWithObject:[NSIndexPath indexPathForRow:0 inSection:0]] withRowAnimation:UITableViewRowAnimationLeft];
+- (void)forceHistoryReload {
+    self.navigationItem.title = [NSString stringWithFormat:@"History: %@", [[KerberosAccountManager defaultManager] username]];
+    
+    [NSFetchedResultsController deleteCacheWithName:@"BandwidthHistory"];
+    self.fetchedResultsController = nil;
+    
+    NSError * error = nil;
+    if(![self.fetchedResultsController performFetch:&error]) {
+        //TODO deal with this error
+        NSLog(@"Unexpected error %@ %@", error, [error userInfo]);
+        abort();
+    }
+    
+    [self.tableView reloadData];
 }
 
-- (void)forceHistoryReload {
-    self.usageHistory = nil;
+#pragma mark - Managed object stack
+
+- (NSManagedObjectContext *)managedObjectContext {
+    return [((RoseBandwidthAppDelegate *)[[UIApplication sharedApplication] delegate]) managedObjectContext];
+}
+
+- (NSFetchedResultsController *)fetchedResultsController {
+    if(_fetchedResultsController != nil) {
+        return _fetchedResultsController;
+    }
     
     NSFetchRequest * request = [[[NSFetchRequest alloc] init] autorelease];
     [request setEntity:[NSEntityDescription entityForName:@"BandwidthUsageRecord" inManagedObjectContext:[self managedObjectContext]]];
@@ -185,22 +234,69 @@
     NSSortDescriptor * sortDescriptor = [[[NSSortDescriptor alloc] initWithKey:@"timestamp" ascending:NO] autorelease];
     [request setSortDescriptors:[NSArray arrayWithObject:sortDescriptor]];
     
-    NSError * error;
-    NSArray * result = [[self managedObjectContext] executeFetchRequest:request error:&error];
-    if(nil == result) {
-        NSLog(@"error fetching: %@", error);
-    }
+    NSFetchedResultsController * frc = [[[NSFetchedResultsController alloc] initWithFetchRequest:request 
+                                                                            managedObjectContext:[self managedObjectContext] 
+                                                                              sectionNameKeyPath:@"sectionIdentifier" 
+                                                                                       cacheName:@"BandwidthHistory"] autorelease];
+    frc.delegate = self;
+    self.fetchedResultsController = frc;
     
-    self.usageHistory = [[result mutableCopy] autorelease];
-    
-    [self.tableView reloadData];
+    return self.fetchedResultsController;
 }
 
-#pragma mark -
-#pragma mark Managed object stack
+#pragma mark - Fetched results controller delegate methods
 
-- (NSManagedObjectContext *)managedObjectContext {
-    return [((RoseBandwidthAppDelegate *)[[UIApplication sharedApplication] delegate]) managedObjectContext];
+- (void)controllerWillChangeContent:(NSFetchedResultsController *)controller {
+    // The fetch controller is about to start sending change notifications, so prepare the table view for updates.
+    [self.tableView beginUpdates];
+}
+
+
+- (void)controller:(NSFetchedResultsController *)controller didChangeObject:(id)anObject atIndexPath:(NSIndexPath *)indexPath forChangeType:(NSFetchedResultsChangeType)type newIndexPath:(NSIndexPath *)newIndexPath {
+    
+    UITableView *tableView = self.tableView;
+    
+    switch(type) {
+            
+        case NSFetchedResultsChangeInsert:
+            [tableView insertRowsAtIndexPaths:[NSArray arrayWithObject:newIndexPath] withRowAnimation:UITableViewRowAnimationFade];
+            break;
+            
+        case NSFetchedResultsChangeDelete:
+            [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
+            break;
+            
+        case NSFetchedResultsChangeUpdate:
+            [self configureCell:[tableView cellForRowAtIndexPath:indexPath] atIndexPath:indexPath];
+            break;
+            
+        case NSFetchedResultsChangeMove:
+            [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
+            // Reloading the section inserts a new row and ensures that titles are updated appropriately.
+            [tableView reloadSections:[NSIndexSet indexSetWithIndex:newIndexPath.section] withRowAnimation:UITableViewRowAnimationFade];
+            break;
+    }
+}
+
+
+- (void)controller:(NSFetchedResultsController *)controller didChangeSection:(id <NSFetchedResultsSectionInfo>)sectionInfo atIndex:(NSUInteger)sectionIndex forChangeType:(NSFetchedResultsChangeType)type {
+    
+    switch(type) {
+            
+        case NSFetchedResultsChangeInsert:
+            [self.tableView insertSections:[NSIndexSet indexSetWithIndex:sectionIndex] withRowAnimation:UITableViewRowAnimationFade];
+            break;
+            
+        case NSFetchedResultsChangeDelete:
+            [self.tableView deleteSections:[NSIndexSet indexSetWithIndex:sectionIndex] withRowAnimation:UITableViewRowAnimationFade];
+            break;
+    }
+}
+
+
+- (void)controllerDidChangeContent:(NSFetchedResultsController *)controller {
+    // The fetch controller has sent all current change notifications, so tell the table view to process all updates.
+    [self.tableView endUpdates];
 }
 
 #pragma mark -
@@ -220,6 +316,9 @@
 
 
 - (void)dealloc {
+    [_fetchedResultsController release];
+    [_usageHistory release];
+    
     [super dealloc];
 }
 

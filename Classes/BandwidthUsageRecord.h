@@ -21,4 +21,7 @@
 @property (nonatomic, retain) NSNumber * actualSent;
 @property (nonatomic, retain) NSString * bandwidthClass;
 
+@property (nonatomic, retain) NSString * sectionIdentifier;
+@property (nonatomic, retain) NSString * primitiveSectionIdentifier;
+
 @end

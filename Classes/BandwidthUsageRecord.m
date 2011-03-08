@@ -8,6 +8,9 @@
 
 #import "BandwidthUsageRecord.h"
 
+NSInteger dateIdentifier(NSInteger year, NSInteger month, NSInteger day) {
+    return 1000000 * year + 1000 * month + day;
+}
 
 @implementation BandwidthUsageRecord
 
@@ -19,8 +22,24 @@
 @dynamic actualSent;
 @dynamic bandwidthClass;
 
-- (void)awakeFromInsert {
-	// Custom initialization here
+@dynamic sectionIdentifier;
+@dynamic primitiveSectionIdentifier;
+
+#pragma mark - Transient identifiers
+
+- (NSString *)sectionIdentifier {
+    [self willAccessValueForKey:@"sectionIdentifier"];
+    NSString * tmp = [self primitiveSectionIdentifier];
+    [self didAccessValueForKey:@"sectionIdentifier"];
+    
+    if(nil == tmp) {
+        NSCalendar * calendar = [NSCalendar currentCalendar];
+        NSDateComponents * components = [calendar components:(NSYearCalendarUnit | NSMonthCalendarUnit | NSDayCalendarUnit) fromDate:[self timestamp]];
+        tmp = [NSString stringWithFormat:@"%d", dateIdentifier([components year], [components month], [components day])];
+        [self setPrimitiveSectionIdentifier:tmp];
+    }
+    
+    return tmp;
 }
 
 @end

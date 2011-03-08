@@ -15,6 +15,8 @@
 
 #import "StoredSettingsManager.h"
 
+#import "RoseBandwidthTabBarController.h"
+
 @implementation PrimarySettingsViewController
 
 - (void)buildSettings {
@@ -96,6 +98,8 @@
     
     NSUInteger indexes[2] = {0,0};
     [self.tableView reloadRowsAtIndexPaths:[NSArray arrayWithObjects:[NSIndexPath indexPathWithIndexes:indexes length:2], nil] withRowAnimation:UITableViewRowAnimationFade];
+    
+    [(RoseBandwidthTabBarController *)(self.tabBarController) kerberosAccountInfoChanged];
 }
 
 - (void)passwordChanged:(NSString *)password {
@@ -103,6 +107,8 @@
     
     NSUInteger indexes[2] = {0,1};
     [self.tableView reloadRowsAtIndexPaths:[NSArray arrayWithObjects:[NSIndexPath indexPathWithIndexes:indexes length:2], nil] withRowAnimation:UITableViewRowAnimationFade];
+    
+    [(RoseBandwidthTabBarController *)(self.tabBarController) kerberosAccountInfoChanged];
 }
 
 - (void)sourceChanged:(NSString *)source {

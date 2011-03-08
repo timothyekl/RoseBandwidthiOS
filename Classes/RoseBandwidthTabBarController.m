@@ -24,7 +24,6 @@
 
 - (void)scraper:(BandwidthScraper *)scraper foundBandwidthUsageAmounts:(BandwidthUsageRecord *)usage {
     [self.usageViewController updateVisibleBandwidthWithUsageRecord:usage];
-    [self.historyViewController addRecordForBandwidthUsage:usage];
 }
 
 - (void)scraper:(BandwidthScraper *)scraper encounteredError:(NSError *)error {

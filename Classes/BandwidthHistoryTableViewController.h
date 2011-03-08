@@ -10,15 +10,17 @@
 
 @class BandwidthUsageRecord;
 
-@interface BandwidthHistoryTableViewController : UITableViewController {
+@interface BandwidthHistoryTableViewController : UITableViewController <NSFetchedResultsControllerDelegate> {
     NSMutableArray * _usageHistory;
+    
+    NSFetchedResultsController * _fetchedResultsController;
 }
 
 @property (nonatomic, retain) NSMutableArray * usageHistory;
 
 @property (nonatomic, readonly) NSManagedObjectContext * managedObjectContext;
+@property (nonatomic, retain) NSFetchedResultsController * fetchedResultsController;
 
-- (void)addRecordForBandwidthUsage:(BandwidthUsageRecord *)usage;
 - (void)forceHistoryReload;
 
 @end
