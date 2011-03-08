@@ -13,10 +13,12 @@
 @private
     float _warningLevel;
     float _alertLevel;
+    BOOL _firstRun;
 }
 
 @property (nonatomic, assign) float warningLevel;
 @property (nonatomic, assign) float alertLevel;
+@property (nonatomic, assign, getter = isFirstRun) BOOL firstRun;
 
 /**
  * The shared instance of this singleton class. Used to access an instance

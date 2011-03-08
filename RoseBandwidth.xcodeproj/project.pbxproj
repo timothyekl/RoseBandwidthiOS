@@ -10,6 +10,7 @@
 		220E8F1912920D5F001C8B4E /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 22E27692124EA4D7003E9D3E /* UIKit.framework */; };
 		220E8F2112920D5F001C8B4E /* RoseBandwidthTests.h in Resources */ = {isa = PBXBuildFile; fileRef = 220E8F2012920D5F001C8B4E /* RoseBandwidthTests.h */; };
 		220E8F2312920D5F001C8B4E /* RoseBandwidthTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 220E8F2212920D5F001C8B4E /* RoseBandwidthTests.m */; };
+		22140C6C1326CB4700FCF184 /* FirstRunSettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 22140C6B1326CB4600FCF184 /* FirstRunSettingsViewController.m */; };
 		222E786912FCD1850054276E /* iAd.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 222E786812FCD1850054276E /* iAd.framework */; };
 		2231C4F51321C66100981AEA /* Settings.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2231C4F41321C66100981AEA /* Settings.plist */; };
 		2231C4FF1321C7B400981AEA /* StoredSettingsManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 2231C4FE1321C7B400981AEA /* StoredSettingsManager.m */; };
@@ -61,6 +62,8 @@
 		220E8F1D12920D5F001C8B4E /* RoseBandwidthTests-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "RoseBandwidthTests-Prefix.pch"; sourceTree = "<group>"; };
 		220E8F2012920D5F001C8B4E /* RoseBandwidthTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RoseBandwidthTests.h; sourceTree = "<group>"; };
 		220E8F2212920D5F001C8B4E /* RoseBandwidthTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RoseBandwidthTests.m; sourceTree = "<group>"; };
+		22140C6A1326CB4600FCF184 /* FirstRunSettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FirstRunSettingsViewController.h; sourceTree = "<group>"; };
+		22140C6B1326CB4600FCF184 /* FirstRunSettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FirstRunSettingsViewController.m; sourceTree = "<group>"; };
 		221CC9791251265F002F5069 /* VerticalProgressView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VerticalProgressView.h; sourceTree = "<group>"; };
 		221CC97A1251265F002F5069 /* VerticalProgressView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VerticalProgressView.m; sourceTree = "<group>"; };
 		222E786812FCD1850054276E /* iAd.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = iAd.framework; path = System/Library/Frameworks/iAd.framework; sourceTree = SDKROOT; };
@@ -277,6 +280,8 @@
 				2201E1B712522885009D0021 /* BandwidthHistoryNavigationController.m */,
 				22FD334C13208FE10087111F /* PrimarySettingsViewController.h */,
 				22FD334D13208FE10087111F /* PrimarySettingsViewController.m */,
+				22140C6A1326CB4600FCF184 /* FirstRunSettingsViewController.h */,
+				22140C6B1326CB4600FCF184 /* FirstRunSettingsViewController.m */,
 			);
 			name = "View controllers";
 			sourceTree = "<group>";
@@ -472,6 +477,7 @@
 				22FD334413208C5D0087111F /* SettingsViewController.m in Sources */,
 				22FD334E13208FE20087111F /* PrimarySettingsViewController.m in Sources */,
 				2231C4FF1321C7B400981AEA /* StoredSettingsManager.m in Sources */,
+				22140C6C1326CB4700FCF184 /* FirstRunSettingsViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -548,7 +554,7 @@
 				GCC_PREFIX_HEADER = "RoseBandwidth-Prefix.pch";
 				HEADER_SEARCH_PATHS = /usr/include/libxml2;
 				INFOPLIST_FILE = "RoseBandwidth-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 4.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = 1;
@@ -560,14 +566,15 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				COPY_PHASE_STRIP = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "RoseBandwidth-Prefix.pch";
 				HEADER_SEARCH_PATHS = /usr/include/libxml2;
 				INFOPLIST_FILE = "RoseBandwidth-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 4.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = 1;
 				VALIDATE_PRODUCT = YES;
@@ -681,6 +688,7 @@
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CURRENT_PROJECT_VERSION = "1.0-beta1";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PREPROCESSOR_DEFINITIONS = DEBUG;
@@ -689,7 +697,8 @@
 				HEADER_SEARCH_PATHS = "$(SDKROOT)/usr/include/libxml2";
 				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
 				PREBINDING = NO;
-				SDKROOT = iphoneos4.1;
+				SDKROOT = iphoneos;
+				VERSIONING_SYSTEM = "";
 			};
 			name = Debug;
 		};
@@ -697,7 +706,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				CURRENT_PROJECT_VERSION = "1.0-beta1";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
@@ -705,7 +715,9 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
 				PREBINDING = NO;
-				SDKROOT = iphoneos4.1;
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
+				SDKROOT = iphoneos;
+				VERSIONING_SYSTEM = "";
 			};
 			name = Release;
 		};

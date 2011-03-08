@@ -12,11 +12,13 @@ static StoredSettingsManager * sharedInstance = nil;
 
 static NSString * kWarningLevelKey = @"warningLevel";
 static NSString * kAlertLevelKey = @"alertLevel";
+static NSString * kFirstRunKey = @"firstRun";
 
 @implementation StoredSettingsManager
 
 @synthesize warningLevel = _warningLevel;
 @synthesize alertLevel = _alertLevel;
+@synthesize firstRun = _firstRun;
 
 #pragma mark - Lifecycle
 
@@ -46,6 +48,11 @@ static NSString * kAlertLevelKey = @"alertLevel";
     // Set properties
     self.warningLevel = [[plistData objectForKey:kWarningLevelKey] floatValue];
     self.alertLevel = [[plistData objectForKey:kAlertLevelKey] floatValue];
+    if(nil == [plistData objectForKey:kFirstRunKey]) {
+        self.firstRun = YES;
+    } else {
+        self.firstRun = [[plistData objectForKey:kFirstRunKey] boolValue];
+    }
 }
 
 - (void)writeSettingsToFile {
@@ -56,6 +63,7 @@ static NSString * kAlertLevelKey = @"alertLevel";
     NSMutableDictionary * plistDict = [[[NSMutableDictionary alloc] initWithCapacity:10] autorelease];
     [plistDict setValue:[NSNumber numberWithFloat:self.warningLevel] forKey:kWarningLevelKey];
     [plistDict setValue:[NSNumber numberWithFloat:self.alertLevel] forKey:kAlertLevelKey];
+    [plistDict setValue:[NSNumber numberWithBool:self.firstRun] forKey:kFirstRunKey];
     NSData * plistData = [NSPropertyListSerialization dataFromPropertyList:plistDict format:NSPropertyListXMLFormat_v1_0 errorDescription:nil];
     if(plistData) {
         [plistData writeToFile:plistPath atomically:YES];

@@ -7,8 +7,12 @@
 //
 
 #import "RoseBandwidthAppDelegate.h"
+#import "RoseBandwidthTabBarController.h"
 
 #import "KerberosAccountManager.h"
+#import "StoredSettingsManager.h"
+
+#define FORCE_FIRST_RUN NO
 
 @implementation RoseBandwidthAppDelegate
 
@@ -17,6 +21,10 @@
 
 @synthesize tabBarController;
 
+- (BOOL)isFirstRun {
+    return ([[StoredSettingsManager sharedManager] isFirstRun] || FORCE_FIRST_RUN);
+}
+
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     
     // Override point for customization after application launch.
@@ -24,8 +32,13 @@
     [window addSubview:tabBarController.view];
     [window makeKeyAndVisible];
     
-    if([[[KerberosAccountManager defaultManager] sourceURL] isEqualToString:@""]) {
+    if([[[KerberosAccountManager defaultManager] sourceURL] isEqualToString:@""] || [self isFirstRun]) {
         [[KerberosAccountManager defaultManager] setSourceURL:@"https://netreg.rose-hulman.edu/tools/networkUsage.pl"];
+    }
+    
+    if([self isFirstRun]) {
+        //NSLog(@"First run!");
+        [(RoseBandwidthTabBarController *)tabBarController showFirstRunDialog];
     }
     
     return YES;

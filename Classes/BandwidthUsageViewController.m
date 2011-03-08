@@ -41,7 +41,7 @@
 @synthesize updating = _updating;
 
 - (IBAction)requestBandwidthUpdate {
-    if(!self.updating) {
+    if(!self.updating && ![[StoredSettingsManager sharedManager] isFirstRun]) {
         KerberosAccountManager * manager = [KerberosAccountManager defaultManager];
         [[[[BandwidthScraper alloc] initWithDelegate:((RoseBandwidthTabBarController *)self.tabBarController)
                                             username:[manager username]

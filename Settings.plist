@@ -2,9 +2,11 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>warningLevel</key>
-	<real>3000</real>
 	<key>alertLevel</key>
 	<real>3500</real>
+	<key>warningLevel</key>
+	<real>3000</real>
+	<key>firstRun</key>
+	<true/>
 </dict>
 </plist>

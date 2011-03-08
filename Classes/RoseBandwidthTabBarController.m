@@ -13,11 +13,27 @@
 #import "BandwidthHistoryTableViewController.h"
 #import "SettingsViewController.h"
 
+#import "FirstRunSettingsViewController.h"
+#import "StoredSettingsManager.h"
+
 @implementation RoseBandwidthTabBarController
 
 @synthesize usageViewController = _usageViewController;
 @synthesize historyViewController = _historyViewController;
 @synthesize settingsViewController = _settingsViewController;
+
+- (void)showFirstRunDialog {
+    FirstRunSettingsViewController * firstRunController = [[[FirstRunSettingsViewController alloc] initWithNibName:@"SettingsViewController" bundle:nil] autorelease];
+    UINavigationController * navController = [[[UINavigationController alloc] initWithRootViewController:firstRunController] autorelease];
+    [self presentModalViewController:navController animated:YES];
+}
+
+- (void)dismissedFirstRunDialog {
+    [[StoredSettingsManager sharedManager] setFirstRun:NO];
+    [[StoredSettingsManager sharedManager] writeSettingsToFile];
+    
+    [self.usageViewController requestBandwidthUpdate];
+}
 
 #pragma mark -
 #pragma mark BandwidthScraperDelegate methods
