@@ -30,6 +30,8 @@ typedef enum {
     UILabel * _leftUsageLabel;
     UILabel * _rightUsageLabel;
     
+    UIBarButtonItem * _refreshItem;
+    
     BandwidthUsageRecord * _currentUsage;
     
     ADBannerView * _adBannerView;

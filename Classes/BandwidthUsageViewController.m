@@ -42,10 +42,7 @@
 
 - (IBAction)requestBandwidthUpdate {
     if(!self.updating && ![[StoredSettingsManager sharedManager] isFirstRun]) {
-        KerberosAccountManager * manager = [KerberosAccountManager defaultManager];
-        [[[[BandwidthScraper alloc] initWithDelegate:((RoseBandwidthTabBarController *)self.tabBarController)
-                                            username:[manager username]
-                                            password:[manager password]] autorelease] beginScraping];
+        [[[[BandwidthScraper alloc] initWithDelegate:((RoseBandwidthTabBarController *)self.tabBarController)] autorelease] beginScraping];
         self.updating = YES;
     }
 }
@@ -54,8 +51,10 @@
     //NSLog(@"showing updating: %@", (self.updating ? @"YES" : @"NO"));
     if(self.updating) {
         self.navigationItem.rightBarButtonItem.enabled = NO;
+        [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:YES];
     } else {
         self.navigationItem.rightBarButtonItem.enabled = YES;
+        [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
     }
 }
 
@@ -105,6 +104,16 @@
     
     // Grab new bandwidth on app load
     [self requestBandwidthUpdate];
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    
+    if(![[[KerberosAccountManager defaultManager] username] isEqualToString:@""]) {
+        self.navigationItem.title = [NSString stringWithFormat:@"Usage: %@", [[KerberosAccountManager defaultManager] username]];
+    } else {
+        self.navigationItem.title = @"Usage";
+    }
 }
 
 #pragma mark -

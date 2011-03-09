@@ -22,9 +22,6 @@ typedef enum {
 @interface BandwidthScraper : NSObject <NSXMLParserDelegate> {
     id<BandwidthScraperDelegate> _delegate;
     
-    NSString * _username;
-    NSString * _password;
-    
     NSMutableData * _data;
     BandwidthUsage * _usage;
     BandwidthScraperState _state;
@@ -34,10 +31,7 @@ typedef enum {
 
 @property (nonatomic, assign) id<BandwidthScraperDelegate> delegate;
 
-@property (nonatomic, retain) NSString * username;
-@property (nonatomic, retain) NSString * password;
-
-- (id)initWithDelegate:(id<BandwidthScraperDelegate>)delegate username:(NSString *)username password:(NSString *)password;
+- (id)initWithDelegate:(id<BandwidthScraperDelegate>)delegate;
 - (void)beginScraping;
 - (void)cancelScraping;
 

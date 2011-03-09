@@ -29,17 +29,13 @@
 @implementation BandwidthScraper
 
 @synthesize delegate = _delegate;
-@synthesize username = _username;
-@synthesize password = _password;
 
 #pragma mark -
 #pragma mark Initializer
 
-- (id)initWithDelegate:(id<BandwidthScraperDelegate>)delegate username:(NSString *)username password:(NSString *)password {
+- (id)initWithDelegate:(id<BandwidthScraperDelegate>)delegate {
     if((self = [super init])) {
         self.delegate = delegate;
-        self.username = username;
-        self.password = password;
         
         _data = [[NSMutableData alloc] init];
         _state = BandwidthScraperStatePrefix;
@@ -54,7 +50,7 @@
     NSLog(@"scraper received beginScraping");
     
     NSMutableURLRequest * request = [[[NSMutableURLRequest alloc] initWithURL:[NSURL URLWithString:[[KerberosAccountManager defaultManager] sourceURL]] 
-                                                                  cachePolicy:NSURLRequestReloadIgnoringCacheData 
+                                                                  cachePolicy:NSURLRequestReloadIgnoringLocalAndRemoteCacheData 
                                                               timeoutInterval:FETCH_TIMEOUT] autorelease];
     _conn = [[[NSURLConnection alloc] initWithRequest:request delegate:self] autorelease];
     [_conn start];
@@ -81,7 +77,10 @@
     NSLog(@"connection did receive authentication challenge");
     
     if([challenge previousFailureCount] == 0) {
-        NSURLCredential * cred = [[[NSURLCredential alloc] initWithUser:self.username password:self.password persistence:NSURLCredentialPersistenceForSession] autorelease];
+        NSString * username = [[KerberosAccountManager defaultManager] username];
+        NSString * password = [[KerberosAccountManager defaultManager] password];
+        NSLog(@"creating credentials with user:%@ pass:%@", username, password);
+        NSURLCredential * cred = [[[NSURLCredential alloc] initWithUser:username password:password persistence:NSURLCredentialPersistenceNone] autorelease];
         [[challenge sender] useCredential:cred forAuthenticationChallenge:challenge];
     } else {
         [[challenge sender] cancelAuthenticationChallenge:challenge];
@@ -109,7 +108,7 @@
     
     BandwidthUsageRecord * usage = [NSEntityDescription insertNewObjectForEntityForName:@"BandwidthUsageRecord" inManagedObjectContext:[self managedObjectContext]];
     
-    [usage setKerberosName:self.username];
+    [usage setKerberosName:[[KerberosAccountManager defaultManager] username]];
     [usage setTimestamp:[NSDate date]];
     [usage setBandwidthClass:[[results objectAtIndex:0] objectForKey:@"nodeContent"]];
     [usage setPolicyReceived:[self numberFromMBUsageString:[[results objectAtIndex:1] objectForKey:@"nodeContent"]]];
@@ -155,9 +154,6 @@
 #pragma mark dealloc
 
 - (void)dealloc {
-    [_username release];
-    [_password release];
-    
     [_data release];
     [_usage release];
     
