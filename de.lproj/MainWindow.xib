@@ -66,7 +66,7 @@
 				<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 				<bool key="IBUIHorizontal">NO</bool>
 				<object class="IBUINavigationController" key="IBUISelectedViewController" id="410899968">
-					<string key="IBUITitle">History</string>
+					<string key="IBUITitle">Geschichte</string>
 					<object class="IBUITabBarItem" key="IBUITabBarItem" id="68568337">
 						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 						<int key="IBUISystemItemIdentifier">6</int>
@@ -91,7 +91,7 @@
 					<array class="NSMutableArray" key="IBUIViewControllers">
 						<object class="IBUITableViewController" id="501539289">
 							<object class="IBUINavigationItem" key="IBUINavigationItem" id="300566470">
-								<string key="IBUITitle">History</string>
+								<string key="IBUITitle">Geschichte</string>
 								<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 							</object>
 							<reference key="IBUIParentViewController" ref="410899968"/>
@@ -109,7 +109,7 @@
 				<array class="NSMutableArray" key="IBUIViewControllers">
 					<object class="IBUINavigationController" id="1067655221">
 						<object class="IBUITabBarItem" key="IBUITabBarItem" id="890609766">
-							<string key="IBUITitle">Usage</string>
+							<string key="IBUITitle">Nutzung</string>
 							<object class="NSCustomResource" key="IBUIImage">
 								<string key="NSClassName">NSImage</string>
 								<string key="NSResourceName">Bars.png</string>
@@ -136,7 +136,7 @@
 						<array class="NSMutableArray" key="IBUIViewControllers">
 							<object class="IBUIViewController" id="801677624">
 								<object class="IBUINavigationItem" key="IBUINavigationItem" id="281671179">
-									<string key="IBUITitle">Usage</string>
+									<string key="IBUITitle">Nutzung</string>
 									<object class="IBUIBarButtonItem" key="IBUIRightBarButtonItem" id="188845133">
 										<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 										<int key="IBUIStyle">1</int>
@@ -159,9 +159,9 @@
 					</object>
 					<reference ref="410899968"/>
 					<object class="IBUINavigationController" id="1050868222">
-						<string key="IBUITitle">Settings</string>
+						<string key="IBUITitle">Einstellungen</string>
 						<object class="IBUITabBarItem" key="IBUITabBarItem" id="752728979">
-							<string key="IBUITitle">Settings</string>
+							<string key="IBUITitle">Einstellungen</string>
 							<object class="NSCustomResource" key="IBUIImage">
 								<string key="NSClassName">NSImage</string>
 								<string key="NSResourceName">Gear.png</string>
@@ -188,7 +188,7 @@
 						<array class="NSMutableArray" key="IBUIViewControllers">
 							<object class="IBUIViewController" id="210795710">
 								<object class="IBUINavigationItem" key="IBUINavigationItem" id="819457235">
-									<string key="IBUITitle">Settings</string>
+									<string key="IBUITitle">Einstellungen</string>
 									<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 								</object>
 								<reference key="IBUIParentViewController" ref="1050868222"/>

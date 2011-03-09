@@ -37,6 +37,10 @@
 		225909BE12FCD62000669449 /* Bars@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 22621886126361FC0091547B /* Bars@2x.png */; };
 		225909C412FCE2AB00669449 /* RoseBandwidth.xcdatamodel in Sources */ = {isa = PBXBuildFile; fileRef = 225909C312FCE2AB00669449 /* RoseBandwidth.xcdatamodel */; };
 		22A1302212FC806A001EA3DA /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 22A1302112FC806A001EA3DA /* Security.framework */; };
+		22A6040D13282777000793CC /* PropertyEditorView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 22FD334613208C720087111F /* PropertyEditorView.xib */; };
+		22A6040E13282777000793CC /* PropertyPickerView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 22FD334713208C720087111F /* PropertyPickerView.xib */; };
+		22A6040F13282777000793CC /* SettingsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 22FD334813208C720087111F /* SettingsViewController.xib */; };
+		22DCB6341328270900AF3340 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 22DCB6321328270900AF3340 /* Localizable.strings */; };
 		22F3CC281293318D00D7DA39 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 22F3CC271293318D00D7DA39 /* CoreData.framework */; };
 		22F3CC2A1293318D00D7DA39 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 22F3CC291293318D00D7DA39 /* CoreGraphics.framework */; };
 		22F3CC2C1293318D00D7DA39 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 22F3CC2B1293318D00D7DA39 /* Foundation.framework */; };
@@ -84,6 +88,11 @@
 		226218931264BE320091547B /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Icon.png; path = Resources/Icon.png; sourceTree = "<group>"; };
 		226218941264BE320091547B /* Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon@2x.png"; path = "Resources/Icon@2x.png"; sourceTree = "<group>"; };
 		22A1302112FC806A001EA3DA /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		22A6040C13282777000793CC /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Localizable.strings; sourceTree = "<group>"; };
+		22DCB62D13281F1400AF3340 /* de */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = de; path = /Users/tim/code/RoseBandwidth/de.lproj/MainWindow.xib; sourceTree = "<absolute>"; };
+		22DCB62E13281F1400AF3340 /* de */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = de; path = /Users/tim/code/RoseBandwidth/de.lproj/BandwidthUsageView.xib; sourceTree = "<absolute>"; };
+		22DCB62F13281F1400AF3340 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = /Users/tim/code/RoseBandwidth/de.lproj/InfoPlist.strings; sourceTree = "<absolute>"; };
+		22DCB6331328270900AF3340 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		22E27692124EA4D7003E9D3E /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		22E27698124EA4D7003E9D3E /* RoseBandwidth-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "RoseBandwidth-Info.plist"; sourceTree = "<group>"; };
 		22E27699124EA4D7003E9D3E /* RoseBandwidth-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "RoseBandwidth-Prefix.pch"; sourceTree = "<group>"; };
@@ -245,6 +254,7 @@
 				22E2769A124EA4D7003E9D3E /* InfoPlist.strings */,
 				220E8F1C12920D5F001C8B4E /* RoseBandwidthTests-Info.plist */,
 				2231C4F41321C66100981AEA /* Settings.plist */,
+				22DCB6321328270900AF3340 /* Localizable.strings */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -393,6 +403,7 @@
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
+				de,
 			);
 			mainGroup = 22E27680124EA4D7003E9D3E;
 			productRefGroup = 22E27690124EA4D7003E9D3E /* Products */;
@@ -423,6 +434,10 @@
 				22FD334A13208C720087111F /* PropertyPickerView.xib in Resources */,
 				22FD334B13208C720087111F /* SettingsViewController.xib in Resources */,
 				2231C4F51321C66100981AEA /* Settings.plist in Resources */,
+				22DCB6341328270900AF3340 /* Localizable.strings in Resources */,
+				22A6040D13282777000793CC /* PropertyEditorView.xib in Resources */,
+				22A6040E13282777000793CC /* PropertyPickerView.xib in Resources */,
+				22A6040F13282777000793CC /* SettingsViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -496,14 +511,25 @@
 			isa = PBXVariantGroup;
 			children = (
 				225909B312FCD5B900669449 /* en */,
+				22DCB62D13281F1400AF3340 /* de */,
 			);
 			name = MainWindow.xib;
+			sourceTree = "<group>";
+		};
+		22DCB6321328270900AF3340 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				22DCB6331328270900AF3340 /* en */,
+				22A6040C13282777000793CC /* de */,
+			);
+			name = Localizable.strings;
 			sourceTree = "<group>";
 		};
 		22E2769A124EA4D7003E9D3E /* InfoPlist.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
 				22E2769B124EA4D7003E9D3E /* en */,
+				22DCB62F13281F1400AF3340 /* de */,
 			);
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
@@ -512,6 +538,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				22E276C0124EA5D3003E9D3E /* en */,
+				22DCB62E13281F1400AF3340 /* de */,
 			);
 			name = BandwidthUsageView.xib;
 			sourceTree = "<group>";

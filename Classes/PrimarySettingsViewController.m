@@ -22,42 +22,42 @@
 - (void)buildSettings {
     self.settings = [[[MutableOrderedDictionary alloc] initWithCapacity:2] autorelease];
     
-    Setting * usernameSetting = [[[Setting alloc] initWithTitle:@"Username" 
+    Setting * usernameSetting = [[[Setting alloc] initWithTitle:NSLocalizedString(@"Username", @"Username")
                                                          target:self 
                                                         onValue:@selector(username) 
                                                        onAction:@selector(editAction:) 
                                                        onChange:@selector(usernameChanged:)] autorelease];
-    Setting * passwordSetting = [[[Setting alloc] initWithTitle:@"Password" 
+    Setting * passwordSetting = [[[Setting alloc] initWithTitle:NSLocalizedString(@"Password", @"Password")
                                                          target:self 
                                                         onValue:@selector(password) 
                                                        onAction:@selector(editAction:) 
                                                        onChange:@selector(passwordChanged:)] autorelease];
     passwordSetting.secure = YES;
     NSArray * authenticationSettings = [[[NSArray alloc] initWithObjects:usernameSetting, passwordSetting, nil] autorelease];
-    [self.settings setObject:authenticationSettings forKey:@"Authentication"];
+    [self.settings setObject:authenticationSettings forKey:NSLocalizedString(@"Authentication", @"Authentication")];
     
-    Setting * warningLevelSetting = [[[Setting alloc] initWithTitle:@"Warning level"
+    Setting * warningLevelSetting = [[[Setting alloc] initWithTitle:NSLocalizedString(@"Warning level", @"Warning level")
                                                              target:self
                                                             onValue:@selector(warningLevel)
                                                            onAction:@selector(editAction:)
                                                            onChange:@selector(warningLevelChanged:)] autorelease];
     warningLevelSetting.valueType = SettingValueTypeDecimal;
-    Setting * alertLevelSetting = [[[Setting alloc] initWithTitle:@"Alert level"
+    Setting * alertLevelSetting = [[[Setting alloc] initWithTitle:NSLocalizedString(@"Alert level", @"Alert level")
                                                            target:self 
                                                           onValue:@selector(alertLevel)
                                                          onAction:@selector(editAction:)
                                                          onChange:@selector(alertLevelChanged:)] autorelease];
     alertLevelSetting.valueType = SettingValueTypeDecimal;
     NSArray * displaySettings = [[[NSArray alloc] initWithObjects:warningLevelSetting, alertLevelSetting, nil] autorelease];
-    [self.settings setObject:displaySettings forKey:@"Display"];
+    [self.settings setObject:displaySettings forKey:NSLocalizedString(@"Display", @"Display")];
     
-    Setting * sourceSetting = [[[Setting alloc] initWithTitle:@"Source" 
+    Setting * sourceSetting = [[[Setting alloc] initWithTitle:NSLocalizedString(@"Source", @"Source")
                                                        target:self 
                                                       onValue:@selector(source) 
                                                      onAction:@selector(editAction:) 
                                                      onChange:@selector(sourceChanged:)] autorelease];
     NSArray * networkSettings = [[[NSArray alloc] initWithObjects:sourceSetting, nil] autorelease];
-    [self.settings setObject:networkSettings forKey:@"Network"];
+    [self.settings setObject:networkSettings forKey:NSLocalizedString(@"Network", @"Network")];
 }
 
 #pragma mark - Setting value methods
@@ -148,7 +148,7 @@
 
 - (NSString *)tableView:(UITableView *)tableView titleForFooterInSection:(NSInteger)section {
     if(section == 0) {
-        return @"Your Kerberos username and password are used only for fetching bandwidth data, and both are stored securely.";
+        return NSLocalizedString(@"disclaimer", @"disclaimer");
     }
     return nil;
 }

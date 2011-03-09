@@ -110,9 +110,9 @@
     [super viewWillAppear:animated];
     
     if(![[[KerberosAccountManager defaultManager] username] isEqualToString:@""]) {
-        self.navigationItem.title = [NSString stringWithFormat:@"Usage: %@", [[KerberosAccountManager defaultManager] username]];
+        self.navigationItem.title = [NSString stringWithFormat:@"%@: %@", NSLocalizedString(@"Usage", @"Usage"), [[KerberosAccountManager defaultManager] username]];
     } else {
-        self.navigationItem.title = @"Usage";
+        self.navigationItem.title = NSLocalizedString(@"Usage", @"Usage");
     }
 }
 
@@ -163,8 +163,8 @@
         return;
     }
     
-    self.leftUsageLabel.text = [NSString stringWithFormat:@"Received:\n%.2f MB", [received floatValue]];
-    self.rightUsageLabel.text = [NSString stringWithFormat:@"Sent:\n%.2f MB", [sent floatValue]];
+    self.leftUsageLabel.text = [NSString stringWithFormat:@"%@:\n%.2f MB", NSLocalizedString(@"Received", @"Received"), [received floatValue]];
+    self.rightUsageLabel.text = [NSString stringWithFormat:@"%@:\n%.2f MB", NSLocalizedString(@"Sent", @"Sent"), [sent floatValue]];
     
     float usageDisplayMax = 5000.0;
     

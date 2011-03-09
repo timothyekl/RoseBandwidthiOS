@@ -1,0 +1,27 @@
+/* 
+  Localizable.strings
+  RoseBandwidth
+
+  Created by Tim Ekl on 3/9/11.
+  Copyright 2011 __MyCompanyName__. All rights reserved.
+*/
+
+"Usage" = "Nutzung";
+"History" = "Verlauf";
+"Settings" = "Einstellungen";
+
+"Received" = "Empfangen";
+"Sent" = "Gesendet";
+
+"Authentication" = "Authentifizierung";
+"Username" = "Benutzername";
+"Password" = "Kennwort";
+
+"disclaimer" = "Ihre Kerberos-Benutzername und Passwort sind nur für das Abrufen Bandbreite Daten verwendet, und beide sind sicher gespeichert.";
+
+"Display" = "Anzeige";
+"Warning level" = "Warnstufe";
+"Alert level" = "Alarmstufe";
+
+"Network" = "Netzwerk";
+"Source" = "Quelle";

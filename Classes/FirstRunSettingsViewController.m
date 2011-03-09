@@ -94,7 +94,7 @@
 
 - (NSString *)tableView:(UITableView *)tableView titleForFooterInSection:(NSInteger)section {
     if(section == 0) {
-        return @"Your Kerberos username and password are used only for fetching bandwidth data, and both are stored securely.";
+        return NSLocalizedString(@"disclaimer", @"disclaimer");
     }
     return nil;
 }
