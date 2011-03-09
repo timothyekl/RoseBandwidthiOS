@@ -144,4 +144,13 @@
     [self.tableView reloadRowsAtIndexPaths:[NSArray arrayWithObjects:[NSIndexPath indexPathWithIndexes:indexes length:2], nil] withRowAnimation:UITableViewRowAnimationFade];
 }
 
+#pragma mark - Special case table view footer
+
+- (NSString *)tableView:(UITableView *)tableView titleForFooterInSection:(NSInteger)section {
+    if(section == 0) {
+        return @"Your Kerberos username and password is used only for fetching bandwidth data, and is stored securely.";
+    }
+    return nil;
+}
+
 @end
