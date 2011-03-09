@@ -166,10 +166,10 @@
     self.leftUsageLabel.text = [NSString stringWithFormat:@"Received:\n%.2f MB", [received floatValue]];
     self.rightUsageLabel.text = [NSString stringWithFormat:@"Sent:\n%.2f MB", [sent floatValue]];
     
+    float usageDisplayMax = 5000.0;
+    
     self.leftUsageView.currentValue = [received floatValue];
     self.rightUsageView.currentValue = [sent floatValue];
-    
-    float usageDisplayMax = 5000.0;
     
     self.leftUsageView.maxValue = usageDisplayMax;
     self.rightUsageView.maxValue = usageDisplayMax;

@@ -66,7 +66,7 @@ CGFloat cubicTint(CGFloat x) {
     CGFloat innerArcRadius = self.frame.size.width / 2.0 - borderWidth;
     CGPoint topFocus = CGPointMake(self.frame.size.width / 2.0, MIN(self.frame.size.height / 2.0, outerArcRadius + borderWidth / 2.0));
     CGPoint bottomFocus = CGPointMake(self.frame.size.width / 2.0, MAX(self.frame.size.height / 2.0, self.frame.size.height - (outerArcRadius + borderWidth / 2.0)));
-    CGFloat fillableHeight = self.frame.size.height - borderWidth * 2.0;
+    CGFloat fillableHeight = self.frame.size.height;
     
     // Draw background
     CGContextSetFillColorWithColor(context, [self.barBackgroundColor CGColor]);
@@ -77,9 +77,9 @@ CGFloat cubicTint(CGFloat x) {
     CGContextFillPath(context);
     
     // Figure out fill dimensions
-    CGFloat fillAmount = self.currentValue / (self.maxValue - self.minValue);
+    CGFloat fillAmount = MIN(self.maxValue, self.currentValue) / (self.maxValue - self.minValue);
     CGFloat fillHeight = fillAmount * fillableHeight;
-    //NSLog(@"Filling to height %f", fillHeight);
+    //NSLog(@"Filling to height %f of %f", fillHeight, self.frame.size.height);
     
     // Draw bar container
     CGContextSetLineWidth(context, 3.0);
@@ -104,8 +104,6 @@ CGFloat cubicTint(CGFloat x) {
         components[i + 4] = cubicTint(barCGComponents[i]);
     }
     
-    //NSLog(@"(%f %f %f %f %f %f %f %f)", 255 * components[0], 255 * components[1], 255 * components[2], 255 * components[3], 255 * components[4], 255 * components[5], 255 * components[6], 255 * components[7]);
-    
     CGGradientRef gradient = CGGradientCreateWithColorComponents(colorSpace, components, locations, nLocations);
     
     CGRect bounds = CGRectMake(0.0, fillHeight, self.frame.size.width, self.frame.size.height);
@@ -113,22 +111,6 @@ CGFloat cubicTint(CGFloat x) {
     CGPoint midRight = CGPointMake(self.frame.size.width, CGRectGetMidY(bounds));
     
     // Draw increments
-    /*
-    if(self.labelIncrement != 0.0) {
-        for(int i = 1; i < (int)floorf(self.maxValue / self.labelIncrement); i++) {
-            CGFloat markHeight = i * self.labelIncrement * fillableHeight / (self.maxValue - self.minValue);
-            //NSLog(@"Marking at height %f", markHeight);
-            
-            CGContextSetLineWidth(context, 1.0);
-            CGContextMoveToPoint(context, 0.0, self.frame.size.height - markHeight);
-            CGContextAddLineToPoint(context, self.frame.size.width, self.frame.size.height - markHeight);
-            CGContextStrokePath(context);
-            
-            //CGContextSelectFont(context, "Arial", 12.0, kCGEncodingMacRoman);
-            //CGContextShowTextAtPoint(context, 4.0, self.frame.size.height - markHeight + 4.0, [[NSString stringWithFormat:@"%d GB", i] cStringUsingEncoding:NSASCIIStringEncoding], 4);
-        }
-    }*/
-    
     for(NSNumber * labelValue in self.labelValues) {
         CGFloat labelFloat = [labelValue floatValue];
         
