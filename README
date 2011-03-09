@@ -1,0 +1,10 @@
+Since RoseBandwidth uses the SettingsViewController submodule, to clone
+everything needed to build the app you should perform:
+
+git clone https://github.com/lithium3141/RoseBandwidth.git
+cd RoseBandwidth
+git submodule init
+git submodule update
+
+After that, you can use xcodebuild from the command-line or the Xcode GUI
+to build RoseBandwidth.
