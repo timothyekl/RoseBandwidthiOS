@@ -60,7 +60,10 @@ typedef enum {
 
 - (IBAction)requestBandwidthUpdate;
 - (IBAction)measureControlValueChanged:(id)sender;
+
+- (void)forceBandwidthDisplayReload;
 - (void)updateVisibleBandwidthWithUsageRecord:(BandwidthUsageRecord *)usage;
+
 - (void)shiftContentWithMultiplier:(float)mult animated:(BOOL)animated;
 
 @end

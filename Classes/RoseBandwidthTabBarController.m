@@ -43,10 +43,19 @@
 }
 
 - (void)scraper:(BandwidthScraper *)scraper encounteredError:(NSError *)error {
-    [[[[UIAlertView alloc] initWithTitle:@"Error" 
-                                 message:@"Couldn't load bandwidth usage. Make sure that you are connected to the Rose-Hulman network via WiFi." 
+    NSString * title = @"Error";
+    NSString * message = @"Couldn't load bandwidth usage. Make sure that you are connected to the Rose-Hulman network via WiFi.";
+    NSString * cancelButtonTitle = @"OK";
+    
+    if([[error domain] isEqualToString:NSURLErrorDomain] && [error code] == NSURLErrorUserCancelledAuthentication) {
+        // Cancelled authentication (i.e. bad password)
+        message = @"Bad username or password. Please make sure your Kerberos credentials are correct in Settings.";
+    }
+    
+    [[[[UIAlertView alloc] initWithTitle:title
+                                 message:message
                                 delegate:nil 
-                       cancelButtonTitle:@"OK" 
+                       cancelButtonTitle:cancelButtonTitle
                        otherButtonTitles:nil] autorelease] show];
     [self.usageViewController updateVisibleBandwidthWithUsageRecord:self.usageViewController.currentUsage];
 }
@@ -55,6 +64,7 @@
 #pragma mark Update notification methods
 
 - (void)kerberosAccountInfoChanged {
+    [self.usageViewController forceBandwidthDisplayReload];
     [self.historyViewController forceHistoryReload];
 }
 

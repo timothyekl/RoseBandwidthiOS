@@ -59,6 +59,27 @@
     }
 }
 
+- (void)forceBandwidthDisplayReload {
+    // Load cached bandwidth usage record if available
+    NSFetchRequest * request = [[[NSFetchRequest alloc] init] autorelease];
+    [request setEntity:[NSEntityDescription entityForName:@"BandwidthUsageRecord" inManagedObjectContext:[self managedObjectContext]]];
+    [request setPredicate:[NSPredicate predicateWithFormat:@"kerberosName == %@", [[KerberosAccountManager defaultManager] username]]];
+    [request setFetchLimit:1];
+    [request setSortDescriptors:[NSArray arrayWithObject:[[[NSSortDescriptor alloc] initWithKey:@"timestamp" ascending:NO] autorelease]]];
+    NSError * error;
+    NSArray * results = [[self managedObjectContext] executeFetchRequest:request error:&error];
+    if(nil == results) {
+        NSLog(@"error fetching past bandwidth: %@", error);
+    } else {
+        if([results count] > 0) {
+            self.currentUsage = [results objectAtIndex:0];
+            [self updateVisibleBandwidthWithUsageRecord:self.currentUsage];
+        } else {
+            [self updateVisibleBandwidthWithUsageRecord:nil];
+        }
+    }
+}
+
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -79,33 +100,12 @@
     [self shiftContentWithMultiplier:-1.0 animated:NO];
     _failedAdLoad = YES;
     
-    // Load cached bandwidth usage record if available
-    NSFetchRequest * request = [[[NSFetchRequest alloc] init] autorelease];
-    [request setEntity:[NSEntityDescription entityForName:@"BandwidthUsageRecord" inManagedObjectContext:[self managedObjectContext]]];
-    [request setFetchLimit:1];
-    [request setSortDescriptors:[NSArray arrayWithObject:[[[NSSortDescriptor alloc] initWithKey:@"timestamp" ascending:NO] autorelease]]];
-    NSError * error;
-    NSArray * results = [[self managedObjectContext] executeFetchRequest:request error:&error];
-    if(nil == results) {
-        NSLog(@"error fetching past bandwidth: %@", error);
-    } else {
-        if([results count] > 0) {
-            self.currentUsage = [results objectAtIndex:0];
-            [self updateVisibleBandwidthWithUsageRecord:self.currentUsage];
-        }
-    }
+    // Show cached bandwidth no matter what
+    [self forceBandwidthDisplayReload];
     
     // Grab new bandwidth on app load
     [self requestBandwidthUpdate];
 }
-
-/*
-// Override to allow orientations other than the default portrait orientation.
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
-    // Return YES for supported orientations
-    return (interfaceOrientation == UIInterfaceOrientationPortrait);
-}
-*/
 
 #pragma mark -
 #pragma mark Action response methods
