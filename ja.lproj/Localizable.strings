@@ -6,22 +6,22 @@
   Copyright 2011 __MyCompanyName__. All rights reserved.
 */
 
-"Usage" = "Usage";
-"History" = "History";
-"Settings" = "Settings";
+"Usage" = "使用";
+"History" = "ヒストリリスト";
+"Settings" = "設定";
 
-"Received" = "Received";
-"Sent" = "Sent";
+"Received" = "もらいました";
+"Sent" = "送信";
 
-"Authentication" = "Authentication";
-"Username" = "Username";
-"Password" = "Password";
+"Authentication" = "認証情報";
+"Username" = "ユーザー名";
+"Password" = "パスワード";
 
-"disclaimer" = "Your Kerberos username and password are used only for fetching bandwidth data, and both are stored securely.";
+"disclaimer" = "ケルベロスのユーザー名とパスワードは帯域のデータを参照アクセスするのだけ使って、保証格納域です。";
 
-"Display" = "Display";
-"Warning level" = "Warning level";
-"Alert level" = "Alert level";
+"Display" = "表";
+"Warning level" = "メッセージの次元";
+"Alert level" = "警報の次元";
 
-"Network" = "Network";
-"Source" = "Source";
+"Network" = "ネットワーク";
+"Source" = "原始";
