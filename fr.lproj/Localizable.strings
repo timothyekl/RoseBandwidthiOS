@@ -6,22 +6,22 @@
   Copyright 2011 __MyCompanyName__. All rights reserved.
 */
 
-"Usage" = "Usage";
-"History" = "History";
-"Settings" = "Settings";
+"Usage" = "Utilisation";
+"History" = "L'histoire";
+"Settings" = "Paramètres";
 
-"Received" = "Received";
-"Sent" = "Sent";
+"Received" = "Reçues";
+"Sent" = "Envoyé";
 
-"Authentication" = "Authentication";
-"Username" = "Username";
-"Password" = "Password";
+"Authentication" = "D'authentification";
+"Username" = "Nom d'utilisateur";
+"Password" = "Mot de passe";
 
-"disclaimer" = "Your Kerberos username and password are used only for fetching bandwidth data, and both are stored securely.";
+"disclaimer" = "Votre nom d'utilisateur et mot de passe Kerberos sont utilisées uniquement pour récupérer les données de la bande passante, et les deux sont stockées en toute sécurité.";
 
-"Display" = "Display";
-"Warning level" = "Warning level";
-"Alert level" = "Alert level";
+"Display" = "Affichage";
+"Warning level" = "Niveau avertissement";
+"Alert level" = "Niveau d'alerte";
 
-"Network" = "Network";
+"Network" = "Réseau";
 "Source" = "Source";
