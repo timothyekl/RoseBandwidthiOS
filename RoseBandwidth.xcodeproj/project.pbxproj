@@ -89,6 +89,18 @@
 		226218941264BE320091547B /* Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon@2x.png"; path = "Resources/Icon@2x.png"; sourceTree = "<group>"; };
 		22A1302112FC806A001EA3DA /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		22A6040C13282777000793CC /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Localizable.strings; sourceTree = "<group>"; };
+		22A6041113288184000793CC /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = /Users/tim/code/RoseBandwidth/ja.lproj/Localizable.strings; sourceTree = "<absolute>"; };
+		22A6041213288184000793CC /* ja */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = ja; path = /Users/tim/code/RoseBandwidth/ja.lproj/MainWindow.xib; sourceTree = "<absolute>"; };
+		22A6041313288184000793CC /* ja */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = ja; path = /Users/tim/code/RoseBandwidth/ja.lproj/BandwidthUsageView.xib; sourceTree = "<absolute>"; };
+		22A6041413288184000793CC /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = /Users/tim/code/RoseBandwidth/ja.lproj/InfoPlist.strings; sourceTree = "<absolute>"; };
+		22A6041513288186000793CC /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = /Users/tim/code/RoseBandwidth/fr.lproj/Localizable.strings; sourceTree = "<absolute>"; };
+		22A6041613288186000793CC /* fr */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = fr; path = /Users/tim/code/RoseBandwidth/fr.lproj/MainWindow.xib; sourceTree = "<absolute>"; };
+		22A6041713288186000793CC /* fr */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = fr; path = /Users/tim/code/RoseBandwidth/fr.lproj/BandwidthUsageView.xib; sourceTree = "<absolute>"; };
+		22A6041813288186000793CC /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = /Users/tim/code/RoseBandwidth/fr.lproj/InfoPlist.strings; sourceTree = "<absolute>"; };
+		22A6041913288188000793CC /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = /Users/tim/code/RoseBandwidth/es.lproj/Localizable.strings; sourceTree = "<absolute>"; };
+		22A6041A13288188000793CC /* es */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = es; path = /Users/tim/code/RoseBandwidth/es.lproj/MainWindow.xib; sourceTree = "<absolute>"; };
+		22A6041B13288188000793CC /* es */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = es; path = /Users/tim/code/RoseBandwidth/es.lproj/BandwidthUsageView.xib; sourceTree = "<absolute>"; };
+		22A6041C13288188000793CC /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = /Users/tim/code/RoseBandwidth/es.lproj/InfoPlist.strings; sourceTree = "<absolute>"; };
 		22DCB62D13281F1400AF3340 /* de */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = de; path = /Users/tim/code/RoseBandwidth/de.lproj/MainWindow.xib; sourceTree = "<absolute>"; };
 		22DCB62E13281F1400AF3340 /* de */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = de; path = /Users/tim/code/RoseBandwidth/de.lproj/BandwidthUsageView.xib; sourceTree = "<absolute>"; };
 		22DCB62F13281F1400AF3340 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = /Users/tim/code/RoseBandwidth/de.lproj/InfoPlist.strings; sourceTree = "<absolute>"; };
@@ -512,6 +524,9 @@
 			children = (
 				225909B312FCD5B900669449 /* en */,
 				22DCB62D13281F1400AF3340 /* de */,
+				22A6041213288184000793CC /* ja */,
+				22A6041613288186000793CC /* fr */,
+				22A6041A13288188000793CC /* es */,
 			);
 			name = MainWindow.xib;
 			sourceTree = "<group>";
@@ -521,6 +536,9 @@
 			children = (
 				22DCB6331328270900AF3340 /* en */,
 				22A6040C13282777000793CC /* de */,
+				22A6041113288184000793CC /* ja */,
+				22A6041513288186000793CC /* fr */,
+				22A6041913288188000793CC /* es */,
 			);
 			name = Localizable.strings;
 			sourceTree = "<group>";
@@ -530,6 +548,9 @@
 			children = (
 				22E2769B124EA4D7003E9D3E /* en */,
 				22DCB62F13281F1400AF3340 /* de */,
+				22A6041413288184000793CC /* ja */,
+				22A6041813288186000793CC /* fr */,
+				22A6041C13288188000793CC /* es */,
 			);
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
@@ -539,6 +560,9 @@
 			children = (
 				22E276C0124EA5D3003E9D3E /* en */,
 				22DCB62E13281F1400AF3340 /* de */,
+				22A6041313288184000793CC /* ja */,
+				22A6041713288186000793CC /* fr */,
+				22A6041B13288188000793CC /* es */,
 			);
 			name = BandwidthUsageView.xib;
 			sourceTree = "<group>";

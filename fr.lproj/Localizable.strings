@@ -1,0 +1,27 @@
+/* 
+  Localizable.strings
+  RoseBandwidth
+
+  Created by Tim Ekl on 3/9/11.
+  Copyright 2011 __MyCompanyName__. All rights reserved.
+*/
+
+"Usage" = "Usage";
+"History" = "History";
+"Settings" = "Settings";
+
+"Received" = "Received";
+"Sent" = "Sent";
+
+"Authentication" = "Authentication";
+"Username" = "Username";
+"Password" = "Password";
+
+"disclaimer" = "Your Kerberos username and password are used only for fetching bandwidth data, and both are stored securely.";
+
+"Display" = "Display";
+"Warning level" = "Warning level";
+"Alert level" = "Alert level";
+
+"Network" = "Network";
+"Source" = "Source";
