@@ -46,6 +46,8 @@
 				<object class="NSPSMatrix" key="NSFrameMatrix"/>
 				<string key="NSFrameSize">{320, 480}</string>
 				<reference key="NSSuperview"/>
+				<reference key="NSWindow"/>
+				<reference key="NSNextKeyView"/>
 				<object class="NSColor" key="IBUIBackgroundColor">
 					<int key="NSColorSpace">1</int>
 					<bytes key="NSRGB">MSAxIDEAA</bytes>
@@ -65,11 +67,16 @@
 				</object>
 				<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 				<bool key="IBUIHorizontal">NO</bool>
-				<object class="IBUINavigationController" key="IBUISelectedViewController" id="410899968">
-					<string key="IBUITitle">History</string>
-					<object class="IBUITabBarItem" key="IBUITabBarItem" id="68568337">
+				<object class="IBUINavigationController" key="IBUISelectedViewController" id="1050868222">
+					<string key="IBUITitle">Configuración</string>
+					<object class="IBUITabBarItem" key="IBUITabBarItem" id="752728979">
+						<string key="IBUITitle">Configuración</string>
+						<object class="NSCustomResource" key="IBUIImage">
+							<string key="NSClassName">NSImage</string>
+							<string key="NSResourceName">Gear.png</string>
+						</object>
 						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
-						<int key="IBUISystemItemIdentifier">6</int>
+						<reference key="IBUITabBar" ref="795333663"/>
 					</object>
 					<reference key="IBUIParentViewController" ref="1034742383"/>
 					<object class="IBUISimulatedStatusBarMetrics" key="IBUISimulatedStatusBarMetrics"/>
@@ -79,7 +86,7 @@
 					</object>
 					<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 					<bool key="IBUIHorizontal">NO</bool>
-					<object class="IBUINavigationBar" key="IBUINavigationBar" id="478123125">
+					<object class="IBUINavigationBar" key="IBUINavigationBar" id="684404506">
 						<nil key="NSNextResponder"/>
 						<int key="NSvFlags">256</int>
 						<string key="NSFrameSize">{0, 0}</string>
@@ -89,14 +96,14 @@
 						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 					</object>
 					<array class="NSMutableArray" key="IBUIViewControllers">
-						<object class="IBUITableViewController" id="501539289">
-							<object class="IBUINavigationItem" key="IBUINavigationItem" id="300566470">
-								<string key="IBUITitle">History</string>
+						<object class="IBUIViewController" id="210795710">
+							<object class="IBUINavigationItem" key="IBUINavigationItem" id="819457235">
+								<reference key="IBUINavigationBar"/>
+								<string key="IBUITitle">Configuración</string>
 								<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 							</object>
-							<reference key="IBUIParentViewController" ref="410899968"/>
-							<string key="IBUINibName">BandwidthHistoryTableView</string>
-							<object class="IBUISimulatedStatusBarMetrics" key="IBUISimulatedStatusBarMetrics"/>
+							<reference key="IBUIParentViewController" ref="1050868222"/>
+							<string key="IBUINibName">SettingsViewController</string>
 							<object class="IBUISimulatedOrientationMetrics" key="IBUISimulatedOrientationMetrics">
 								<int key="IBUIInterfaceOrientation">1</int>
 								<int key="interfaceOrientation">1</int>
@@ -108,13 +115,15 @@
 				</object>
 				<array class="NSMutableArray" key="IBUIViewControllers">
 					<object class="IBUINavigationController" id="1067655221">
+						<string key="IBUITitle">Uso</string>
 						<object class="IBUITabBarItem" key="IBUITabBarItem" id="890609766">
-							<string key="IBUITitle">Usage</string>
+							<string key="IBUITitle">Uso</string>
 							<object class="NSCustomResource" key="IBUIImage">
 								<string key="NSClassName">NSImage</string>
 								<string key="NSResourceName">Bars.png</string>
 							</object>
 							<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
+							<reference key="IBUITabBar" ref="795333663"/>
 						</object>
 						<reference key="IBUIParentViewController" ref="1034742383"/>
 						<object class="IBUISimulatedStatusBarMetrics" key="IBUISimulatedStatusBarMetrics"/>
@@ -136,7 +145,7 @@
 						<array class="NSMutableArray" key="IBUIViewControllers">
 							<object class="IBUIViewController" id="801677624">
 								<object class="IBUINavigationItem" key="IBUINavigationItem" id="281671179">
-									<string key="IBUITitle">Usage</string>
+									<string key="IBUITitle">Uso</string>
 									<object class="IBUIBarButtonItem" key="IBUIRightBarButtonItem" id="188845133">
 										<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 										<int key="IBUIStyle">1</int>
@@ -157,16 +166,12 @@
 							</object>
 						</array>
 					</object>
-					<reference ref="410899968"/>
-					<object class="IBUINavigationController" id="1050868222">
-						<string key="IBUITitle">Settings</string>
-						<object class="IBUITabBarItem" key="IBUITabBarItem" id="752728979">
-							<string key="IBUITitle">Settings</string>
-							<object class="NSCustomResource" key="IBUIImage">
-								<string key="NSClassName">NSImage</string>
-								<string key="NSResourceName">Gear.png</string>
-							</object>
+					<object class="IBUINavigationController" id="410899968">
+						<string key="IBUITitle">Historia</string>
+						<object class="IBUITabBarItem" key="IBUITabBarItem" id="68568337">
 							<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
+							<reference key="IBUITabBar" ref="795333663"/>
+							<int key="IBUISystemItemIdentifier">6</int>
 						</object>
 						<reference key="IBUIParentViewController" ref="1034742383"/>
 						<object class="IBUISimulatedStatusBarMetrics" key="IBUISimulatedStatusBarMetrics"/>
@@ -176,7 +181,7 @@
 						</object>
 						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 						<bool key="IBUIHorizontal">NO</bool>
-						<object class="IBUINavigationBar" key="IBUINavigationBar" id="684404506">
+						<object class="IBUINavigationBar" key="IBUINavigationBar" id="478123125">
 							<nil key="NSNextResponder"/>
 							<int key="NSvFlags">256</int>
 							<string key="NSFrameSize">{0, 0}</string>
@@ -186,13 +191,14 @@
 							<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 						</object>
 						<array class="NSMutableArray" key="IBUIViewControllers">
-							<object class="IBUIViewController" id="210795710">
-								<object class="IBUINavigationItem" key="IBUINavigationItem" id="819457235">
-									<string key="IBUITitle">Settings</string>
+							<object class="IBUITableViewController" id="501539289">
+								<object class="IBUINavigationItem" key="IBUINavigationItem" id="300566470">
+									<string key="IBUITitle">Historia</string>
 									<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 								</object>
-								<reference key="IBUIParentViewController" ref="1050868222"/>
-								<string key="IBUINibName">SettingsViewController</string>
+								<reference key="IBUIParentViewController" ref="410899968"/>
+								<string key="IBUINibName">BandwidthHistoryTableView</string>
+								<object class="IBUISimulatedStatusBarMetrics" key="IBUISimulatedStatusBarMetrics"/>
 								<object class="IBUISimulatedOrientationMetrics" key="IBUISimulatedOrientationMetrics">
 									<int key="IBUIInterfaceOrientation">1</int>
 									<int key="interfaceOrientation">1</int>
@@ -202,18 +208,27 @@
 							</object>
 						</array>
 					</object>
+					<reference ref="1050868222"/>
 				</array>
 				<object class="IBUITabBar" key="IBUITabBar" id="795333663">
 					<reference key="NSNextResponder"/>
 					<int key="NSvFlags">266</int>
 					<string key="NSFrame">{{0, 431}, {320, 49}}</string>
 					<reference key="NSSuperview"/>
+					<reference key="NSWindow"/>
+					<reference key="NSNextKeyView"/>
 					<object class="NSColor" key="IBUIBackgroundColor">
 						<int key="NSColorSpace">3</int>
 						<bytes key="NSWhite">MCAwAA</bytes>
 					</object>
 					<bool key="IBUIClearsContextBeforeDrawing">NO</bool>
 					<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
+					<array class="NSMutableArray" key="IBUIItems">
+						<reference ref="890609766"/>
+						<reference ref="68568337"/>
+						<reference ref="752728979"/>
+					</array>
+					<reference key="IBUISelectedItem" ref="752728979"/>
 				</object>
 			</object>
 		</array>
@@ -460,7 +475,152 @@
 			<nil key="sourceID"/>
 			<int key="maxID">158</int>
 		</object>
-		<object class="IBClassDescriber" key="IBDocument.Classes"/>
+		<object class="IBClassDescriber" key="IBDocument.Classes">
+			<array class="NSMutableArray" key="referencedPartialClassDescriptions">
+				<object class="IBPartialClassDescription">
+					<string key="className">BandwidthHistoryTableViewController</string>
+					<string key="superclassName">UITableViewController</string>
+					<object class="IBClassDescriptionSource" key="sourceIdentifier">
+						<string key="majorKey">IBProjectSource</string>
+						<string key="minorKey">./Classes/BandwidthHistoryTableViewController.h</string>
+					</object>
+				</object>
+				<object class="IBPartialClassDescription">
+					<string key="className">BandwidthUsageViewController</string>
+					<string key="superclassName">UIViewController</string>
+					<dictionary class="NSMutableDictionary" key="actions">
+						<string key="measureControlValueChanged:">id</string>
+						<string key="requestBandwidthUpdate">id</string>
+					</dictionary>
+					<dictionary class="NSMutableDictionary" key="actionInfosByName">
+						<object class="IBActionInfo" key="measureControlValueChanged:">
+							<string key="name">measureControlValueChanged:</string>
+							<string key="candidateClassName">id</string>
+						</object>
+						<object class="IBActionInfo" key="requestBandwidthUpdate">
+							<string key="name">requestBandwidthUpdate</string>
+							<string key="candidateClassName">id</string>
+						</object>
+					</dictionary>
+					<dictionary class="NSMutableDictionary" key="outlets">
+						<string key="adBannerView">ADBannerView</string>
+						<string key="leftUsageLabel">UILabel</string>
+						<string key="leftUsageView">VerticalProgressView</string>
+						<string key="measureControl">UISegmentedControl</string>
+						<string key="rightUsageLabel">UILabel</string>
+						<string key="rightUsageView">VerticalProgressView</string>
+						<string key="titleLabel">UILabel</string>
+					</dictionary>
+					<dictionary class="NSMutableDictionary" key="toOneOutletInfosByName">
+						<object class="IBToOneOutletInfo" key="adBannerView">
+							<string key="name">adBannerView</string>
+							<string key="candidateClassName">ADBannerView</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="leftUsageLabel">
+							<string key="name">leftUsageLabel</string>
+							<string key="candidateClassName">UILabel</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="leftUsageView">
+							<string key="name">leftUsageView</string>
+							<string key="candidateClassName">VerticalProgressView</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="measureControl">
+							<string key="name">measureControl</string>
+							<string key="candidateClassName">UISegmentedControl</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="rightUsageLabel">
+							<string key="name">rightUsageLabel</string>
+							<string key="candidateClassName">UILabel</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="rightUsageView">
+							<string key="name">rightUsageView</string>
+							<string key="candidateClassName">VerticalProgressView</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="titleLabel">
+							<string key="name">titleLabel</string>
+							<string key="candidateClassName">UILabel</string>
+						</object>
+					</dictionary>
+					<object class="IBClassDescriptionSource" key="sourceIdentifier">
+						<string key="majorKey">IBProjectSource</string>
+						<string key="minorKey">./Classes/BandwidthUsageViewController.h</string>
+					</object>
+				</object>
+				<object class="IBPartialClassDescription">
+					<string key="className">PrimarySettingsViewController</string>
+					<string key="superclassName">SettingsViewController</string>
+					<object class="IBClassDescriptionSource" key="sourceIdentifier">
+						<string key="majorKey">IBProjectSource</string>
+						<string key="minorKey">./Classes/PrimarySettingsViewController.h</string>
+					</object>
+				</object>
+				<object class="IBPartialClassDescription">
+					<string key="className">RoseBandwidthAppDelegate</string>
+					<string key="superclassName">NSObject</string>
+					<dictionary class="NSMutableDictionary" key="outlets">
+						<string key="tabBarController">UITabBarController</string>
+						<string key="window">UIWindow</string>
+					</dictionary>
+					<dictionary class="NSMutableDictionary" key="toOneOutletInfosByName">
+						<object class="IBToOneOutletInfo" key="tabBarController">
+							<string key="name">tabBarController</string>
+							<string key="candidateClassName">UITabBarController</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="window">
+							<string key="name">window</string>
+							<string key="candidateClassName">UIWindow</string>
+						</object>
+					</dictionary>
+					<object class="IBClassDescriptionSource" key="sourceIdentifier">
+						<string key="majorKey">IBProjectSource</string>
+						<string key="minorKey">./Classes/RoseBandwidthAppDelegate.h</string>
+					</object>
+				</object>
+				<object class="IBPartialClassDescription">
+					<string key="className">RoseBandwidthTabBarController</string>
+					<string key="superclassName">UITabBarController</string>
+					<dictionary class="NSMutableDictionary" key="outlets">
+						<string key="historyViewController">BandwidthHistoryTableViewController</string>
+						<string key="settingsViewController">SettingsViewController</string>
+						<string key="usageViewController">BandwidthUsageViewController</string>
+					</dictionary>
+					<dictionary class="NSMutableDictionary" key="toOneOutletInfosByName">
+						<object class="IBToOneOutletInfo" key="historyViewController">
+							<string key="name">historyViewController</string>
+							<string key="candidateClassName">BandwidthHistoryTableViewController</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="settingsViewController">
+							<string key="name">settingsViewController</string>
+							<string key="candidateClassName">SettingsViewController</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="usageViewController">
+							<string key="name">usageViewController</string>
+							<string key="candidateClassName">BandwidthUsageViewController</string>
+						</object>
+					</dictionary>
+					<object class="IBClassDescriptionSource" key="sourceIdentifier">
+						<string key="majorKey">IBProjectSource</string>
+						<string key="minorKey">./Classes/RoseBandwidthTabBarController.h</string>
+					</object>
+				</object>
+				<object class="IBPartialClassDescription">
+					<string key="className">SettingsViewController</string>
+					<string key="superclassName">UITableViewController</string>
+					<object class="IBClassDescriptionSource" key="sourceIdentifier">
+						<string key="majorKey">IBProjectSource</string>
+						<string key="minorKey">./Classes/SettingsViewController.h</string>
+					</object>
+				</object>
+				<object class="IBPartialClassDescription">
+					<string key="className">VerticalProgressView</string>
+					<string key="superclassName">UIView</string>
+					<object class="IBClassDescriptionSource" key="sourceIdentifier">
+						<string key="majorKey">IBProjectSource</string>
+						<string key="minorKey">./Classes/VerticalProgressView.h</string>
+					</object>
+				</object>
+			</array>
+		</object>
 		<int key="IBDocument.localizationMode">0</int>
 		<string key="IBDocument.TargetRuntimeIdentifier">IBCocoaTouchFramework</string>
 		<bool key="IBDocument.PluginDeclaredDependenciesTrackSystemTargetVersion">YES</bool>
