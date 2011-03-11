@@ -17,7 +17,7 @@
 #import "BandwidthUsageRecord.h"
 #import "StoredSettingsManager.h"
 
-#define ENABLE_ADS 0
+#define ENABLE_ADS 1
 
 @interface BandwidthUsageViewController()
 - (void)updateVisibleBandwidthWithType:(kBandwidthUsage)type;
