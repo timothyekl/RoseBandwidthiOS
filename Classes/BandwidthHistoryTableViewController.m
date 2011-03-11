@@ -41,7 +41,11 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.navigationItem.title = [NSString stringWithFormat:@"%@: %@", NSLocalizedString(@"History", @"History"), [[KerberosAccountManager defaultManager] username]];
+    if(nil != [[KerberosAccountManager defaultManager] username] && ![[[KerberosAccountManager defaultManager] username] isEqualToString:@""]) {
+        self.navigationItem.title = [NSString stringWithFormat:@"%@: %@", NSLocalizedString(@"History", @"History"), [[KerberosAccountManager defaultManager] username]];
+    } else{
+        self.navigationItem.title = NSLocalizedString(@"History", @"History");
+    }
 
     NSError *error = nil;
     if (![[self fetchedResultsController] performFetch:&error]) {
