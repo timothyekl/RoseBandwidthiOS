@@ -40,6 +40,8 @@
 		22A6040D13282777000793CC /* PropertyEditorView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 22FD334613208C720087111F /* PropertyEditorView.xib */; };
 		22A6040E13282777000793CC /* PropertyPickerView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 22FD334713208C720087111F /* PropertyPickerView.xib */; };
 		22A6040F13282777000793CC /* SettingsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 22FD334813208C720087111F /* SettingsViewController.xib */; };
+		22D921921329A45200924A30 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 22D921901329A45200924A30 /* Default.png */; };
+		22D921931329A45200924A30 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 22D921911329A45200924A30 /* Default@2x.png */; };
 		22DCB6341328270900AF3340 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 22DCB6321328270900AF3340 /* Localizable.strings */; };
 		22F3CC281293318D00D7DA39 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 22F3CC271293318D00D7DA39 /* CoreData.framework */; };
 		22F3CC2A1293318D00D7DA39 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 22F3CC291293318D00D7DA39 /* CoreGraphics.framework */; };
@@ -101,6 +103,8 @@
 		22A6041A13288188000793CC /* es */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = es; path = /Users/tim/code/RoseBandwidth/es.lproj/MainWindow.xib; sourceTree = "<absolute>"; };
 		22A6041B13288188000793CC /* es */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = es; path = /Users/tim/code/RoseBandwidth/es.lproj/BandwidthUsageView.xib; sourceTree = "<absolute>"; };
 		22A6041C13288188000793CC /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = /Users/tim/code/RoseBandwidth/es.lproj/InfoPlist.strings; sourceTree = "<absolute>"; };
+		22D921901329A45200924A30 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Default.png; path = Resources/Default.png; sourceTree = "<group>"; };
+		22D921911329A45200924A30 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default@2x.png"; path = "Resources/Default@2x.png"; sourceTree = "<group>"; };
 		22DCB62D13281F1400AF3340 /* de */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = de; path = /Users/tim/code/RoseBandwidth/de.lproj/MainWindow.xib; sourceTree = "<absolute>"; };
 		22DCB62E13281F1400AF3340 /* de */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = de; path = /Users/tim/code/RoseBandwidth/de.lproj/BandwidthUsageView.xib; sourceTree = "<absolute>"; };
 		22DCB62F13281F1400AF3340 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = /Users/tim/code/RoseBandwidth/de.lproj/InfoPlist.strings; sourceTree = "<absolute>"; };
@@ -252,6 +256,8 @@
 		22E27689124EA4D7003E9D3E /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				22D921901329A45200924A30 /* Default.png */,
+				22D921911329A45200924A30 /* Default@2x.png */,
 				22FD334513208C620087111F /* Settings */,
 				225909B212FCD5B900669449 /* MainWindow.xib */,
 				226218931264BE320091547B /* Icon.png */,
@@ -450,6 +456,8 @@
 				22A6040D13282777000793CC /* PropertyEditorView.xib in Resources */,
 				22A6040E13282777000793CC /* PropertyPickerView.xib in Resources */,
 				22A6040F13282777000793CC /* SettingsViewController.xib in Resources */,
+				22D921921329A45200924A30 /* Default.png in Resources */,
+				22D921931329A45200924A30 /* Default@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
