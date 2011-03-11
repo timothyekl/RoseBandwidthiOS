@@ -17,6 +17,8 @@
 #import "BandwidthUsageRecord.h"
 #import "StoredSettingsManager.h"
 
+#define ENABLE_ADS 0
+
 @interface BandwidthUsageViewController()
 - (void)updateVisibleBandwidthWithType:(kBandwidthUsage)type;
 - (void)showUpdating;
@@ -290,6 +292,7 @@
 }
 
 - (void)bannerViewDidLoadAd:(ADBannerView *)banner {
+#if ENABLE_ADS
     //NSLog(@"loaded iAd");
     if(_failedAdLoad) {
         // Past ad failed - move things downward
@@ -297,9 +300,11 @@
     }
     
     _failedAdLoad = NO;
+#endif
 }
 
 - (void)bannerView:(ADBannerView *)banner didFailToReceiveAdWithError:(NSError *)error {
+#if ENABLE_ADS
     //NSLog(@"failed to receive iAd");
     if(_failedAdLoad == NO) {
         // Past ad did not fail - move things upward
@@ -307,6 +312,7 @@
     }
     
     _failedAdLoad = YES;
+#endif
 }
 
 
