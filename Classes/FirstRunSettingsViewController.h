@@ -12,9 +12,9 @@
 @class RoseBandwidthTabBarController;
 
 @interface FirstRunSettingsViewController : SettingsViewController {
-    
+    RoseBandwidthTabBarController * presentingTabBarController;
 }
 
-- (RoseBandwidthTabBarController *)presentingTabBarController;
+@property (nonatomic, retain) RoseBandwidthTabBarController * presentingTabBarController;
 
 @end

@@ -24,6 +24,7 @@
 
 - (void)showFirstRunDialog {
     FirstRunSettingsViewController * firstRunController = [[[FirstRunSettingsViewController alloc] initWithNibName:@"SettingsViewController" bundle:nil] autorelease];
+    firstRunController.presentingTabBarController = self;
     UINavigationController * navController = [[[UINavigationController alloc] initWithRootViewController:firstRunController] autorelease];
     [self presentModalViewController:navController animated:YES];
 }

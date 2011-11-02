@@ -15,6 +15,8 @@
 
 @implementation FirstRunSettingsViewController
 
+@synthesize presentingTabBarController;
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     
@@ -43,12 +45,10 @@
 }
 
 - (void)dismiss {
+    NSLog(@"Dismissing first run dialog; presenting tab bar controller = %@", self.presentingTabBarController);
+    
     [self.presentingTabBarController dismissedFirstRunDialog];
     [self dismissModalViewControllerAnimated:YES];
-}
-
-- (RoseBandwidthTabBarController *)presentingTabBarController {
-    return (RoseBandwidthTabBarController *)(self.parentViewController.parentViewController);
 }
 
 #pragma mark - Settings value methods

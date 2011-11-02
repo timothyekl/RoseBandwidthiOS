@@ -3,9 +3,9 @@
 <plist version="1.0">
 <dict>
 	<key>alertLevel</key>
-	<real>3500</real>
+	<integer>4500</integer>
 	<key>warningLevel</key>
-	<real>3000</real>
+	<integer>4000</integer>
 	<key>firstRun</key>
 	<true/>
 </dict>

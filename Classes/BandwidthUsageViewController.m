@@ -18,6 +18,7 @@
 #import "StoredSettingsManager.h"
 
 #define ENABLE_ADS 1
+#define INITIAL_MAX 6000.0
 
 @interface BandwidthUsageViewController()
 - (void)updateVisibleBandwidthWithType:(kBandwidthUsage)type;
@@ -168,7 +169,7 @@
     self.leftUsageLabel.text = [NSString stringWithFormat:@"%@:\n%.2f MB", NSLocalizedString(@"Received", @"Received"), [received floatValue]];
     self.rightUsageLabel.text = [NSString stringWithFormat:@"%@:\n%.2f MB", NSLocalizedString(@"Sent", @"Sent"), [sent floatValue]];
     
-    float usageDisplayMax = 5000.0;
+    float usageDisplayMax = INITIAL_MAX;
     
     self.leftUsageView.currentValue = [received floatValue];
     self.rightUsageView.currentValue = [sent floatValue];
