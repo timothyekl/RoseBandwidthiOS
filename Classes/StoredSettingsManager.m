@@ -30,6 +30,8 @@ static NSString * kFirstRunKey = @"firstRun";
 }
 
 - (void)readSettingsFromFile {
+    NSLog(@"Reading settings property list...");
+    
     // Find file path - search app directory first, then bundle if no local copy exists
     NSString * plistPath;
     NSString *rootPath = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0];
@@ -56,6 +58,8 @@ static NSString * kFirstRunKey = @"firstRun";
 }
 
 - (void)writeSettingsToFile {
+    NSLog(@"Writing settings property list...");
+    
     // Find file path - always write to app directory
     NSString * rootPath = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0];
     NSString * plistPath = [rootPath stringByAppendingPathComponent:@"Settings.plist"];
@@ -106,7 +110,7 @@ static NSString * kFirstRunKey = @"firstRun";
     return UINT_MAX;  
 }
 
-- (void)release {
+- (oneway void)release {
     //do nothing
 }
 
