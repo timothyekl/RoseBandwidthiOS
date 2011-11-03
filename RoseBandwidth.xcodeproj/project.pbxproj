@@ -73,6 +73,7 @@
 		2231C4F41321C66100981AEA /* Settings.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Settings.plist; sourceTree = "<group>"; };
 		2231C4FD1321C7B400981AEA /* StoredSettingsManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StoredSettingsManager.h; sourceTree = "<group>"; };
 		2231C4FE1321C7B400981AEA /* StoredSettingsManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StoredSettingsManager.m; sourceTree = "<group>"; };
+		2237CC0B14622D2E009A2951 /* RoseBandwidth.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = RoseBandwidth.entitlements; sourceTree = "<group>"; };
 		224E874A124FE8B400CEBF0F /* BandwidthScraper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BandwidthScraper.h; sourceTree = "<group>"; };
 		224E874B124FE8B400CEBF0F /* BandwidthScraper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BandwidthScraper.m; sourceTree = "<group>"; };
 		224E874D124FE91300CEBF0F /* BandwidthScraperDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BandwidthScraperDelegate.h; sourceTree = "<group>"; };
@@ -209,6 +210,7 @@
 		22E27680124EA4D7003E9D3E = {
 			isa = PBXGroup;
 			children = (
+				2237CC0B14622D2E009A2951 /* RoseBandwidth.entitlements */,
 				222E786812FCD1850054276E /* iAd.framework */,
 				22A1302112FC806A001EA3DA /* Security.framework */,
 				22E92078125161BB00C7821F /* Models */,
@@ -603,6 +605,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CODE_SIGN_ENTITLEMENTS = RoseBandwidth.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer: Tim Ekl (WDX427SHL2)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				GCC_DYNAMIC_NO_PIC = NO;
@@ -610,8 +614,9 @@
 				GCC_PREFIX_HEADER = "RoseBandwidth-Prefix.pch";
 				HEADER_SEARCH_PATHS = /usr/include/libxml2;
 				INFOPLIST_FILE = "RoseBandwidth-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "B4E19C68-6176-44B7-8E43-70EAF2574CFF";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
@@ -622,14 +627,17 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CODE_SIGN_ENTITLEMENTS = RoseBandwidth.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				COPY_PHASE_STRIP = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "RoseBandwidth-Prefix.pch";
 				HEADER_SEARCH_PATHS = /usr/include/libxml2;
 				INFOPLIST_FILE = "RoseBandwidth-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = 1;
