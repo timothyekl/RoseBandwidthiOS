@@ -155,7 +155,7 @@
 
 - (void)dealloc {
     [_data release];
-    [_usage release];
+    //[_usage release];
     
     [super dealloc];
 }

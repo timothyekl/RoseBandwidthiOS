@@ -128,8 +128,9 @@ Keychain API expects as a validly constructed container class.
         NSDictionary *tempQuery = [NSDictionary dictionaryWithDictionary:genericPasswordQuery];
         
         NSMutableDictionary *outDictionary = nil;
+        CFDictionaryRef outDictionaryCF = (__bridge CFDictionaryRef)outDictionary;
         
-        if (! SecItemCopyMatching((CFDictionaryRef)tempQuery, (CFTypeRef *)&outDictionary) == noErr)
+        if (! SecItemCopyMatching((__bridge CFDictionaryRef)tempQuery, (CFTypeRef *)&outDictionaryCF) == noErr)
         {
             // Stick these default values into keychain item if nothing found.
             [self resetKeychainItem];
@@ -155,7 +156,7 @@ Keychain API expects as a validly constructed container class.
         else
         {
             // load the saved data from Keychain.
-            self.keychainItemData = [self secItemFormatToDictionary:outDictionary];
+            self.keychainItemData = [self secItemFormatToDictionary:(NSDictionary *)outDictionaryCF];
         }
        
 		[outDictionary release];
@@ -198,7 +199,7 @@ Keychain API expects as a validly constructed container class.
     else if (keychainItemData)
     {
         NSMutableDictionary *tempDictionary = [self dictionaryToSecItemFormat:keychainItemData];
-		junk = SecItemDelete((CFDictionaryRef)tempDictionary);
+		junk = SecItemDelete((__bridge CFDictionaryRef)tempDictionary);
         NSAssert( junk == noErr || junk == errSecItemNotFound, @"Problem deleting current dictionary." );
     }
     
@@ -245,13 +246,15 @@ Keychain API expects as a validly constructed container class.
     
     // Acquire the password data from the attributes.
     NSData *passwordData = NULL;
-    if (SecItemCopyMatching((CFDictionaryRef)returnDictionary, (CFTypeRef *)&passwordData) == noErr)
+    CFDataRef passwordDataCF = (__bridge CFDataRef)passwordData;
+    if (SecItemCopyMatching((__bridge CFDictionaryRef)returnDictionary, (CFTypeRef *)&passwordDataCF) == noErr)
     {
         // Remove the search, class, and identifier key/value, we don't need them anymore.
         [returnDictionary removeObjectForKey:(id)kSecReturnData];
         
         // Add the password to the dictionary, converting from NSData to NSString.
-        NSString *password = [[[NSString alloc] initWithBytes:[passwordData bytes] length:[passwordData length] 
+        NSString *password = [[[NSString alloc] initWithBytes:[(NSData *)passwordDataCF bytes]
+                                                       length:[(NSData *)passwordDataCF length] 
                                                      encoding:NSUTF8StringEncoding] autorelease];
         [returnDictionary setObject:password forKey:(id)kSecValueData];
     }
@@ -269,13 +272,14 @@ Keychain API expects as a validly constructed container class.
 - (void)writeToKeychain
 {
     NSDictionary *attributes = NULL;
+    CFDictionaryRef attributesCF = (__bridge CFDictionaryRef)attributes;
     NSMutableDictionary *updateItem = NULL;
 	OSStatus result;
     
-    if (SecItemCopyMatching((CFDictionaryRef)genericPasswordQuery, (CFTypeRef *)&attributes) == noErr)
+    if (SecItemCopyMatching((__bridge CFDictionaryRef)genericPasswordQuery, (CFTypeRef *)&attributesCF) == noErr)
     {
         // First we need the attributes from the Keychain.
-        updateItem = [NSMutableDictionary dictionaryWithDictionary:attributes];
+        updateItem = [NSMutableDictionary dictionaryWithDictionary:(NSDictionary *) attributesCF];
         // Second we need to add the appropriate search key/values.
         [updateItem setObject:[genericPasswordQuery objectForKey:(id)kSecClass] forKey:(id)kSecClass];
         
@@ -300,7 +304,7 @@ Keychain API expects as a validly constructed container class.
         
         // An implicit assumption is that you can only update a single item at a time.
 		
-        result = SecItemUpdate((CFDictionaryRef)updateItem, (CFDictionaryRef)tempCheck);
+        result = SecItemUpdate((__bridge CFDictionaryRef)updateItem, (__bridge CFDictionaryRef)tempCheck);
 		NSAssert( result == noErr, @"Couldn't update the Keychain Item." );
     }
     else

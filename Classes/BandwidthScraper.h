@@ -10,7 +10,7 @@
 
 #import "BandwidthScraperDelegate.h"
 
-@class BandwidthUsage;
+//@class BandwidthUsage;
 
 typedef enum {
     BandwidthScraperStatePrefix,
@@ -23,7 +23,7 @@ typedef enum {
     id<BandwidthScraperDelegate> _delegate;
     
     NSMutableData * _data;
-    BandwidthUsage * _usage;
+    //BandwidthUsage * _usage;
     BandwidthScraperState _state;
     
     NSURLConnection * _conn;
