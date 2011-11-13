@@ -8,8 +8,6 @@
 
 #import "KerberosAccountManager.h"
 
-static KerberosAccountManager * _defaultManager = nil;
-
 @implementation KerberosAccountManager
 
 @synthesize itemWrapper;
@@ -19,48 +17,18 @@ static KerberosAccountManager * _defaultManager = nil;
 #pragma mark Singleton management methods
 
 + (KerberosAccountManager *)defaultManager {
-    @synchronized(self) {
-        if(nil == _defaultManager) {
-            _defaultManager = [[KerberosAccountManager alloc] init];
-        }
-    }
+    static dispatch_once_t dispatch_token;
+    __strong static KerberosAccountManager * _defaultManager = nil;
+    dispatch_once(&dispatch_token, ^{
+        _defaultManager = [[self alloc] init];
+    });
     return _defaultManager;
-}
-
-+ (id)allocWithZone:(NSZone *)zone {
-    @synchronized(self) {
-        if(nil == _defaultManager) {
-            _defaultManager = [super allocWithZone:zone];
-            return _defaultManager;
-        }
-    }
-    return nil;
 }
 
 - (id)init {
     if((self = [super init])) {
         self.itemWrapper = [[[KeychainItemWrapper alloc] initWithIdentifier:@"Kerberos Info" accessGroup:@"XRNKDMNJWT.com.lithium3141.RoseBandwidth"] autorelease];
     }
-    return self;
-}
-
-- (id)copyWithZone:(NSZone *)zone {
-    return self;
-}
-
-- (id)retain {
-    return self;
-}
-
-- (unsigned)retainCount {
-    return UINT_MAX;  // denotes an object that cannot be released
-}
-
-- (oneway void)release {
-    //do nothing
-}
-
-- (id)autorelease {
     return self;
 }
 

@@ -8,8 +8,6 @@
 
 #import "StoredSettingsManager.h"
 
-static StoredSettingsManager * sharedInstance = nil;
-
 static NSString * kWarningLevelKey = @"warningLevel";
 static NSString * kAlertLevelKey = @"alertLevel";
 static NSString * kFirstRunKey = @"firstRun";
@@ -79,43 +77,12 @@ static NSString * kFirstRunKey = @"firstRun";
 #pragma mark - Singleton methods
 
 + (StoredSettingsManager *)sharedManager {
-    @synchronized(self)
-    {
-        if (sharedInstance == nil)
-            sharedInstance = [[StoredSettingsManager alloc] init];
-    }
-    return sharedInstance;
-}
-
-+ (id)allocWithZone:(NSZone *)zone {
-    @synchronized(self) {
-        if (sharedInstance == nil) {
-            sharedInstance = [super allocWithZone:zone];
-            return sharedInstance;  // assignment and return on first allocation
-        }
-    }
-    return nil; // on subsequent allocation attempts return nil
-}
-
-- (id)copyWithZone:(NSZone *)zone {
-    return self;
-}
-
-- (id)retain {
-    return self;
-}
-
-- (NSUInteger)retainCount {
-    // Can't be released
-    return UINT_MAX;  
-}
-
-- (oneway void)release {
-    //do nothing
-}
-
-- (id)autorelease {
-    return self;
+    static dispatch_once_t dispatch_token;
+    __strong static StoredSettingsManager * _defaultManager = nil;
+    dispatch_once(&dispatch_token, ^{
+        _defaultManager = [[self alloc] init];
+    });
+    return _defaultManager;
 }
 
 @end
