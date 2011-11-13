@@ -25,9 +25,9 @@
 
 @property (nonatomic, readonly) NSSet * labelValues;
 
-@property (nonatomic, retain) UIColor * borderColor;
-@property (nonatomic, retain) UIColor * barBackgroundColor;
-@property (nonatomic, retain) UIColor * barColor;
+@property (nonatomic, strong) UIColor * borderColor;
+@property (nonatomic, strong) UIColor * barBackgroundColor;
+@property (nonatomic, strong) UIColor * barColor;
 
 - (void)addLabelAt:(CGFloat)value;
 - (void)removeLabelAt:(CGFloat)value;

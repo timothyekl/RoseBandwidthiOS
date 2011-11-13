@@ -27,7 +27,7 @@
 
 - (id)init {
     if((self = [super init])) {
-        self.itemWrapper = [[[KeychainItemWrapper alloc] initWithIdentifier:@"Kerberos Info" accessGroup:@"XRNKDMNJWT.com.lithium3141.RoseBandwidth"] autorelease];
+        self.itemWrapper = [[KeychainItemWrapper alloc] initWithIdentifier:@"Kerberos Info" accessGroup:@"XRNKDMNJWT.com.lithium3141.RoseBandwidth"];
     }
     return self;
 }
@@ -36,27 +36,27 @@
 #pragma mark Kerberos info methods
 
 - (NSString *)username {
-    return [self.itemWrapper objectForKey:(id)kSecAttrAccount];
+    return [self.itemWrapper objectForKey:(__bridge id)kSecAttrAccount];
 }
 - (void)setUsername:(NSString *)username {
-    [self.itemWrapper setObject:username forKey:(id)kSecAttrAccount];
+    [self.itemWrapper setObject:username forKey:(__bridge id)kSecAttrAccount];
 }
 
 - (NSString *)password {
-    return [self.itemWrapper objectForKey:(id)kSecValueData];
+    return [self.itemWrapper objectForKey:(__bridge id)kSecValueData];
 }
 - (void)setPassword:(NSString *)password {
-    [self.itemWrapper setObject:password forKey:(id)kSecValueData];
+    [self.itemWrapper setObject:password forKey:(__bridge id)kSecValueData];
 }
 
 - (NSString *)sourceURL {
     //TODO allow for changes here
     //return @"https://netreg.rose-hulman.edu/tools/networkUsage.pl";
-    return [self.itemWrapper objectForKey:(id)kSecAttrService];
+    return [self.itemWrapper objectForKey:(__bridge id)kSecAttrService];
 }
 - (void)setSourceURL:(NSString *)sourceURL {
     //TODO handle this
-    [self.itemWrapper setObject:sourceURL forKey:(id)kSecAttrService];
+    [self.itemWrapper setObject:sourceURL forKey:(__bridge id)kSecAttrService];
 }
 
 @end

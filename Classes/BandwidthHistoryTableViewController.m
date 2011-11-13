@@ -115,7 +115,7 @@
     
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
-        cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier] autorelease];
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
     }
     
     // Configure the cell...
@@ -135,8 +135,7 @@
     if (!monthSymbols) {
         NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
         [formatter setCalendar:[NSCalendar currentCalendar]];
-        monthSymbols = [[formatter monthSymbols] retain];
-        [formatter release];
+        monthSymbols = [formatter monthSymbols];
     }
     
     NSInteger numericSection = [[sectionInfo name] integerValue];
@@ -232,16 +231,16 @@
         return _fetchedResultsController;
     }
     
-    NSFetchRequest * request = [[[NSFetchRequest alloc] init] autorelease];
+    NSFetchRequest * request = [[NSFetchRequest alloc] init];
     [request setEntity:[NSEntityDescription entityForName:@"BandwidthUsageRecord" inManagedObjectContext:[self managedObjectContext]]];
     [request setPredicate:[NSPredicate predicateWithFormat:@"kerberosName == %@", [[KerberosAccountManager defaultManager] username]]];
-    NSSortDescriptor * sortDescriptor = [[[NSSortDescriptor alloc] initWithKey:@"timestamp" ascending:NO] autorelease];
+    NSSortDescriptor * sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"timestamp" ascending:NO];
     [request setSortDescriptors:[NSArray arrayWithObject:sortDescriptor]];
     
-    NSFetchedResultsController * frc = [[[NSFetchedResultsController alloc] initWithFetchRequest:request 
+    NSFetchedResultsController * frc = [[NSFetchedResultsController alloc] initWithFetchRequest:request 
                                                                             managedObjectContext:[self managedObjectContext] 
                                                                               sectionNameKeyPath:@"sectionIdentifier" 
-                                                                                       cacheName:@"BandwidthHistory"] autorelease];
+                                                                                       cacheName:@"BandwidthHistory"];
     frc.delegate = self;
     self.fetchedResultsController = frc;
     
@@ -319,12 +318,6 @@
 }
 
 
-- (void)dealloc {
-    [_fetchedResultsController release];
-    [_usageHistory release];
-    
-    [super dealloc];
-}
 
 
 @end

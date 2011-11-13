@@ -64,12 +64,6 @@
     }
 }
 
-- (void)dealloc {
-
-    [window release];
-    [tabBarController release];
-    [super dealloc];
-}
 
 /*
 // Optional UITabBarControllerDelegate method.
@@ -110,7 +104,7 @@
     if (managedObjectModel) {
         return managedObjectModel;
     }
-    managedObjectModel = [[NSManagedObjectModel mergedModelFromBundles:nil] retain];    
+    managedObjectModel = [NSManagedObjectModel mergedModelFromBundles:nil];    
     return managedObjectModel;
 }
 
@@ -141,11 +135,11 @@
          */
         NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
         
-        [[[[UIAlertView alloc] initWithTitle:@"Error" 
+        [[[UIAlertView alloc] initWithTitle:@"Error" 
                                      message:@"There was a problem loading history data. Please close the app by pressing the Home button."
                                     delegate:self 
                            cancelButtonTitle:@"OK" 
-                           otherButtonTitles:nil] autorelease] show];
+                           otherButtonTitles:nil] show];
     }    
     
     return persistentStoreCoordinator;

@@ -20,9 +20,9 @@
     SettingsViewController * _settingsViewController;
 }
 
-@property (nonatomic, retain) IBOutlet BandwidthUsageViewController * usageViewController;
-@property (nonatomic, retain) IBOutlet BandwidthHistoryTableViewController * historyViewController;
-@property (nonatomic, retain) IBOutlet SettingsViewController * settingsViewController;
+@property (nonatomic, strong) IBOutlet BandwidthUsageViewController * usageViewController;
+@property (nonatomic, strong) IBOutlet BandwidthHistoryTableViewController * historyViewController;
+@property (nonatomic, strong) IBOutlet SettingsViewController * settingsViewController;
 
 - (void)showFirstRunDialog;
 - (void)dismissedFirstRunDialog;

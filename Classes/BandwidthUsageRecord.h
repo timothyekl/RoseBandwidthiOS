@@ -13,15 +13,15 @@
 
 }
 
-@property (nonatomic, retain) NSString * kerberosName;
-@property (nonatomic, retain) NSDate * timestamp;
-@property (nonatomic, retain) NSNumber * policyReceived;
-@property (nonatomic, retain) NSNumber * policySent;
-@property (nonatomic, retain) NSNumber * actualReceived;
-@property (nonatomic, retain) NSNumber * actualSent;
-@property (nonatomic, retain) NSString * bandwidthClass;
+@property (nonatomic, strong) NSString * kerberosName;
+@property (nonatomic, strong) NSDate * timestamp;
+@property (nonatomic, strong) NSNumber * policyReceived;
+@property (nonatomic, strong) NSNumber * policySent;
+@property (nonatomic, strong) NSNumber * actualReceived;
+@property (nonatomic, strong) NSNumber * actualSent;
+@property (nonatomic, strong) NSString * bandwidthClass;
 
-@property (nonatomic, retain) NSString * sectionIdentifier;
-@property (nonatomic, retain) NSString * primitiveSectionIdentifier;
+@property (nonatomic, strong) NSString * sectionIdentifier;
+@property (nonatomic, strong) NSString * primitiveSectionIdentifier;
 
 @end

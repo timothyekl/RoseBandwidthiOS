@@ -20,27 +20,27 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    [self.navigationItem setRightBarButtonItem:[[[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone 
+    [self.navigationItem setRightBarButtonItem:[[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone 
                                                                                               target:self 
-                                                                                              action:@selector(dismiss)] autorelease] animated:YES];
+                                                                                              action:@selector(dismiss)] animated:YES];
     self.navigationItem.title = @"Settings";
 }
 
 - (void)buildSettings {
-    self.settings = [[[MutableOrderedDictionary alloc] initWithCapacity:1] autorelease];
+    self.settings = [[MutableOrderedDictionary alloc] initWithCapacity:1];
     
-    Setting * usernameSetting = [[[Setting alloc] initWithTitle:@"Username" 
+    Setting * usernameSetting = [[Setting alloc] initWithTitle:@"Username" 
                                                          target:self 
                                                         onValue:@selector(username) 
                                                        onAction:@selector(editAction:) 
-                                                       onChange:@selector(usernameChanged:)] autorelease];
-    Setting * passwordSetting = [[[Setting alloc] initWithTitle:@"Password" 
+                                                       onChange:@selector(usernameChanged:)];
+    Setting * passwordSetting = [[Setting alloc] initWithTitle:@"Password" 
                                                          target:self 
                                                         onValue:@selector(password) 
                                                        onAction:@selector(editAction:) 
-                                                       onChange:@selector(passwordChanged:)] autorelease];
+                                                       onChange:@selector(passwordChanged:)];
     passwordSetting.secure = YES;
-    NSArray * authenticationSettings = [[[NSArray alloc] initWithObjects:usernameSetting, passwordSetting, nil] autorelease];
+    NSArray * authenticationSettings = [[NSArray alloc] initWithObjects:usernameSetting, passwordSetting, nil];
     [self.settings setObject:authenticationSettings forKey:@"Authentication"];
 }
 
@@ -64,7 +64,7 @@
 #pragma mark - Setting action methods
 
 - (void)editAction:(Setting *)setting {
-    PropertyEditorViewController * editor = [[[PropertyEditorViewController alloc] initWithSetting:setting] autorelease];
+    PropertyEditorViewController * editor = [[PropertyEditorViewController alloc] initWithSetting:setting];
     [self.navigationController pushViewController:editor animated:YES];
 }
 

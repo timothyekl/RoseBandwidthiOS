@@ -16,13 +16,13 @@
     NSDictionary * _itemWrappers;
 }
 
-@property (nonatomic, retain) KeychainItemWrapper * itemWrapper;
+@property (nonatomic, strong) KeychainItemWrapper * itemWrapper;
 
-@property(nonatomic, retain) NSDictionary * itemWrappers;
+@property(nonatomic, strong) NSDictionary * itemWrappers;
 
-@property(nonatomic, assign) NSString * username;
-@property(nonatomic, assign) NSString * password;
-@property(nonatomic, assign) NSString * sourceURL;
+@property(nonatomic, unsafe_unretained) NSString * username;
+@property(nonatomic, unsafe_unretained) NSString * password;
+@property(nonatomic, unsafe_unretained) NSString * sourceURL;
 
 + (KerberosAccountManager *)defaultManager;
 

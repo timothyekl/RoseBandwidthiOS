@@ -23,9 +23,9 @@
 @synthesize settingsViewController = _settingsViewController;
 
 - (void)showFirstRunDialog {
-    FirstRunSettingsViewController * firstRunController = [[[FirstRunSettingsViewController alloc] initWithNibName:@"SettingsViewController" bundle:nil] autorelease];
+    FirstRunSettingsViewController * firstRunController = [[FirstRunSettingsViewController alloc] initWithNibName:@"SettingsViewController" bundle:nil];
     firstRunController.presentingTabBarController = self;
-    UINavigationController * navController = [[[UINavigationController alloc] initWithRootViewController:firstRunController] autorelease];
+    UINavigationController * navController = [[UINavigationController alloc] initWithRootViewController:firstRunController];
     [self presentModalViewController:navController animated:YES];
 }
 
@@ -53,11 +53,11 @@
         message = @"Bad username or password. Please make sure your Kerberos credentials are correct in Settings.";
     }
     
-    [[[[UIAlertView alloc] initWithTitle:title
+    [[[UIAlertView alloc] initWithTitle:title
                                  message:message
                                 delegate:nil 
                        cancelButtonTitle:cancelButtonTitle
-                       otherButtonTitles:nil] autorelease] show];
+                       otherButtonTitles:nil] show];
     [self.usageViewController updateVisibleBandwidthWithUsageRecord:self.usageViewController.currentUsage];
 }
 
@@ -86,13 +86,6 @@
 }
 
 
-- (void)dealloc {
-    [_usageViewController release];
-    [_historyViewController release];
-    [_settingsViewController release];
-    
-    [super dealloc];
-}
 
 
 @end

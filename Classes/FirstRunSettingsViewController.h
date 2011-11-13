@@ -15,6 +15,6 @@
     RoseBandwidthTabBarController * presentingTabBarController;
 }
 
-@property (nonatomic, retain) RoseBandwidthTabBarController * presentingTabBarController;
+@property (nonatomic, strong) RoseBandwidthTabBarController * presentingTabBarController;
 
 @end

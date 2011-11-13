@@ -136,15 +136,6 @@ CGFloat cubicTint(CGFloat x) {
     CGColorSpaceRelease(colorSpace);
 }
 
-- (void)dealloc {
-    [_labelValues release];
-    
-    [borderColor release];
-    [barBackgroundColor release];
-    [barColor release];
-    
-    [super dealloc];
-}
 
 #pragma mark - Bar label methods
 

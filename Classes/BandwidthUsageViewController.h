@@ -42,21 +42,21 @@ typedef enum {
     BOOL _failedAdLoad;
 }
 
-@property (nonatomic, readonly) NSManagedObjectContext * managedObjectContext;
+@property (unsafe_unretained, nonatomic, readonly) NSManagedObjectContext * managedObjectContext;
 
-@property (nonatomic, retain) IBOutlet UILabel * titleLabel;
+@property (nonatomic, strong) IBOutlet UILabel * titleLabel;
 
-@property (nonatomic, retain) IBOutlet UISegmentedControl * measureControl;
+@property (nonatomic, strong) IBOutlet UISegmentedControl * measureControl;
 
-@property (nonatomic, retain) IBOutlet VerticalProgressView * leftUsageView;
-@property (nonatomic, retain) IBOutlet VerticalProgressView * rightUsageView;
+@property (nonatomic, strong) IBOutlet VerticalProgressView * leftUsageView;
+@property (nonatomic, strong) IBOutlet VerticalProgressView * rightUsageView;
 
-@property (nonatomic, retain) IBOutlet UILabel * leftUsageLabel;
-@property (nonatomic, retain) IBOutlet UILabel * rightUsageLabel;
+@property (nonatomic, strong) IBOutlet UILabel * leftUsageLabel;
+@property (nonatomic, strong) IBOutlet UILabel * rightUsageLabel;
 
-@property (nonatomic, retain) BandwidthUsageRecord * currentUsage;
+@property (nonatomic, strong) BandwidthUsageRecord * currentUsage;
 
-@property (nonatomic, retain) IBOutlet ADBannerView * adBannerView;
+@property (nonatomic, strong) IBOutlet ADBannerView * adBannerView;
 
 @property (nonatomic, assign) BOOL updating;
 

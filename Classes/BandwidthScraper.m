@@ -49,10 +49,10 @@
 - (void)beginScraping {
     //NSLog(@"scraper received beginScraping");
     
-    NSMutableURLRequest * request = [[[NSMutableURLRequest alloc] initWithURL:[NSURL URLWithString:[[KerberosAccountManager defaultManager] sourceURL]] 
+    NSMutableURLRequest * request = [[NSMutableURLRequest alloc] initWithURL:[NSURL URLWithString:[[KerberosAccountManager defaultManager] sourceURL]] 
                                                                   cachePolicy:NSURLRequestReloadIgnoringLocalAndRemoteCacheData 
-                                                              timeoutInterval:FETCH_TIMEOUT] autorelease];
-    _conn = [[[NSURLConnection alloc] initWithRequest:request delegate:self] autorelease];
+                                                              timeoutInterval:FETCH_TIMEOUT];
+    _conn = [[NSURLConnection alloc] initWithRequest:request delegate:self];
     [_conn start];
     
     if([self.delegate respondsToSelector:@selector(scraper:didDispatchPageRequest:)]) {
@@ -65,7 +65,7 @@
     
     [_conn cancel];
     if([self.delegate respondsToSelector:@selector(scraper:encounteredError:)]) {
-        NSError * err = [[[NSError alloc] initWithDomain:@"canceled" code:-1 userInfo:nil] autorelease];
+        NSError * err = [[NSError alloc] initWithDomain:@"canceled" code:-1 userInfo:nil];
         [self.delegate scraper:self encounteredError:err];
     }
 }
@@ -80,7 +80,7 @@
         NSString * username = [[KerberosAccountManager defaultManager] username];
         NSString * password = [[KerberosAccountManager defaultManager] password];
         //NSLog(@"creating credentials with user:%@ pass:%@", username, password);
-        NSURLCredential * cred = [[[NSURLCredential alloc] initWithUser:username password:password persistence:NSURLCredentialPersistenceNone] autorelease];
+        NSURLCredential * cred = [[NSURLCredential alloc] initWithUser:username password:password persistence:NSURLCredentialPersistenceNone];
         [[challenge sender] useCredential:cred forAuthenticationChallenge:challenge];
     } else {
         [[challenge sender] cancelAuthenticationChallenge:challenge];
@@ -153,11 +153,5 @@
 #pragma mark -
 #pragma mark dealloc
 
-- (void)dealloc {
-    [_data release];
-    //[_usage release];
-    
-    [super dealloc];
-}
 
 @end

@@ -20,43 +20,43 @@
 @implementation PrimarySettingsViewController
 
 - (void)buildSettings {
-    self.settings = [[[MutableOrderedDictionary alloc] initWithCapacity:2] autorelease];
+    self.settings = [[MutableOrderedDictionary alloc] initWithCapacity:2];
     
-    Setting * usernameSetting = [[[Setting alloc] initWithTitle:NSLocalizedString(@"Username", @"Username")
+    Setting * usernameSetting = [[Setting alloc] initWithTitle:NSLocalizedString(@"Username", @"Username")
                                                          target:self 
                                                         onValue:@selector(username) 
                                                        onAction:@selector(editAction:) 
-                                                       onChange:@selector(usernameChanged:)] autorelease];
-    Setting * passwordSetting = [[[Setting alloc] initWithTitle:NSLocalizedString(@"Password", @"Password")
+                                                       onChange:@selector(usernameChanged:)];
+    Setting * passwordSetting = [[Setting alloc] initWithTitle:NSLocalizedString(@"Password", @"Password")
                                                          target:self 
                                                         onValue:@selector(password) 
                                                        onAction:@selector(editAction:) 
-                                                       onChange:@selector(passwordChanged:)] autorelease];
+                                                       onChange:@selector(passwordChanged:)];
     passwordSetting.secure = YES;
-    NSArray * authenticationSettings = [[[NSArray alloc] initWithObjects:usernameSetting, passwordSetting, nil] autorelease];
+    NSArray * authenticationSettings = [[NSArray alloc] initWithObjects:usernameSetting, passwordSetting, nil];
     [self.settings setObject:authenticationSettings forKey:NSLocalizedString(@"Authentication", @"Authentication")];
     
-    Setting * warningLevelSetting = [[[Setting alloc] initWithTitle:NSLocalizedString(@"Warning level", @"Warning level")
+    Setting * warningLevelSetting = [[Setting alloc] initWithTitle:NSLocalizedString(@"Warning level", @"Warning level")
                                                              target:self
                                                             onValue:@selector(warningLevel)
                                                            onAction:@selector(editAction:)
-                                                           onChange:@selector(warningLevelChanged:)] autorelease];
+                                                           onChange:@selector(warningLevelChanged:)];
     warningLevelSetting.valueType = SettingValueTypeDecimal;
-    Setting * alertLevelSetting = [[[Setting alloc] initWithTitle:NSLocalizedString(@"Alert level", @"Alert level")
+    Setting * alertLevelSetting = [[Setting alloc] initWithTitle:NSLocalizedString(@"Alert level", @"Alert level")
                                                            target:self 
                                                           onValue:@selector(alertLevel)
                                                          onAction:@selector(editAction:)
-                                                         onChange:@selector(alertLevelChanged:)] autorelease];
+                                                         onChange:@selector(alertLevelChanged:)];
     alertLevelSetting.valueType = SettingValueTypeDecimal;
-    NSArray * displaySettings = [[[NSArray alloc] initWithObjects:warningLevelSetting, alertLevelSetting, nil] autorelease];
+    NSArray * displaySettings = [[NSArray alloc] initWithObjects:warningLevelSetting, alertLevelSetting, nil];
     [self.settings setObject:displaySettings forKey:NSLocalizedString(@"Display", @"Display")];
     
-    Setting * sourceSetting = [[[Setting alloc] initWithTitle:NSLocalizedString(@"Source", @"Source")
+    Setting * sourceSetting = [[Setting alloc] initWithTitle:NSLocalizedString(@"Source", @"Source")
                                                        target:self 
                                                       onValue:@selector(source) 
                                                      onAction:@selector(editAction:) 
-                                                     onChange:@selector(sourceChanged:)] autorelease];
-    NSArray * networkSettings = [[[NSArray alloc] initWithObjects:sourceSetting, nil] autorelease];
+                                                     onChange:@selector(sourceChanged:)];
+    NSArray * networkSettings = [[NSArray alloc] initWithObjects:sourceSetting, nil];
     [self.settings setObject:networkSettings forKey:NSLocalizedString(@"Network", @"Network")];
 }
 
@@ -85,7 +85,7 @@
 #pragma mark - Setting action methods
 
 - (void)editAction:(Setting *)setting {
-    PropertyEditorViewController * editor = [[[PropertyEditorViewController alloc] initWithSetting:setting] autorelease];
+    PropertyEditorViewController * editor = [[PropertyEditorViewController alloc] initWithSetting:setting];
     [self.navigationController pushViewController:editor animated:YES];
 }
 

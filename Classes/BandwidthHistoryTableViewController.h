@@ -16,10 +16,10 @@
     NSFetchedResultsController * _fetchedResultsController;
 }
 
-@property (nonatomic, retain) NSMutableArray * usageHistory;
+@property (nonatomic, strong) NSMutableArray * usageHistory;
 
-@property (nonatomic, readonly) NSManagedObjectContext * managedObjectContext;
-@property (nonatomic, retain) NSFetchedResultsController * fetchedResultsController;
+@property (unsafe_unretained, nonatomic, readonly) NSManagedObjectContext * managedObjectContext;
+@property (nonatomic, strong) NSFetchedResultsController * fetchedResultsController;
 
 - (void)forceHistoryReload;
 

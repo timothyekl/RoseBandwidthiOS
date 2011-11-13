@@ -45,7 +45,7 @@
 
 - (IBAction)requestBandwidthUpdate {
     if(!self.updating && ![[StoredSettingsManager sharedManager] isFirstRun]) {
-        [[[[BandwidthScraper alloc] initWithDelegate:((RoseBandwidthTabBarController *)self.tabBarController)] autorelease] beginScraping];
+        [[[BandwidthScraper alloc] initWithDelegate:((RoseBandwidthTabBarController *)self.tabBarController)] beginScraping];
         self.updating = YES;
     }
 }
@@ -63,11 +63,11 @@
 
 - (void)forceBandwidthDisplayReload {
     // Load cached bandwidth usage record if available
-    NSFetchRequest * request = [[[NSFetchRequest alloc] init] autorelease];
+    NSFetchRequest * request = [[NSFetchRequest alloc] init];
     [request setEntity:[NSEntityDescription entityForName:@"BandwidthUsageRecord" inManagedObjectContext:[self managedObjectContext]]];
     [request setPredicate:[NSPredicate predicateWithFormat:@"kerberosName == %@", [[KerberosAccountManager defaultManager] username]]];
     [request setFetchLimit:1];
-    [request setSortDescriptors:[NSArray arrayWithObject:[[[NSSortDescriptor alloc] initWithKey:@"timestamp" ascending:NO] autorelease]]];
+    [request setSortDescriptors:[NSArray arrayWithObject:[[NSSortDescriptor alloc] initWithKey:@"timestamp" ascending:NO]]];
     NSError * error;
     NSArray * results = [[self managedObjectContext] executeFetchRequest:request error:&error];
     if(nil == results) {
@@ -252,16 +252,8 @@
     [[StoredSettingsManager sharedManager] removeObserver:self forKeyPath:@"alertLevel"];
     
     self.adBannerView.delegate = nil;
-    [_adBannerView release];
     
-    [_measureControl release];
-    [_leftUsageView release];
-    [_rightUsageView release];
-    [_leftUsageLabel release];
-    [_rightUsageLabel release];
-    [_currentUsage release];
     
-    [super dealloc];
 }
 
 #pragma mark -

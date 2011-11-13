@@ -62,7 +62,7 @@ static NSString * kFirstRunKey = @"firstRun";
     NSString * rootPath = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0];
     NSString * plistPath = [rootPath stringByAppendingPathComponent:@"Settings.plist"];
     
-    NSMutableDictionary * plistDict = [[[NSMutableDictionary alloc] initWithCapacity:10] autorelease];
+    NSMutableDictionary * plistDict = [[NSMutableDictionary alloc] initWithCapacity:10];
     [plistDict setValue:[NSNumber numberWithFloat:self.warningLevel] forKey:kWarningLevelKey];
     [plistDict setValue:[NSNumber numberWithFloat:self.alertLevel] forKey:kAlertLevelKey];
     [plistDict setValue:[NSNumber numberWithBool:self.firstRun] forKey:kFirstRunKey];

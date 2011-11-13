@@ -20,7 +20,7 @@ typedef enum {
 } BandwidthScraperState;
 
 @interface BandwidthScraper : NSObject <NSXMLParserDelegate> {
-    id<BandwidthScraperDelegate> _delegate;
+    id<BandwidthScraperDelegate> __unsafe_unretained _delegate;
     
     NSMutableData * _data;
     //BandwidthUsage * _usage;
@@ -29,7 +29,7 @@ typedef enum {
     NSURLConnection * _conn;
 }
 
-@property (nonatomic, assign) id<BandwidthScraperDelegate> delegate;
+@property (nonatomic, unsafe_unretained) id<BandwidthScraperDelegate> delegate;
 
 - (id)initWithDelegate:(id<BandwidthScraperDelegate>)delegate;
 - (void)beginScraping;
