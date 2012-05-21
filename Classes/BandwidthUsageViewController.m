@@ -93,11 +93,6 @@
     // Handle ad banner stuff
     self.adBannerView.delegate = self;
     
-    // Resize control
-    CGRect frame = self.measureControl.frame;
-    frame.size.height = 30.0;
-    self.measureControl.frame = frame;
-    
     // Shift content for ad banner load duration
     [self shiftContentWithMultiplier:-1.0 animated:NO];
     _failedAdLoad = YES;
