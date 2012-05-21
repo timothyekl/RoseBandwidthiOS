@@ -4,13 +4,13 @@
 <dict>
 	<key>com.apple.developer.ubiquity-container-identifiers</key>
 	<array>
-		<string>$(TeamIdentifierPrefix)com.lithium3141.RoseBandwidthiOS</string>
+		<string>$(TeamIdentifierPrefix)com.lithium3141.RoseBandwidth</string>
 	</array>
 	<key>com.apple.developer.ubiquity-kvstore-identifier</key>
-	<string>$(TeamIdentifierPrefix)com.lithium3141.RoseBandwidthiOS</string>
+	<string>$(TeamIdentifierPrefix)com.lithium3141.RoseBandwidth</string>
 	<key>keychain-access-groups</key>
 	<array>
-		<string>$(AppIdentifierPrefix)com.lithium3141.RoseBandwidthiOS</string>
+		<string>$(AppIdentifierPrefix)com.lithium3141.RoseBandwidth</string>
 	</array>
 </dict>
 </plist>
