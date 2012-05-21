@@ -27,7 +27,7 @@
 
 - (id)init {
     if((self = [super init])) {
-        self.itemWrapper = [[KeychainItemWrapper alloc] initWithIdentifier:@"Kerberos Info" accessGroup:@"XRNKDMNJWT.com.lithium3141.RoseBandwidth"];
+        self.itemWrapper = [[KeychainItemWrapper alloc] initWithIdentifier:@"Kerberos Info" accessGroup:@"XRNKDMNJWT.com.lithium3141.RoseBandwidthiOS"];
     }
     return self;
 }
